@@ -55,9 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForecastException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoCommon.g.cs" />
+    <Compile Include="WindowsAzure\Deployment.cs" />
+    <Compile Include="WindowsAzure\HostedService.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\FxCopCustomDictionary.xml">
