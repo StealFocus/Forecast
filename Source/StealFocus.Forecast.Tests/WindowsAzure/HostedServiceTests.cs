@@ -7,6 +7,7 @@
     public class HostedServiceTests
     {
         [TestMethod]
+        [Ignore]
         public void TestDoSomething()
         {
             HostedService.DoSomething();

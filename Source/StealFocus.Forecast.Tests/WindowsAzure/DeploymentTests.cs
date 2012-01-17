@@ -7,6 +7,7 @@
     public class DeploymentTests
     {
         [TestMethod]
+        [Ignore]
         public void TestDelete()
         {
             Deployment.Delete();
