@@ -59,8 +59,24 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoCommon.g.cs" />
+    <Compile Include="Security\Cryptography\CertificateStore.cs" />
+    <Compile Include="WindowsAzure\BooleanExtensions.cs" />
+    <Compile Include="WindowsAzure\ForecastAzureOperationException.cs" />
+    <Compile Include="WindowsAzure\Net\WebResponseExtensions.cs" />
+    <Compile Include="WindowsAzure\Operation.cs" />
+    <Compile Include="WindowsAzure\OperationResult.cs" />
+    <Compile Include="WindowsAzure\OperationStatus.cs" />
+    <Compile Include="WindowsAzure\ResponseHeaderName.cs" />
+    <Compile Include="WindowsAzure\RequestContentType.cs" />
     <Compile Include="WindowsAzure\Deployment.cs" />
-    <Compile Include="WindowsAzure\HostedService.cs" />
+    <Compile Include="WindowsAzure\DeploymentSlot.cs" />
+    <Compile Include="WindowsAzure\GuidExtensions.cs" />
+    <Compile Include="WindowsAzure\RequestHeaderName.cs" />
+    <Compile Include="WindowsAzure\RequestMSVersion.cs" />
+    <Compile Include="WindowsAzure\RequestMethod.cs" />
+    <Compile Include="WindowsAzure\Storage\Blob.cs" />
+    <Compile Include="WindowsAzure\StringExtensions.cs" />
+    <Compile Include="WindowsAzure\XmlNamespace.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\FxCopCustomDictionary.xml">

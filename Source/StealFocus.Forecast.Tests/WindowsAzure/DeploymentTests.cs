@@ -1,16 +1,34 @@
 ﻿namespace StealFocus.Forecast.Tests.WindowsAzure
 {
+    using System;
     using Forecast.WindowsAzure;
+    using Forecast.WindowsAzure.Storage;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class DeploymentTests
     {
         [TestMethod]
-        [Ignore]
-        public void TestDelete()
+        public void TestDeleteRequest()
         {
-            Deployment.Delete();
+            Deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
+        }
+
+        [TestMethod]
+        public void TestCreateRequest()
+        {
+            Uri packageUrl = Blob.GetUrl("bzytasksweurosys", "mydeployments", "20111207_015202_Beazley.Tasks.Azure.cspkg");
+            Deployment.CreateRequest(
+                WindowsAzureTests.SubscriptionId, 
+                WindowsAzureTests.CertificateThumbprint, 
+                "BeazleyTasks-WEuro-Sys", 
+                DeploymentSlot.Production, 
+                "Bad Deployment Name", 
+                packageUrl,
+                "DeploymentLabel",
+                "ServiceConfiguration.Cloud-SysTest.cscfg", 
+                true, 
+                true);
         }
     }
 }

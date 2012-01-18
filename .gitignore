@@ -27,6 +27,8 @@ _ReSharper*/
 obj/
 Thumbs.db
 
+*.cscf
+*.sdf
 StealFocus.Build.state
 !Source/.nuget/NuGet.exe
 #Source/packages/

@@ -1,89 +1,174 @@
 ﻿namespace StealFocus.Forecast.WindowsAzure
 {
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Net;
     using System.Security.Cryptography.X509Certificates;
+    using System.Text;
+    using System.Xml.Linq;
+    using Net;
+    using Security.Cryptography;
 
     public static class Deployment
     {
-        public static void Delete()
+        /// <param name="subscriptionId">The SubScription ID.</param>
+        /// <param name="certificateThumbprint">The certificate thumbprint.</param>
+        /// <param name="serviceName">The service name.</param>
+        /// <param name="deploymentSlot">Either "Production" or "Staging".</param>
+        public static string DeleteRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
-            // https://management.core.windows.net/<subscription-id>/services/hostedservices/<service-name>/deploymentslots/<deployment-slot>
-            // https://management.core.windows.net/<subscription-id>/services/hostedservices/<service-name>/deployments/<deployment-name>
-            // Deployment Slot = "Production" or "Staging"
-            // Deployment Name = "Beazley.Authority v1.0.20117.0 (Debug)"
-            // "x-ms-version" = "2011-12-01"
-            const string SubscriptionId = "???";
-            const string ServiceName = "BeazleyTasks-WEuro-Sys";
-            const string DeploymentSlot = "Production";
-
-            // Build a URI
-            Uri requestUri = new Uri("https://management.core.windows.net/" + SubscriptionId + "/services/hostedservices/" + ServiceName + "/deploymentslots/" + DeploymentSlot);
-
-            // Create the request and specify attributes of the request.
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-
-            // Define the requred headers to specify the API version and operation type.
-            request.Headers.Add("x-ms-version", "2011-12-01");
-            request.Method = "DELETE";
-            request.ContentType = "application/xml";
-
-            // The thumbprint value of the management certificate.
-            // You must replace the string with the thumbprint of a 
-            // management certificate associated with your subscription.
-            const string CertThumbprint = "194E98FC3435855FF3CFA6B4D3EA8273CAFF3ABA";
-
-            // Create a reference to the My certificate store.
-            X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-
-            // Try to open the store.
-            certStore.Open(OpenFlags.ReadOnly);
-            
-            // Find the certificate that matches the thumbprint.
-            X509Certificate2Collection certCollection = certStore.Certificates.Find(X509FindType.FindByThumbprint, CertThumbprint, false);
-            certStore.Close();
-
-            // Check to see if our certificate was added to the collection. If no, throw an error, if yes, create a certificate using it.
-            if (0 == certCollection.Count)
+            HttpWebRequest httpWebRequest = GetRequestForDelete(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
+            HttpWebResponse response;
+            try
             {
-                throw new ForecastException("Error: No certificate found containing thumbprint " + CertThumbprint);
+                response = (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (WebException e)
+            {
+                response = (HttpWebResponse)e.Response;
+                string exceptionMessage;
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}', the service and deployment slot combination was not found.", serviceName, deploymentSlot);
+                }
+                else
+                {
+                    exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}'.", serviceName, deploymentSlot);                    
+                }
+
+                throw new ForecastException(exceptionMessage, e);
             }
 
-            // Create an X509Certificate2 object using our matching certificate.
-            X509Certificate2 certificate = certCollection[0];
-
-            // Attach the certificate to the request.
-            request.ClientCertificates.Add(certificate);
-
-            // Make the call using the web request.
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            // Display the web response status code.
-            Console.WriteLine("Response status code: " + response.StatusCode);
-
-            // Display the request ID returned by Windows Azure.
-            if (null != response.Headers)
+            if (response.StatusCode != HttpStatusCode.Accepted)
             {
-                Console.WriteLine("x-ms-request-id: " + response.Headers["x-ms-request-id"]);
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The HTTP Status Code returned in the response was '{0}', expected was '{1}'.", response.StatusCode, HttpStatusCode.Accepted);
+                throw new ForecastException(exceptionMessage);
             }
 
-            // Parse the web response.
-            Stream responseStream = response.GetResponseStream();
-            if (responseStream == null)
+            return response.Headers[ResponseHeaderName.MSRequestId];
+        }
+
+        /// <param name="subscriptionId">The SubScription ID.</param>
+        /// <param name="certificateThumbprint">The certificate thumbprint.</param>
+        /// <param name="serviceName">The service name.</param>
+        /// <param name="deploymentSlot">Either "Production" or "Staging".</param>
+        /// <param name="deploymentName">Shoud not contain spaces.</param>
+        /// <param name="packageUrl">The URL to the .cspkg in blob storage.</param>
+        /// <param name="label">Limited to 100 characters.</param>
+        /// <param name="configurationFilePath">The path to the .cscfg file.</param>
+        /// <param name="startDeployment">Whether to start after deployment.</param>
+        /// <param name="treatWarningsAsError">Whether to treat warnings as errors.</param>
+        public static string CreateRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, string deploymentName, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
+        {
+            HttpWebRequest httpWebRequest = GetRequestForCreate(subscriptionId, certificateThumbprint, serviceName, deploymentSlot, deploymentName, packageUrl, label, configurationFilePath, startDeployment, treatWarningsAsError);
+            HttpWebResponse response;
+            try
             {
-                throw new ForecastException();
+                response = (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (WebException e)
+            {
+                response = (HttpWebResponse)e.Response;
+                ForecastAzureOperationException forecastAzureOperationException = new ForecastAzureOperationException();
+                forecastAzureOperationException.ResponseBody = response.GetResponseBody();
+                throw forecastAzureOperationException;
             }
 
-            StreamReader reader = new StreamReader(responseStream);
+            return response.Headers[ResponseHeaderName.MSRequestId];
+        }
 
-            // Display the raw response.
-            Console.WriteLine("Response output:");
-            Console.WriteLine(reader.ReadToEnd());
+        private static HttpWebRequest GetRequestForDelete(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
+        {
+            string deleteDeploymentUrl = GetDeleteDeploymentUrl(subscriptionId.AzureRestFormat(), serviceName, deploymentSlot);
+            Uri requestUri = new Uri(deleteDeploymentUrl);
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(requestUri);
+            httpWebRequest.Headers.Add(RequestHeaderName.MSVersion, RequestMSVersion.December2011);
+            httpWebRequest.Method = RequestMethod.Delete;
+            httpWebRequest.ContentType = RequestContentType.ApplicationXml;
+            X509Certificate2 certificate = CertificateStore.GetCertificateFromCurrentUserStore(certificateThumbprint);
+            httpWebRequest.ClientCertificates.Add(certificate);
+            return httpWebRequest;
+        }
 
-            // Close the resources no longer needed.
-            response.Close();
-            reader.Close();
+        private static HttpWebRequest GetRequestForCreate(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, string deploymentName, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
+        {
+            string deleteDeploymentUrl = GetCreateDeploymentUrl(subscriptionId.AzureRestFormat(), serviceName, deploymentSlot);
+            Uri requestUri = new Uri(deleteDeploymentUrl);
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(requestUri);
+            httpWebRequest.Headers.Add(RequestHeaderName.MSVersion, RequestMSVersion.December2011);
+            httpWebRequest.Method = RequestMethod.Post;
+            httpWebRequest.ContentType = RequestContentType.ApplicationXml;
+            X509Certificate2 certificate = CertificateStore.GetCertificateFromCurrentUserStore(certificateThumbprint);
+            httpWebRequest.ClientCertificates.Add(certificate);
+            XDocument requestBody = GetCreateDeploymentRequestBody(deploymentName, packageUrl, label, configurationFilePath, startDeployment, treatWarningsAsError);
+            Stream requestStream = null;
+            try
+            {
+                requestStream = httpWebRequest.GetRequestStream();
+                using (StreamWriter streamWriter = new StreamWriter(requestStream, Encoding.UTF8))
+                {
+                    requestStream = null;
+                    requestBody.Save(streamWriter, SaveOptions.DisableFormatting);
+                }
+            }
+            finally
+            {
+                if (requestStream != null)
+                {
+                    requestStream.Dispose();
+                }
+            }
+
+            return httpWebRequest;
+        }
+
+        private static string GetDeleteDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
+        {
+            return GetDeploymentUrl(subscriptionId, serviceName, deploymentSlot);
+        }
+
+        private static string GetCreateDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
+        {
+            return GetDeploymentUrl(subscriptionId, serviceName, deploymentSlot);
+        }
+
+        private static string GetDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
+        {
+            // https://management.core.windows.net/<subscriptionId>/services/hostedservices/<serviceName>/deploymentslots/<deploymentSlot>
+            return string.Format(CultureInfo.CurrentCulture, "https://management.core.windows.net/{0}/services/hostedservices/{1}/deploymentslots/{2}", subscriptionId, serviceName, deploymentSlot);
+        }
+
+        private static XDocument GetCreateDeploymentRequestBody(string name, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
+        {
+            /*
+             *  <?xml version="1.0" encoding="utf-8"?>
+             *  <CreateDeployment xmlns="http://schemas.microsoft.com/windowsazure">
+             *      <Name>deployment-name</Name>
+             *      <PackageUrl>package-url-in-blob-storage</PackageUrl>
+             *      <Label>base64-encoded-deployment-label</Label>
+             *      <Configuration>base64-encoded-configuration-file</Configuration>
+             *      <StartDeployment>true|false</StartDeployment>
+             *      <TreatWarningsAsError>true|false</TreatWarningsAsError>
+             *  </CreateDeployment>
+            */
+            XNamespace windowsAzureNamespace = XmlNamespace.MicrosoftWindowsAzure;
+            XDocument requestBody = new XDocument(
+                new XDeclaration("1.0", "UTF-8", "no"),
+                new XElement(
+                    windowsAzureNamespace + "CreateDeployment",
+                    new XElement(windowsAzureNamespace + "Name", name),
+                    new XElement(windowsAzureNamespace + "PackageUrl", packageUrl.AbsoluteUri),
+                    new XElement(windowsAzureNamespace + "Label", label.ToBase64()),
+                    new XElement(windowsAzureNamespace + "Configuration", GetConfigurationFileAsSingleString(configurationFilePath).ToBase64()),
+                    new XElement(windowsAzureNamespace + "StartDeployment", startDeployment.AzureRestFormat()),
+                    new XElement(windowsAzureNamespace + "TreatWarningsAsError", treatWarningsAsError.AzureRestFormat())));
+            return requestBody;
+        }
+
+        private static string GetConfigurationFileAsSingleString(string configurationFilePath)
+        {
+            return string.Join(string.Empty, File.ReadAllLines(configurationFilePath));
         }
     }
 }
