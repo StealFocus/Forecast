@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,6 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+    </Compile>
     <Compile Include="ForecastException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +93,24 @@
     <None Include="..\StealFocus.Forecast.StrongNamePublicKey.snk">
       <Link>StealFocus.Forecast.StrongNamePublicKey.snk</Link>
     </None>
+    <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd">
+      <Generator>CsdFileGenerator</Generator>
+      <LastGenOutput>StealFocusForecastConfigurationSectionDesigner.csd.cs</LastGenOutput>
+    </None>
+    <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.config">
+      <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.diagram">
+      <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+    </None>
+    <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.xsd">
+      <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\Scripts\StealFocus.Forecast.Build.Project.CSharp.targets" />

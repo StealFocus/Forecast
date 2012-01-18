@@ -73,6 +73,7 @@
     <None Include="..\StealFocus.Forecast.StrongNamePublicKey.snk">
       <Link>StealFocus.Forecast.StrongNamePublicKey.snk</Link>
     </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\FxCopCustomDictionary.xml">

@@ -65,11 +65,18 @@
     <None Include="..\StealFocus.Forecast.StrongNamePublicKey.snk">
       <Link>StealFocus.Forecast.StrongNamePublicKey.snk</Link>
     </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\FxCopCustomDictionary.xml">
       <Link>FxCopCustomDictionary.xml</Link>
     </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StealFocus.Forecast\StealFocus.Forecast.csproj">
+      <Project>{CD147496-F1A4-454C-9928-278456DA6660}</Project>
+      <Name>StealFocus.Forecast</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\Scripts\StealFocus.Forecast.Build.Project.CSharp.targets" />
