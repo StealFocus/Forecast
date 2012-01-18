@@ -9,6 +9,7 @@
     public class OperationTests
     {
         [TestMethod]
+        [Ignore]
         public void TestCheckStatus1()
         {
             string deleteRequestId = Deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
@@ -16,6 +17,7 @@
         }
 
         [TestMethod]
+        [Ignore]
         public void TestCheckStatus2()
         {
             Uri packageUrl = Blob.GetUrl("bzytasksweurosys", "mydeployments", "20111207_015202_Beazley.Tasks.Azure.cspkg");
