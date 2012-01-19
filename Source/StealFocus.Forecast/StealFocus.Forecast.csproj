@@ -46,6 +46,9 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -56,11 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\StealFocusForecastConfiguration.partial.cs" />
     <Compile Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzureSubscriptionConfigurationElement.partial.cs" />
     <Compile Include="ForecastException.cs" />
     <Compile Include="ForecastWorker.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -70,6 +75,7 @@
     <Compile Include="WindowsAzure\BooleanExtensions.cs" />
     <Compile Include="WindowsAzure\DeploymentDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\ForecastAzureOperationException.cs" />
+    <Compile Include="WindowsAzure\IDeployment.cs" />
     <Compile Include="WindowsAzure\Net\WebResponseExtensions.cs" />
     <Compile Include="WindowsAzure\Operation.cs" />
     <Compile Include="WindowsAzure\OperationResult.cs" />
@@ -109,6 +115,7 @@
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

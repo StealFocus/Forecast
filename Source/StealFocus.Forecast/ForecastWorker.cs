@@ -1,10 +1,15 @@
 ﻿namespace StealFocus.Forecast
 {
     using System;
+    using System.Globalization;
+    using System.Reflection;
     using System.Threading;
+    using log4net;
 
     public abstract class ForecastWorker
     {
+        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Holds the thread.
         /// </summary>
@@ -33,6 +38,8 @@
         /// </summary>
         public void Start()
         {
+            string logMessage = string.Format(CultureInfo.CurrentCulture, "Starting worker of type '{0}'.", this.GetType().FullName);
+            logger.Info(logMessage);
             this.stop = false;
 
             // Multiple thread instances cannot be created
@@ -53,6 +60,8 @@
         /// </summary>
         public void Stop()
         {
+            string logMessage = string.Format(CultureInfo.CurrentCulture, "Stopping worker of type '{0}'.", this.GetType().FullName);
+            logger.Info(logMessage);
             this.stop = true;
         }
 
@@ -82,9 +91,9 @@
                     this.thread = null;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // this.Logger.Error("Error running the Work Item Summary Sender.", e);
+                logger.Error("Error running the Work Item Summary Sender.", e);
                 throw;
             }
         }

@@ -12,7 +12,8 @@
         [Ignore]
         public void TestDeleteRequest()
         {
-            Deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
+            IDeployment deployment = new Deployment();
+            deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
         }
 
         [TestMethod]
@@ -20,7 +21,8 @@
         public void TestCreateRequest()
         {
             Uri packageUrl = Blob.GetUrl("bzytasksweurosys", "mydeployments", "20111207_015202_Beazley.Tasks.Azure.cspkg");
-            Deployment.CreateRequest(
+            IDeployment deployment = new Deployment();
+            deployment.CreateRequest(
                 WindowsAzureTests.SubscriptionId, 
                 WindowsAzureTests.CertificateThumbprint, 
                 "BeazleyTasks-WEuro-Sys", 

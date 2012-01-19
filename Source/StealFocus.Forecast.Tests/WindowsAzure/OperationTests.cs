@@ -12,7 +12,8 @@
         [Ignore]
         public void TestCheckStatus1()
         {
-            string deleteRequestId = Deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
+            IDeployment deployment = new Deployment();
+            string deleteRequestId = deployment.DeleteRequest(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, "BeazleyTasks-WEuro-Sys", DeploymentSlot.Production);
             Operation.StatusCheck(WindowsAzureTests.SubscriptionId, WindowsAzureTests.CertificateThumbprint, deleteRequestId);
         }
 
@@ -21,7 +22,8 @@
         public void TestCheckStatus2()
         {
             Uri packageUrl = Blob.GetUrl("bzytasksweurosys", "mydeployments", "20111207_015202_Beazley.Tasks.Azure.cspkg");
-            string createRequestId = Deployment.CreateRequest(
+            IDeployment deployment = new Deployment();
+            string createRequestId = deployment.CreateRequest(
                 WindowsAzureTests.SubscriptionId,
                 WindowsAzureTests.CertificateThumbprint,
                 "BeazleyTasks-WEuro-Sys",

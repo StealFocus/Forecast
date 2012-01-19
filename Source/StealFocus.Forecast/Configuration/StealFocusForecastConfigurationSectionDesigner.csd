@@ -110,6 +110,16 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
+        <attributeProperty name="PackageConfigurationId" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="packageConfigurationId" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="SubscriptionConfigurationId" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="subscriptionConfigurationId" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
       </attributeProperties>
     </configurationElement>
   </configurationElements>

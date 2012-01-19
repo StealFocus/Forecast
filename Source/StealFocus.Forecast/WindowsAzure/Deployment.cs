@@ -10,18 +10,18 @@
     using Net;
     using Security.Cryptography;
 
-    public static class Deployment
+    public class Deployment : IDeployment
     {
-        public static bool CheckExists(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
+        public bool CheckExists(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         /// <param name="subscriptionId">The SubScription ID.</param>
         /// <param name="certificateThumbprint">The certificate thumbprint.</param>
         /// <param name="serviceName">The service name.</param>
         /// <param name="deploymentSlot">Either "Production" or "Staging".</param>
-        public static string DeleteRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
+        public string DeleteRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
             HttpWebRequest httpWebRequest = GetRequestForDelete(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
             HttpWebResponse response;
@@ -64,7 +64,7 @@
         /// <param name="configurationFilePath">The path to the .cscfg file.</param>
         /// <param name="startDeployment">Whether to start after deployment.</param>
         /// <param name="treatWarningsAsError">Whether to treat warnings as errors.</param>
-        public static string CreateRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, string deploymentName, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
+        public string CreateRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, string deploymentName, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
         {
             HttpWebRequest httpWebRequest = GetRequestForCreate(subscriptionId, certificateThumbprint, serviceName, deploymentSlot, deploymentName, packageUrl, label, configurationFilePath, startDeployment, treatWarningsAsError);
             HttpWebResponse response;
