@@ -22,7 +22,8 @@
 
         protected ForecastWorker()
         {
-            this.SleepPeriod = new TimeSpan(0, 10, 0);
+            this.SleepPeriod = new TimeSpan(0, 0, 0, 10);
+            this.Id = Guid.NewGuid();
         }
 
         /// <summary>
@@ -32,6 +33,8 @@
         /// Defaults to 10 minutes.
         /// </remarks>
         public TimeSpan SleepPeriod { get; set; }
+
+        protected Guid Id { get; private set; }
 
         /// <summary>
         /// Starts the process.
