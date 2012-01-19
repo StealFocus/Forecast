@@ -121,11 +121,6 @@
 				<xs:documentation>The Id.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="packageConfigurationId" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The PackageConfigurationId.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="subscriptionConfigurationId" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The SubscriptionConfigurationId.</xs:documentation>

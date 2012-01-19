@@ -1014,32 +1014,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region PackageConfigurationId Property
-        /// <summary>
-        /// The XML name of the <see cref="PackageConfigurationId"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string PackageConfigurationIdPropertyName = "packageConfigurationId";
-        
-        /// <summary>
-        /// Gets or sets the PackageConfigurationId.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The PackageConfigurationId.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.PackageConfigurationIdPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string PackageConfigurationId
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.PackageConfigurationIdPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.PackageConfigurationIdPropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region SubscriptionConfigurationId Property
         /// <summary>
         /// The XML name of the <see cref="SubscriptionConfigurationId"/> property.
