@@ -12,6 +12,11 @@
 
     public static class Deployment
     {
+        public static bool CheckExists(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <param name="subscriptionId">The SubScription ID.</param>
         /// <param name="certificateThumbprint">The certificate thumbprint.</param>
         /// <param name="serviceName">The service name.</param>
