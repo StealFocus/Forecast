@@ -9,6 +9,7 @@
     public class DeploymentTests
     {
         [TestMethod]
+        [Ignore]
         public void TestCheckExists()
         {
             IDeployment deployment = new Deployment();
