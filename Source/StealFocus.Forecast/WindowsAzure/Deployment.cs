@@ -12,8 +12,29 @@
 
     public class Deployment : IDeployment
     {
+        /// <param name="subscriptionId">The SubScription ID.</param>
+        /// <param name="certificateThumbprint">The certificate thumbprint.</param>
+        /// <param name="serviceName">The service name.</param>
+        /// <param name="deploymentSlot">Either "Production" or "Staging".</param>
         public bool CheckExists(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
+            HttpWebRequest httpWebRequest = GetRequestForGet(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
+            try
+            {
+                httpWebRequest.GetResponse();
+            }
+            catch (WebException e)
+            {
+                HttpWebResponse response = (HttpWebResponse)e.Response;
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was a problem getting the deployment for Subscription ID '{0}', Service Name '{1}' and Deployment '{2}'.", subscriptionId, serviceName, deploymentSlot);
+                throw new ForecastException(exceptionMessage, e);
+            }
+
             return true;
         }
 
@@ -128,12 +149,30 @@
             return httpWebRequest;
         }
 
+        private static HttpWebRequest GetRequestForGet(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
+        {
+            string getDeploymentUrl = GetGetDeploymentUrl(subscriptionId.AzureRestFormat(), serviceName, deploymentSlot);
+            Uri requestUri = new Uri(getDeploymentUrl);
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(requestUri);
+            httpWebRequest.Headers.Add(RequestHeaderName.MSVersion, RequestMSVersion.December2011);
+            httpWebRequest.Method = RequestMethod.Get;
+            httpWebRequest.ContentType = RequestContentType.ApplicationXml;
+            X509Certificate2 certificate = CertificateStore.GetCertificateFromCurrentUserStore(certificateThumbprint);
+            httpWebRequest.ClientCertificates.Add(certificate);
+            return httpWebRequest;
+        }
+
         private static string GetDeleteDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
         {
             return GetDeploymentUrl(subscriptionId, serviceName, deploymentSlot);
         }
 
         private static string GetCreateDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
+        {
+            return GetDeploymentUrl(subscriptionId, serviceName, deploymentSlot);
+        }
+
+        private static string GetGetDeploymentUrl(string subscriptionId, string serviceName, string deploymentSlot)
         {
             return GetDeploymentUrl(subscriptionId, serviceName, deploymentSlot);
         }

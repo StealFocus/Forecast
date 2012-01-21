@@ -9,6 +9,18 @@
     public class DeploymentTests
     {
         [TestMethod]
+        public void TestCheckExists()
+        {
+            IDeployment deployment = new Deployment();
+            bool result = deployment.CheckExists(
+                WindowsAzureTests.SubscriptionId,
+                WindowsAzureTests.CertificateThumbprint,
+                "BeazleyTasks-WEuro-Sys",
+                DeploymentSlot.Production);
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
         [Ignore]
         public void TestDeleteRequest()
         {
