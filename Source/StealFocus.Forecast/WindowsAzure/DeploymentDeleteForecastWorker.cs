@@ -50,13 +50,17 @@
                     string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                     logger.Info(deleteDeploymentLogMessage);
                     this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                    this.previousDelete = timeOfPlannedDelete;
                 }
                 else
                 {
                     string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is not deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was not found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                     logger.Info(deleteDeploymentLogMessage);
                 }
+
+                // Set the previous delete to this planned delete regardless of whether we actually did the delete.
+                // This is because without doing this, the application will continue to try to delete the application until it is found.
+                // We don't want this to happen, all that has happened is that the deployment did not exist at the scheduled delete time.
+                this.previousDelete = timeOfPlannedDelete;
             }
         }
 
