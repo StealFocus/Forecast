@@ -96,7 +96,8 @@
             }
             catch (Exception e)
             {
-                logger.Error("Error running the Work Item Summary Sender.", e);
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "Error running the '{0}' worker.", this.GetType().FullName);
+                logger.Error(exceptionMessage, e);
                 throw;
             }
         }
