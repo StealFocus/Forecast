@@ -3,11 +3,14 @@
     using System;
     using System.Globalization;
     using System.Reflection;
+    using System.Threading;
     using log4net;
 
     public class DeploymentDeleteForecastWorker : ForecastWorker
     {
         private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private const int FiveSecondsInMilliseconds = 5000;
 
         private readonly IDeployment deployment;
 
@@ -49,7 +52,8 @@
                 {
                     string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                     logger.Info(deleteDeploymentLogMessage);
-                    this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                    string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                    this.WaitForResultOfDeleteRequest(deleteRequestId);
                 }
                 else
                 {
@@ -90,6 +94,38 @@
             string falseLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' has found that the schedule delete time is greater than or equal to the planned delete time.", this.Id);
             logger.Info(falseLogMessage);
             return false;
+        }
+
+        private void WaitForResultOfDeleteRequest(string deleteRequestId)
+        {
+            OperationResult operationResult = new OperationResult();
+            operationResult.Status = OperationStatus.InProgress;
+            bool done = false;
+            while (!done)
+            {
+                operationResult = Operation.StatusCheck(this.subscriptionId, this.certificateThumbprint, deleteRequestId);
+                if (operationResult.Status == OperationStatus.InProgress)
+                {
+                    string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}', the operation was found to be in process, waiting for '{2}' seconds.", this.Id, deleteRequestId, FiveSecondsInMilliseconds / 1000);
+                    logger.Error(logMessage);
+                    Thread.Sleep(FiveSecondsInMilliseconds);
+                }
+                else
+                {
+                    done = true;
+                }
+            }
+
+            if (operationResult.Status == OperationStatus.Failed)
+            {
+                string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}' and it failed. The code was '{2}' and message '{3}'.", this.Id, deleteRequestId, operationResult.Code, operationResult.Message);
+                logger.Error(logMessage);
+            }
+            else if (operationResult.Status == OperationStatus.Succeeded)
+            {
+                string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}' and it succeeded. The code was '{2}' and message '{3}'.", this.Id, deleteRequestId, operationResult.Code, operationResult.Message);
+                logger.Info(logMessage);
+            }
         }
     }
 }

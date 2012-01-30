@@ -10,6 +10,8 @@
     {
         private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        private const int OneSecondInMilliseconds = 1000;
+
         internal static void Main(string[] args)
         {
             OutputVersionAndCopyrightMessage();
@@ -28,15 +30,29 @@
 
             System.Console.WriteLine("Press return to stop the workers.");
             System.Console.ReadLine();
-            System.Console.WriteLine("Stopping the workers.");
+            System.Console.WriteLine("Stopping the workers...");
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {
                 deploymentDeleteForecastWorker.Stop();
             }
 
-            System.Console.WriteLine("Stopped the workers.");
-            System.Console.WriteLine("Press return to exit.");
-            System.Console.ReadLine();
+            bool keepPolling = true;
+            while (keepPolling)
+            {
+                keepPolling = false;
+                foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
+                {
+                    System.Console.WriteLine("Checking, please wait.");
+                    if (deploymentDeleteForecastWorker.IsStopped == false)
+                    {
+                        keepPolling = true;
+                    }
+                }
+
+                System.Threading.Thread.Sleep(OneSecondInMilliseconds);
+            }
+
+            System.Console.WriteLine("...the workers were stopped.");
         }
 
         private static void OutputVersionAndCopyrightMessage()

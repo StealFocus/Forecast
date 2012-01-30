@@ -34,6 +34,8 @@
         /// </remarks>
         public TimeSpan SleepPeriod { get; set; }
 
+        public bool IsStopped { get; private set; }
+
         protected Guid Id { get; private set; }
 
         /// <summary>
@@ -81,6 +83,7 @@
                 {
                     while (!this.stop)
                     {
+                        this.IsStopped = false;
                         this.DoWork();
                         Thread.Sleep(this.SleepPeriod);
                     }
@@ -92,6 +95,9 @@
                 finally
                 {
                     this.thread = null;
+                    this.IsStopped = true;
+                    string logMessage = string.Format(CultureInfo.CurrentCulture, "Stopped worker of type '{0}'.", this.GetType().FullName);
+                    logger.Info(logMessage);
                 }
             }
             catch (Exception e)

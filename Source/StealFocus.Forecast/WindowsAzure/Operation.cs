@@ -65,13 +65,20 @@
                 throw new ForecastException("The response did not contain a root element.");
             }
 
-            operationResult.Id = Guid.Parse(GetChild(responseBody.Root, "ID").Value);
-            operationResult.Status = (OperationStatus)Enum.Parse(typeof(OperationStatus), GetChild(responseBody.Root, "Status").Value);
-            operationResult.HttpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), GetChild(responseBody.Root, "HttpStatusCode").Value);
+            string idValue = GetChild(responseBody.Root, "ID").Value;
+            operationResult.Id = Guid.Parse(idValue);
+            string statusValue = GetChild(responseBody.Root, "Status").Value;
+            operationResult.Status = (OperationStatus)Enum.Parse(typeof(OperationStatus), statusValue);
+            if (operationResult.Status != OperationStatus.InProgress)
+            {
+                operationResult.HttpStatusCode = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), GetChild(responseBody.Root, "HttpStatusCode").Value);
+            }
+
             if (operationResult.Status == OperationStatus.Failed)
             {
-                operationResult.Code = GetChild(responseBody.Root, "Code").Value;
-                operationResult.Message = GetChild(responseBody.Root, "Message").Value;
+                XElement error = GetChild(responseBody.Root, "Error");
+                operationResult.Code = GetChild(error, "Code").Value;
+                operationResult.Message = GetChild(error, "Message").Value;
             }
             
             return operationResult;
@@ -79,7 +86,8 @@
 
         private static XElement GetChild(XElement parentElement, string childElementName)
         {
-            XElement element = parentElement.Element(childElementName);
+            XNamespace windowsAzureNamespace = XmlNamespace.MicrosoftWindowsAzure;
+            XElement element = parentElement.Element(windowsAzureNamespace + childElementName);
             if (element == null)
             {
                 string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The response did not contain a '{0}' element under the root as expected.", childElementName);
