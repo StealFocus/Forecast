@@ -76,6 +76,7 @@
     <Compile Include="WindowsAzure\DeploymentDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\ForecastAzureOperationException.cs" />
     <Compile Include="WindowsAzure\IDeployment.cs" />
+    <Compile Include="WindowsAzure\Net\WebRequestExtensions.cs" />
     <Compile Include="WindowsAzure\Net\WebResponseExtensions.cs" />
     <Compile Include="WindowsAzure\Operation.cs" />
     <Compile Include="WindowsAzure\OperationResult.cs" />

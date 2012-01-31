@@ -21,7 +21,7 @@
             HttpWebRequest httpWebRequest = GetRequestForGet(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
             try
             {
-                httpWebRequest.GetResponse();
+                httpWebRequest.GetResponse(1000);
             }
             catch (WebException e)
             {
@@ -48,7 +48,7 @@
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponse();
+                response = (HttpWebResponse)httpWebRequest.GetResponse(1000);
             }
             catch (WebException e)
             {
@@ -91,7 +91,7 @@
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponse();
+                response = (HttpWebResponse)httpWebRequest.GetResponse(1000);
             }
             catch (WebException e)
             {
