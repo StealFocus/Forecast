@@ -21,14 +21,17 @@
             HttpWebRequest httpWebRequest = GetRequestForGet(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
             try
             {
-                httpWebRequest.GetResponse(1000);
+                httpWebRequest.GetResponseThrottled();
             }
             catch (WebException e)
             {
-                HttpWebResponse response = (HttpWebResponse)e.Response;
-                if (response.StatusCode == HttpStatusCode.NotFound)
+                if (e.Response != null)
                 {
-                    return false;
+                    HttpWebResponse response = (HttpWebResponse)e.Response;
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return false;
+                    }
                 }
 
                 string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was a problem getting the deployment for Subscription ID '{0}', Service Name '{1}' and Deployment '{2}'.", subscriptionId, serviceName, deploymentSlot);
@@ -48,19 +51,23 @@
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponse(1000);
+                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                string exceptionMessage;
-                if (response.StatusCode == HttpStatusCode.NotFound)
+                string exceptionMessage = null;
+                if (e.Response != null)
                 {
-                    exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}', the service and deployment slot combination was not found.", serviceName, deploymentSlot);
+                    response = (HttpWebResponse)e.Response;
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}', the service and deployment slot combination was not found.", serviceName, deploymentSlot);
+                    }
                 }
-                else
+
+                if (string.IsNullOrEmpty(exceptionMessage))
                 {
-                    exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}'.", serviceName, deploymentSlot);                    
+                    exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}'.", serviceName, deploymentSlot);
                 }
 
                 throw new ForecastException(exceptionMessage, e);
@@ -91,14 +98,21 @@
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponse(1000);
+                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                ForecastAzureOperationException forecastAzureOperationException = new ForecastAzureOperationException();
-                forecastAzureOperationException.ResponseBody = response.GetResponseBody();
-                throw forecastAzureOperationException;
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    ForecastAzureOperationException forecastAzureOperationException =
+                        new ForecastAzureOperationException();
+                    forecastAzureOperationException.ResponseBody = response.GetResponseBody();
+                    throw forecastAzureOperationException;
+                }
+                
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error creating deployment for service '{0}' in deployment slot '{1}'.", serviceName, deploymentSlot);
+                throw new ForecastException(exceptionMessage, e);
             }
 
             return response.Headers[ResponseHeaderName.MSRequestId];

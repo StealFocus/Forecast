@@ -16,7 +16,7 @@
             HttpWebResponse response;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponse(1000);
+                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
             }
             catch (WebException e)
             {
