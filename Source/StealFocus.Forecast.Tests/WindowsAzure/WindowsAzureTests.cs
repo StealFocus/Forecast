@@ -4,8 +4,8 @@
     
     internal static class WindowsAzureTests
     {
-        internal static readonly Guid SubscriptionId = Guid.Parse("_");
-
         internal const string CertificateThumbprint = "_";
+
+        internal static readonly Guid SubscriptionId = Guid.Parse("_");
     }
 }

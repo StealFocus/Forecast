@@ -8,9 +8,9 @@
 
     internal class Program
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         private const int OneSecondInMilliseconds = 1000;
+
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         internal static void Main(string[] args)
         {
@@ -63,10 +63,10 @@
             System.Console.WriteLine(line1);
             System.Console.WriteLine(Line2);
             System.Console.WriteLine();
-            logger.Info(string.Empty);
-            logger.Info(line1);
-            logger.Info(Line2);
-            logger.Info(string.Empty);
+            Logger.Info(string.Empty);
+            Logger.Info(line1);
+            Logger.Info(Line2);
+            Logger.Info(string.Empty);
         }
     }
 }

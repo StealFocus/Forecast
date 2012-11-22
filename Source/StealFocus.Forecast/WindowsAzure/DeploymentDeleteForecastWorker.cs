@@ -8,11 +8,11 @@
 
     public class DeploymentDeleteForecastWorker : ForecastWorker
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        private static readonly object syncRoot = new object();
-
         private const int FiveSecondsInMilliseconds = 5000;
+
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static readonly object SyncRoot = new object();
 
         private readonly IDeployment deployment;
 
@@ -41,28 +41,28 @@
         protected override void DoWork()
         {
             string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is doing work.", this.Id);
-            logger.Info(doingWorkLogMessage);
+            Logger.Info(doingWorkLogMessage);
             DateTime timeOfPlannedDelete = DateTime.UtcNow;
             bool previousDeleteDayIsNotTheSameAsThePlannedDelete = this.PreviousDeleteDayIsNotTheSameAsThePlannedDelete(this.previousDelete, timeOfPlannedDelete);
             bool timeOfPlannedDeleteIsAfterScheduledTime = this.TimeOfPlannedDeleteIsAfterScheduledTime(this.scheduledTime, timeOfPlannedDelete);
             if (previousDeleteDayIsNotTheSameAsThePlannedDelete && timeOfPlannedDeleteIsAfterScheduledTime)
             {
-                lock (syncRoot)
+                lock (SyncRoot)
                 {
                     string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is checking if deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' exists.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                    logger.Info(checkingDeploymentExistsMessage);
+                    Logger.Info(checkingDeploymentExistsMessage);
                     bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                     if (deploymentExists)
                     {
                         string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                        logger.Info(deleteDeploymentLogMessage);
+                        Logger.Info(deleteDeploymentLogMessage);
                         string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                         this.WaitForResultOfDeleteRequest(deleteRequestId);
                     }
                     else
                     {
                         string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' is not deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was not found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                        logger.Info(deleteDeploymentLogMessage);
+                        Logger.Info(deleteDeploymentLogMessage);
                     }
 
                     // Set the previous delete to this planned delete regardless of whether we actually did the delete.
@@ -78,12 +78,12 @@
             if (timeOfPreviousDelete.DayOfYear != timeOfPlannedDelete.DayOfYear)
             {
                 string trueLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' has found that the previous delete day is not equal to the planned delete day.", this.Id);
-                logger.Info(trueLogMessage);
+                Logger.Info(trueLogMessage);
                 return true;
             }
 
             string falseLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' has found that the previous delete day is equal to the planned delete day.", this.Id);
-            logger.Info(falseLogMessage);
+            Logger.Info(falseLogMessage);
             return false;
         }
 
@@ -92,12 +92,12 @@
             if (scheduledDeleteTime.Hour <= timeOfPlannedDelete.Hour && scheduledDeleteTime.Minute <= timeOfPlannedDelete.Minute)
             {
                 string trueLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' has found that the schedule delete time is less than the planned delete time.", this.Id);
-                logger.Info(trueLogMessage);
+                Logger.Info(trueLogMessage);
                 return true;
             }
 
             string falseLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' has found that the schedule delete time is greater than or equal to the planned delete time.", this.Id);
-            logger.Info(falseLogMessage);
+            Logger.Info(falseLogMessage);
             return false;
         }
 
@@ -112,7 +112,7 @@
                 if (operationResult.Status == OperationStatus.InProgress)
                 {
                     string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}', the operation was found to be in process, waiting for '{2}' seconds.", this.Id, deleteRequestId, FiveSecondsInMilliseconds / 1000);
-                    logger.Error(logMessage);
+                    Logger.Error(logMessage);
                     Thread.Sleep(FiveSecondsInMilliseconds);
                 }
                 else
@@ -124,12 +124,12 @@
             if (operationResult.Status == OperationStatus.Failed)
             {
                 string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}' and it failed. The code was '{2}' and message '{3}'.", this.Id, deleteRequestId, operationResult.Code, operationResult.Message);
-                logger.Error(logMessage);
+                Logger.Error(logMessage);
             }
             else if (operationResult.Status == OperationStatus.Succeeded)
             {
                 string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}' and it succeeded. The code was '{2}' and message '{3}'.", this.Id, deleteRequestId, operationResult.Code, operationResult.Message);
-                logger.Info(logMessage);
+                Logger.Info(logMessage);
             }
         }
     }

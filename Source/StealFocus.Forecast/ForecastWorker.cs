@@ -8,7 +8,7 @@
 
     public abstract class ForecastWorker
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
         /// Holds the thread.
@@ -44,7 +44,7 @@
         public void Start()
         {
             string logMessage = string.Format(CultureInfo.CurrentCulture, "Starting worker of type '{0}'.", this.GetType().FullName);
-            logger.Info(logMessage);
+            Logger.Info(logMessage);
             this.stop = false;
 
             // Multiple thread instances cannot be created
@@ -66,7 +66,7 @@
         public void Stop()
         {
             string logMessage = string.Format(CultureInfo.CurrentCulture, "Stopping worker of type '{0}'.", this.GetType().FullName);
-            logger.Info(logMessage);
+            Logger.Info(logMessage);
             this.stop = true;
         }
 
@@ -97,13 +97,13 @@
                     this.thread = null;
                     this.IsStopped = true;
                     string logMessage = string.Format(CultureInfo.CurrentCulture, "Stopped worker of type '{0}'.", this.GetType().FullName);
-                    logger.Info(logMessage);
+                    Logger.Info(logMessage);
                 }
             }
             catch (Exception e)
             {
                 string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "Error running the '{0}' worker.", this.GetType().FullName);
-                logger.Error(exceptionMessage, e);
+                Logger.Error(exceptionMessage, e);
                 throw;
             }
         }

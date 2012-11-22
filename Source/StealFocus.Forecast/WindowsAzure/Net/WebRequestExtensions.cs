@@ -8,11 +8,11 @@
 
     public static class WebRequestExtensions
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        private static readonly object syncRoot = new object();
-
         private const int DefaultThrottleTimeInMilliseconds = 1000;
+
+        private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static readonly object SyncRoot = new object();
 
         /// <remarks>
         /// The Windows Azure Management REST API does not allow a rapid succession of requests. Calls via this 
@@ -35,11 +35,11 @@
             }
 
             WebResponse webResponse;
-            lock (syncRoot)
+            lock (SyncRoot)
             {
-                logger.Debug("Sending request to Windows Azure Management REST API...");
+                Logger.Debug("Sending request to Windows Azure Management REST API...");
                 webResponse = webRequest.GetResponse();
-                logger.Debug("...completed request to Windows Azure Management REST API.");
+                Logger.Debug("...completed request to Windows Azure Management REST API.");
                 Thread.Sleep(throttleTimeInMilliseconds);
             }
 
