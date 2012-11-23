@@ -2,9 +2,7 @@
 {
     using System.Globalization;
     using System.Reflection;
-    using Configuration;
     using log4net;
-    using WindowsAzure;
 
     internal class Program
     {
@@ -15,35 +13,26 @@
         internal static void Main(string[] args)
         {
             OutputVersionAndCopyrightMessage();
-            foreach (string arg in args)
+            if (args != null && args.Length == 0)
             {
-                System.Console.WriteLine("Supplied arguments:");
-                System.Console.WriteLine(arg);
+                System.Console.WriteLine("The supplied arguments will be ignored.");
                 System.Console.WriteLine();
             }
 
-            DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentDeleteForecastWorkers();
-            foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
-            {
-                deploymentDeleteForecastWorker.Start();
-            }
-
+            Host host = new Host();
+            host.Start();
             System.Console.WriteLine("Press return to stop the workers.");
             System.Console.ReadLine();
             System.Console.WriteLine("Stopping the workers...");
-            foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
-            {
-                deploymentDeleteForecastWorker.Stop();
-            }
-
+            host.Stop();
             bool keepPolling = true;
             while (keepPolling)
             {
                 keepPolling = false;
-                foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
+                foreach (ForecastWorker forecastWorker in host.ForecastWorkers)
                 {
                     System.Console.WriteLine("Checking, please wait.");
-                    if (deploymentDeleteForecastWorker.IsStopped == false)
+                    if (forecastWorker.IsStopped == false)
                     {
                         keepPolling = true;
                     }

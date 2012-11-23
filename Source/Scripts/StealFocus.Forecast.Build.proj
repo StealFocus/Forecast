@@ -14,7 +14,7 @@
     <CSharpProjectFileConfigurationIncludeFilter>$(SolutionDirectoryPath)\**\*.csproj</CSharpProjectFileConfigurationIncludeFilter>
     <VisualBasicProjectFileConfigurationIncludeFilter>$(SolutionDirectoryPath)\**\*.vbproj</VisualBasicProjectFileConfigurationIncludeFilter>
     <WindowsAzureProjectFileConfigurationIncludeFilter>$(SolutionDirectoryPath)\**\*.ccproj</WindowsAzureProjectFileConfigurationIncludeFilter>
-    <ProjectFileConfigurationExcludeFilter>$(SolutionDirectoryPath)\StealFocus.Forecast.Web.UI\StealFocus.Forecast.Web.UI.csproj;$(SolutionDirectoryPath)\StealFocus.Forecast.Web.UI.Tests\StealFocus.Forecast.Web.UI.Tests.csproj;$(SolutionDirectoryPath)\StealFocus.Forecast.Console\StealFocus.Forecast.Console.csproj</ProjectFileConfigurationExcludeFilter>
+    <ProjectFileConfigurationExcludeFilter>$(SolutionDirectoryPath)\StealFocus.Forecast.Web.UI\StealFocus.Forecast.Web.UI.csproj;$(SolutionDirectoryPath)\StealFocus.Forecast.Web.UI.Tests\StealFocus.Forecast.Web.UI.Tests.csproj;$(SolutionDirectoryPath)\StealFocus.Forecast.Console\StealFocus.Forecast.Console.csproj;$(SolutionDirectoryPath)\StealFocus.Forecast.Windows.Service\StealFocus.Forecast.Windows.Service.csproj</ProjectFileConfigurationExcludeFilter>
     <CSharpProjectImportFilePath>$(SolutionDirectoryPath)\Scripts\StealFocus.Forecast.Build.Project.CSharp.targets</CSharpProjectImportFilePath>
     <VisualBasicProjectImportFilePath>$(SolutionDirectoryPath)\Scripts\StealFocus.Forecast.Build.Project.VisualBasic.targets</VisualBasicProjectImportFilePath>
     <CodeAnalysisRuleSetFilePath>$(SolutionDirectoryPath)\StealFocus.Forecast.ruleset</CodeAnalysisRuleSetFilePath>
