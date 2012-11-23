@@ -1,6 +1,9 @@
 ﻿namespace StealFocus.Forecast.Configuration
 {
     using System.Collections;
+
+    using StealFocus.AzureExtensions.HostedService;
+
     using WindowsAzure;
 
     public partial class StealFocusForecastConfiguration

@@ -4,6 +4,9 @@
     using System.Globalization;
     using System.Reflection;
     using System.Threading;
+
+    using StealFocus.AzureExtensions.HostedService;
+
     using log4net;
 
     public class DeploymentDeleteForecastWorker : ForecastWorker
@@ -108,7 +111,7 @@
             bool done = false;
             while (!done)
             {
-                operationResult = Operation.StatusCheck(this.subscriptionId, this.certificateThumbprint, deleteRequestId);
+                operationResult = new Operation().StatusCheck(this.subscriptionId, this.certificateThumbprint, deleteRequestId);
                 if (operationResult.Status == OperationStatus.InProgress)
                 {
                     string logMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker with ID '{0}' submitted a deployment delete request with ID '{1}', the operation was found to be in process, waiting for '{2}' seconds.", this.Id, deleteRequestId, FiveSecondsInMilliseconds / 1000);
