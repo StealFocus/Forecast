@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Forecast.WindowsAzure.Net
 {
     using System;
+    using System.Globalization;
     using System.Net;
     using System.Reflection;
     using System.Threading;
@@ -37,10 +38,12 @@
             WebResponse webResponse;
             lock (SyncRoot)
             {
+                string sleepMessage = string.Format(CultureInfo.CurrentCulture, "Sleeping for {0} milliseconds before sending request to Windows Azure Management REST API (the Windows Azure Management REST API is throttled).", throttleTimeInMilliseconds);
+                Logger.Debug(sleepMessage);
+                Thread.Sleep(throttleTimeInMilliseconds);
                 Logger.Debug("Sending request to Windows Azure Management REST API...");
                 webResponse = webRequest.GetResponse();
                 Logger.Debug("...completed request to Windows Azure Management REST API.");
-                Thread.Sleep(throttleTimeInMilliseconds);
             }
 
             return webResponse;

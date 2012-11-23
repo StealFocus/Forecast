@@ -19,6 +19,7 @@
         public bool CheckExists(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
             HttpWebRequest httpWebRequest = GetRequestForGet(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
+            HttpWebResponse httpWebResponse = null;
             try
             {
                 httpWebRequest.GetResponseThrottled();
@@ -27,15 +28,28 @@
             {
                 if (e.Response != null)
                 {
-                    HttpWebResponse response = (HttpWebResponse)e.Response;
-                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    httpWebResponse = (HttpWebResponse)e.Response;
+                    if (httpWebResponse.StatusCode == HttpStatusCode.NotFound)
                     {
                         return false;
                     }
                 }
 
-                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was a problem getting the deployment for Subscription ID '{0}', Service Name '{1}' and Deployment '{2}'.", subscriptionId, serviceName, deploymentSlot);
+                string exceptionMessage = string.Format(
+                    CultureInfo.CurrentCulture,
+                    "There was a problem getting the deployment for Subscription ID '{0}', Service Name '{1}' and Deployment '{2}'.",
+                    subscriptionId,
+                    serviceName,
+                    deploymentSlot);
                 throw new ForecastException(exceptionMessage, e);
+            }
+            finally
+            {
+                httpWebRequest.Abort();
+                if (httpWebResponse != null)
+                {
+                    httpWebResponse.Close();
+                }
             }
 
             return true;
@@ -48,18 +62,26 @@
         public string DeleteRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)
         {
             HttpWebRequest httpWebRequest = GetRequestForDelete(subscriptionId, certificateThumbprint, serviceName, deploymentSlot);
-            HttpWebResponse response;
+            HttpWebResponse httpWebResponse = null;
+            string requestId;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                if (httpWebResponse.StatusCode != HttpStatusCode.Accepted)
+                {
+                    string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The HTTP Status Code returned in the response was '{0}', expected was '{1}'.", httpWebResponse.StatusCode, HttpStatusCode.Accepted);
+                    throw new ForecastException(exceptionMessage);
+                }
+
+                requestId = httpWebResponse.Headers[ResponseHeaderName.MSRequestId];
             }
             catch (WebException e)
             {
                 string exceptionMessage = null;
                 if (e.Response != null)
                 {
-                    response = (HttpWebResponse)e.Response;
-                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    httpWebResponse = (HttpWebResponse)e.Response;
+                    if (httpWebResponse.StatusCode == HttpStatusCode.NotFound)
                     {
                         exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error deleting deployment for service '{0}' in deployment slot '{1}', the service and deployment slot combination was not found.", serviceName, deploymentSlot);
                     }
@@ -72,14 +94,16 @@
 
                 throw new ForecastException(exceptionMessage, e);
             }
-
-            if (response.StatusCode != HttpStatusCode.Accepted)
+            finally
             {
-                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The HTTP Status Code returned in the response was '{0}', expected was '{1}'.", response.StatusCode, HttpStatusCode.Accepted);
-                throw new ForecastException(exceptionMessage);
+                httpWebRequest.Abort();
+                if (httpWebResponse != null)
+                {
+                    httpWebResponse.Close();
+                }
             }
 
-            return response.Headers[ResponseHeaderName.MSRequestId];
+            return requestId;
         }
 
         /// <param name="subscriptionId">The Subscription ID.</param>
@@ -95,27 +119,42 @@
         public string CreateRequest(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, string deploymentName, Uri packageUrl, string label, string configurationFilePath, bool startDeployment, bool treatWarningsAsError)
         {
             HttpWebRequest httpWebRequest = GetRequestForCreate(subscriptionId, certificateThumbprint, serviceName, deploymentSlot, deploymentName, packageUrl, label, configurationFilePath, startDeployment, treatWarningsAsError);
-            HttpWebResponse response;
+            HttpWebResponse httpWebResponse = null;
+            string requestId;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                if (httpWebResponse.StatusCode != HttpStatusCode.Accepted)
+                {
+                    string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The HTTP Status Code returned in the response was '{0}', expected was '{1}'.", httpWebResponse.StatusCode, HttpStatusCode.Accepted);
+                    throw new ForecastException(exceptionMessage);
+                }
+
+                requestId = httpWebResponse.Headers[ResponseHeaderName.MSRequestId];
             }
             catch (WebException e)
             {
                 if (e.Response != null)
                 {
-                    response = (HttpWebResponse)e.Response;
-                    ForecastAzureOperationException forecastAzureOperationException =
-                        new ForecastAzureOperationException();
-                    forecastAzureOperationException.ResponseBody = response.GetResponseBody();
+                    httpWebResponse = (HttpWebResponse)e.Response;
+                    ForecastAzureOperationException forecastAzureOperationException = new ForecastAzureOperationException();
+                    forecastAzureOperationException.ResponseBody = httpWebResponse.GetResponseBody();
                     throw forecastAzureOperationException;
                 }
                 
                 string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was en error creating deployment for service '{0}' in deployment slot '{1}'.", serviceName, deploymentSlot);
                 throw new ForecastException(exceptionMessage, e);
             }
+            finally
+            {
+                httpWebRequest.Abort();
+                if (httpWebResponse != null)
+                {
+                    httpWebResponse.Close();
+                }
+            }
 
-            return response.Headers[ResponseHeaderName.MSRequestId];
+            return requestId;
         }
 
         private static HttpWebRequest GetRequestForDelete(Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot)

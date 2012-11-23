@@ -13,18 +13,27 @@
         public static OperationResult StatusCheck(Guid subscriptionId, string certificateThumbprint, string requestId)
         {
             HttpWebRequest httpWebRequest = GetRequestForStatusCheck(subscriptionId, certificateThumbprint, requestId);
-            HttpWebResponse response;
+            HttpWebResponse httpWebResponse = null;
+            OperationResult operationResult;
             try
             {
-                response = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponseThrottled();
+                operationResult = ExtractOperationResultFromResponse(httpWebResponse);
             }
             catch (WebException e)
             {
                 string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "There was an error querying the operation status of Request ID '{0}'.", requestId);
                 throw new ForecastException(exceptionMessage, e);
             }
+            finally
+            {
+                httpWebRequest.Abort();
+                if (httpWebResponse != null)
+                {
+                    httpWebResponse.Close();
+                }
+            }
 
-            OperationResult operationResult = ExtractOperationResultFromResponse(response);
             return operationResult;
         }
 
