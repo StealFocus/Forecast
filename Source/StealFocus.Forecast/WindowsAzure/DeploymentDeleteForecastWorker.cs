@@ -5,11 +5,11 @@
     using System.Reflection;
     using System.Threading;
 
-    using StealFocus.AzureExtensions.HostedService;
-
     using log4net;
 
-    public class DeploymentDeleteForecastWorker : ForecastWorker
+    using StealFocus.AzureExtensions.HostedService;
+
+    internal class DeploymentDeleteForecastWorker : ForecastWorker
     {
         private const int FiveSecondsInMilliseconds = 5000;
 

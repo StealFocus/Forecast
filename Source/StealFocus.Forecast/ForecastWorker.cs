@@ -6,7 +6,7 @@
     using System.Threading;
     using log4net;
 
-    public abstract class ForecastWorker
+    internal abstract class ForecastWorker
     {
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

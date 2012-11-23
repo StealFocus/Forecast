@@ -8,7 +8,7 @@
 
     public partial class StealFocusForecastConfiguration
     {
-        public DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
+        internal DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
         {
             ArrayList list = new ArrayList(this.WindowsAzureDeploymentDeletes.Count);
             foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDelete in this.WindowsAzureDeploymentDeletes)
