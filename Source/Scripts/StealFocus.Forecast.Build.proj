@@ -4,7 +4,7 @@
 
   <!-- IMPORTANT - you must import these targets for the build scripts to function. -->
   <Import Project="StealFocus.Forecast.targets" />
-  <Import Project="..\packages\StealFocus.Build.1.0.11220.0\Scripts\StealFocus.Build.targets" />
+  <Import Project="..\packages\StealFocus.Build.1.0.21121.0\Scripts\StealFocus.Build.targets" />
 
   <PropertyGroup Condition=" '$(BuildReleaseConfiguration)'=='' ">
     <BuildReleaseConfiguration>true</BuildReleaseConfiguration>
