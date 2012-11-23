@@ -6,10 +6,10 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
+    [Ignore]
     public class DeploymentTests
     {
         [TestMethod]
-        [Ignore]
         public void TestCheckExists()
         {
             IDeployment deployment = new Deployment();
@@ -22,7 +22,6 @@
         }
 
         [TestMethod]
-        [Ignore]
         public void TestDeleteRequest()
         {
             IDeployment deployment = new Deployment();
@@ -30,7 +29,6 @@
         }
 
         [TestMethod]
-        [Ignore]
         public void TestCreateRequest()
         {
             Uri packageUrl = Blob.GetUrl("bzytasksweurosys", "mydeployments", "20111207_015202_Beazley.Tasks.Azure.cspkg");
