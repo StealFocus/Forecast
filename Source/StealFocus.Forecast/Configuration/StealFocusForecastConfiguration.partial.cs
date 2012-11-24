@@ -14,13 +14,18 @@
             foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDelete in this.WindowsAzureDeploymentDeletes)
             {
                 WindowsAzureSubscriptionConfigurationElement windowsAzureSubscription = this.WindowsAzureSubscriptions[windowsAzureDeploymentDelete.SubscriptionConfigurationId];
+                
+                // Fix
                 DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                     new Deployment(), 
+                    new Operation(), 
                     windowsAzureSubscription.GetWindowsAzureSubscriptionId(), 
                     windowsAzureSubscription.CertificateThumbprint, 
                     windowsAzureDeploymentDelete.ServiceName, 
-                    windowsAzureDeploymentDelete.DeploymentSlot, 
-                    windowsAzureDeploymentDelete.ScheduledTime);
+                    windowsAzureDeploymentDelete.DeploymentSlot,
+                    windowsAzureDeploymentDelete.DailyStartTime,
+                    windowsAzureDeploymentDelete.DailyEndTime,
+                    windowsAzureDeploymentDelete.PollingIntervalInMinutes);
                 list.Add(deploymentDeleteForecastWorker);
             }
 

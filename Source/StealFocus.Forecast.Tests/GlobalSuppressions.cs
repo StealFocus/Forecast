@@ -16,3 +16,6 @@
 // Error List, point to "Suppress Message(s)", and click 
 // "In Project Suppression File".
 // You do not need to add suppressions to this file manually.
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Scope = "member", Target = "StealFocus.Forecast.Tests.HostedService.DeploymentDeleteForecastWorkerTests.#UnitTestDoWork_With_Now_In_The_Schedule_And_Deployment_Does_Not_Exist()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Scope = "member", Target = "StealFocus.Forecast.Tests.HostedService.DeploymentDeleteForecastWorkerTests.#UnitTestDoWork_With_Now_In_The_Schedule_And_Deployment_Exists()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Scope = "member", Target = "StealFocus.Forecast.Tests.HostedService.DeploymentDeleteForecastWorkerTests.#UnitTestDoWork_With_Now_Not_In_The_Schedule()")]

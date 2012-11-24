@@ -13,7 +13,7 @@
   <configurationElements>
     <configurationSection name="StealFocusForecastConfiguration" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="stealFocusForecastConfiguration">
       <elementProperties>
-        <elementProperty name="WindowsAzureSubscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
+        <elementProperty name="WindowsAzureSubscriptions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
@@ -100,9 +100,9 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="ScheduledTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="scheduledTime" isReadOnly="false">
+        <attributeProperty name="DailyStartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyStartTime" isReadOnly="false">
           <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DateTime" />
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
           </type>
         </attributeProperty>
         <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
@@ -113,6 +113,16 @@
         <attributeProperty name="SubscriptionConfigurationId" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="subscriptionConfigurationId" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="DailyEndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyEndTime" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
           </type>
         </attributeProperty>
       </attributeProperties>

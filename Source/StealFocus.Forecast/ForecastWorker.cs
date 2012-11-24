@@ -67,7 +67,7 @@
             this.stop = true;
         }
 
-        protected abstract void DoWork();
+        public abstract void DoWork();
 
         /// <summary>
         /// Run the task.
