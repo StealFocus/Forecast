@@ -10,23 +10,24 @@
     {
         internal DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
         {
-            ArrayList list = new ArrayList(this.WindowsAzureDeploymentDeletes.Count);
-            foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDelete in this.WindowsAzureDeploymentDeletes)
+            ArrayList list = new ArrayList();
+            foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in this.WindowsAzureDeploymentDeletes)
             {
-                WindowsAzureSubscriptionConfigurationElement windowsAzureSubscription = this.WindowsAzureSubscriptions[windowsAzureDeploymentDelete.SubscriptionConfigurationId];
-                
-                // Fix
-                DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                    new Deployment(), 
-                    new Operation(), 
-                    windowsAzureSubscription.GetWindowsAzureSubscriptionId(), 
-                    windowsAzureSubscription.CertificateThumbprint, 
-                    windowsAzureDeploymentDelete.ServiceName, 
-                    windowsAzureDeploymentDelete.DeploymentSlot,
-                    windowsAzureDeploymentDelete.DailyStartTime,
-                    windowsAzureDeploymentDelete.DailyEndTime,
-                    windowsAzureDeploymentDelete.PollingIntervalInMinutes);
-                list.Add(deploymentDeleteForecastWorker);
+                WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = this.WindowsAzureSubscriptions[windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId];
+                foreach (DeploymentSlotConfigurationElement deploymentSlotConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.DeploymentSlots)
+                {
+                    DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+                        new Deployment(),
+                        new Operation(),
+                        windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
+                        windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
+                        windowsAzureDeploymentDeleteConfigurationElement.ServiceName,
+                        deploymentSlotConfigurationElement.Name,
+                        windowsAzureDeploymentDeleteConfigurationElement.DailyStartTime,
+                        windowsAzureDeploymentDeleteConfigurationElement.DailyEndTime,
+                        windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes);
+                    list.Add(deploymentDeleteForecastWorker);
+                }
             }
 
             return (DeploymentDeleteForecastWorker[])list.ToArray(typeof(DeploymentDeleteForecastWorker));

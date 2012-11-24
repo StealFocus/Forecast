@@ -936,32 +936,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region DeploymentSlot Property
-        /// <summary>
-        /// The XML name of the <see cref="DeploymentSlot"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string DeploymentSlotPropertyName = "deploymentSlot";
-        
-        /// <summary>
-        /// Gets or sets the DeploymentSlot.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The DeploymentSlot.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string DeploymentSlot
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotPropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region DailyStartTime Property
         /// <summary>
         /// The XML name of the <see cref="DailyStartTime"/> property.
@@ -1088,6 +1062,250 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DailyEndTimePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentSlots Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentSlots"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentSlotsPropertyName = "deploymentSlots";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentSlots.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentSlots.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection DeploymentSlots
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.DeploymentSlotsPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of DeploymentSlotConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection.DeploymentSlotConfigurationElementPropertyName)]
+    public partial class DeploymentSlotConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentSlotConfigurationElementPropertyName = "deploymentSlot";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection.DeploymentSlotConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection.DeploymentSlotConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement)(element)).Name;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement this[object name]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement)(base.BaseGet(name)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="deploymentSlot">The <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement deploymentSlot)
+        {
+            base.BaseAdd(deploymentSlot);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="deploymentSlot">The <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement deploymentSlot)
+        {
+            base.BaseRemove(this.GetElementKey(deploymentSlot));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement GetItemByKey(string name)
+        {
+            return ((global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement)(base.BaseGet(((object)(name)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The DeploymentSlotConfigurationElement Configuration Element.
+    /// </summary>
+    public partial class DeploymentSlotConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Name
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement.NamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement.NamePropertyName] = value;
             }
         }
         #endregion

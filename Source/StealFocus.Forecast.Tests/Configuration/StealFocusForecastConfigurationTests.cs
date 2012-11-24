@@ -12,6 +12,7 @@
         public void UnitTestGetDeploymentDeleteForecastWorkers()
         {
             DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentDeleteForecastWorkers();
+            Assert.AreEqual(4, deploymentDeleteForecastWorkers.Length);
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {
                 Assert.IsNotNull(deploymentDeleteForecastWorker);

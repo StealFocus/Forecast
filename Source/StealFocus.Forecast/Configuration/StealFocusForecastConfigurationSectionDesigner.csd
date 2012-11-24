@@ -95,11 +95,6 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="DeploymentSlot" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="deploymentSlot" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="DailyStartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyStartTime" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
@@ -123,6 +118,27 @@
         <attributeProperty name="DailyEndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyEndTime" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="DeploymentSlots" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="deploymentSlots" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DeploymentSlotConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="DeploymentSlotConfigurationElementCollection" xmlItemName="deploymentSlot" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DeploymentSlotConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="DeploymentSlotConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
       </attributeProperties>

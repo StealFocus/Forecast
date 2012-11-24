@@ -21,3 +21,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1010:CollectionsShouldImplementGenericInterface", Scope = "type", Target = "StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1020:AvoidNamespacesWithFewTypes", Scope = "namespace", Target = "StealFocus.Forecast")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Scope = "member", Target = "StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement.#GetWindowsAzureSubscriptionId()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1010:CollectionsShouldImplementGenericInterface", Scope = "type", Target = "StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection")]
