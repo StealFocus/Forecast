@@ -20,19 +20,16 @@
         /// </summary>
         private bool stop = true;
 
-        protected ForecastWorker()
+        protected ForecastWorker(int sleepTimeInMilliseconds)
         {
-            this.SleepPeriod = new TimeSpan(0, 0, 0, 10);
+            this.SleepTime = new TimeSpan(0, 0, 0, 0, sleepTimeInMilliseconds);
             this.Id = Guid.NewGuid();
         }
 
         /// <summary>
-        /// Gets or sets the sleep period.
+        /// Gets or sets the sleep time.
         /// </summary>
-        /// <remarks>
-        /// Defaults to 10 minutes.
-        /// </remarks>
-        public TimeSpan SleepPeriod { get; set; }
+        public TimeSpan SleepTime { get; private set; }
 
         public bool IsStopped { get; private set; }
 
@@ -85,7 +82,7 @@
                     {
                         this.IsStopped = false;
                         this.DoWork();
-                        Thread.Sleep(this.SleepPeriod);
+                        Thread.Sleep(this.SleepTime);
                     }
                 }
                 catch (ThreadAbortException)

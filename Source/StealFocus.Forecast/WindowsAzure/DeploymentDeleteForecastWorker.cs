@@ -13,6 +13,8 @@
     {
         private const int FiveSecondsInMilliseconds = 5000;
 
+        private const int OneMinuteInMilliseconds = 60000;
+
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private static readonly object SyncRoot = new object();
@@ -32,6 +34,7 @@
         private DateTime previousDelete = DateTime.MinValue;
 
         public DeploymentDeleteForecastWorker(IDeployment deployment, Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, DateTime scheduledTime)
+            : base(OneMinuteInMilliseconds)
         {
             this.deployment = deployment;
             this.subscriptionId = subscriptionId;
