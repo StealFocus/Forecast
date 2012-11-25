@@ -277,13 +277,45 @@
     <!-- Enter your custom steps here. -->
   </Target>
 
+  <Target Name="CreateApplicationSpecificZips">
+    <ItemGroup>
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.dll" />
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
+      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.exe" />
+      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.config" />
+      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.pdb" />
+      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.exe" />
+      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.config" />
+      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.pdb" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.Compression.Zip
+      TaskAction="Create"
+      CompressFiles="@(CommonFiles);@(WindowsServiceFiles)"
+      RemoveRoot="$(BuildDirectoryPath)\$(Configuration)"
+      ZipFileName="$(BuildDirectoryPath)\StealFocus.Forecast.Windows.Service-$(Configuration).zip" />
+    <MSBuild.ExtensionPack.Compression.Zip
+      TaskAction="Create"
+      CompressFiles="@(CommonFiles);@(ConsoleFiles)"
+      RemoveRoot="$(BuildDirectoryPath)\$(Configuration)"
+      ZipFileName="$(BuildDirectoryPath)\StealFocus.Forecast.Console-$(Configuration).zip" />
+  </Target>
+
   <Target Name="AfterPackageCustom">
     <!-- Enter your custom steps here. -->
     <!-- ZIP up each configuration in the build output folder. -->
     <MSBuild.ExtensionPack.Compression.Zip
 		  TaskAction="Create"
 		  CompressPath="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild)"
+      RemoveRoot="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild)"
 		  ZipFileName="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild).zip"/>
+    <!-- Create a ZIP for the Windows Service and one for the Console. -->
+    <MSBuild 
+      Projects="$(MSBuildProjectFile)" 
+      Targets="CreateApplicationSpecificZips" 
+      Properties="BuildDirectoryPath=$(BuildDirectoryPath);Configuration=%(ConfigurationToBuild.FlavorToBuild)" />
   </Target>
 
   <Target Name="BeforeBuildDocumentationCustom">
@@ -303,6 +335,12 @@
     <!-- Copy ZIP files to drop location. -->
     <Copy
       SourceFiles="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild).zip"
+      DestinationFolder="$(DropLocationForBuild)" />
+    <Copy
+      SourceFiles="$(BuildDirectoryPath)\StealFocus.Forecast.Windows.Service-%(ConfigurationToBuild.FlavorToBuild).zip"
+      DestinationFolder="$(DropLocationForBuild)" />
+    <Copy
+      SourceFiles="$(BuildDirectoryPath)\StealFocus.Forecast.Console-%(ConfigurationToBuild.FlavorToBuild).zip"
       DestinationFolder="$(DropLocationForBuild)" />
   </Target>
 
