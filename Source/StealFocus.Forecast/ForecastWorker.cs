@@ -8,6 +8,8 @@
 
     internal abstract class ForecastWorker
     {
+        private const int TenSeccondsInMilliseconds = 10000;
+
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
@@ -19,6 +21,10 @@
         /// Holds the stop indicator.
         /// </summary>
         private bool stop = true;
+
+        protected ForecastWorker(string id) : this(id, TenSeccondsInMilliseconds)
+        {
+        }
 
         protected ForecastWorker(string id, int sleepTimeInMilliseconds)
         {

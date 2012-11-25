@@ -33,8 +33,12 @@
 
         private readonly TimeSpan dailyEndTime;
 
+        private readonly int pollingIntervalInMinutes;
+
+        private DateTime lastTimeWeDidWork = DateTime.MinValue;
+
         public DeploymentDeleteForecastWorker(string id, IDeployment deployment, IOperation operation, Guid subscriptionId, string certificateThumbprint, string serviceName, string deploymentSlot, TimeSpan dailyStartTime, TimeSpan dailyEndTime, int pollingIntervalInMinutes)
-            : base(GetWorkerId(id, serviceName, deploymentSlot), pollingIntervalInMinutes * 60 * 1000)
+            : base(GetWorkerId(id, serviceName, deploymentSlot))
         {
             this.deployment = deployment;
             this.operation = operation;
@@ -44,33 +48,47 @@
             this.deploymentSlot = deploymentSlot;
             this.dailyStartTime = dailyStartTime;
             this.dailyEndTime = dailyEndTime;
+            this.pollingIntervalInMinutes = pollingIntervalInMinutes;
         }
 
         public override void DoWork()
         {
-            string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is doing work.", this.Id);
-            Logger.Debug(doingWorkLogMessage);
-            bool nowIsInTheSchedule = this.DetermineIfNowIsInTheSchedule();
-            if (nowIsInTheSchedule)
+            if (this.lastTimeWeDidWork.AddMinutes(this.pollingIntervalInMinutes) < DateTime.Now)
             {
-                lock (SyncRoot)
+                string doingWorkLogMessage = string.Format(
+                    CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is doing work.", this.Id);
+                Logger.Debug(doingWorkLogMessage);
+                bool nowIsInTheSchedule = this.DetermineIfNowIsInTheSchedule();
+                if (nowIsInTheSchedule)
                 {
-                    string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is checking if deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' exists.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                    Logger.Debug(checkingDeploymentExistsMessage);
-                    bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                    if (deploymentExists)
+                    lock (SyncRoot)
                     {
-                        string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                        Logger.Debug(deleteDeploymentLogMessage);
-                        string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                        this.WaitForResultOfDeleteRequest(deleteRequestId);
-                    }
-                    else
-                    {
-                        string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is not deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was not found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                        Logger.Debug(deleteDeploymentLogMessage);
+                        string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is checking if deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' exists.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                        Logger.Debug(checkingDeploymentExistsMessage);
+                        bool deploymentExists = this.deployment.CheckExists(
+                            this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                        if (deploymentExists)
+                        {
+                            string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Debug(deleteDeploymentLogMessage);
+                            string deleteRequestId = this.deployment.DeleteRequest(
+                                this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                            this.WaitForResultOfDeleteRequest(deleteRequestId);
+                        }
+                        else
+                        {
+                            string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is not deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was not found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Debug(deleteDeploymentLogMessage);
+                        }
                     }
                 }
+
+                this.lastTimeWeDidWork = DateTime.Now;
+            }
+            else
+            {
+                string notDoingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is skipping doing work as we did work within the current polling window.", this.Id);
+                Logger.Debug(notDoingWorkLogMessage);
             }
         }
 
