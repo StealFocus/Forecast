@@ -20,10 +20,10 @@
         /// </summary>
         private bool stop = true;
 
-        protected ForecastWorker(int sleepTimeInMilliseconds)
+        protected ForecastWorker(string id, int sleepTimeInMilliseconds)
         {
+            this.Id = id;
             this.SleepTime = new TimeSpan(0, 0, 0, 0, sleepTimeInMilliseconds);
-            this.Id = Guid.NewGuid();
         }
 
         /// <summary>
@@ -33,7 +33,7 @@
 
         public bool IsStopped { get; private set; }
 
-        protected Guid Id { get; private set; }
+        protected string Id { get; private set; }
 
         /// <summary>
         /// Starts the process.

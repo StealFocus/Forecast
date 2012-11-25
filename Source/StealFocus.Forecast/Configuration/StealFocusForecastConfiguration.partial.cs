@@ -17,6 +17,7 @@
                 foreach (DeploymentSlotConfigurationElement deploymentSlotConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.DeploymentSlots)
                 {
                     DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+                        windowsAzureDeploymentDeleteConfigurationElement.Id,
                         new Deployment(),
                         new Operation(),
                         windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
