@@ -95,11 +95,6 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="DailyStartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyStartTime" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
@@ -115,16 +110,16 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
           </type>
         </attributeProperty>
-        <attributeProperty name="DailyEndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyEndTime" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
-          </type>
-        </attributeProperty>
       </attributeProperties>
       <elementProperties>
         <elementProperty name="DeploymentSlots" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="deploymentSlots" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DeploymentSlotConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="Schedules" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>
@@ -136,6 +131,30 @@
     </configurationElementCollection>
     <configurationElement name="DeploymentSlotConfigurationElement">
       <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="ScheduleConfigurationElementCollection" xmlItemName="schedule" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="ScheduleConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="DailyStartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyStartTime" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="DailyEndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyEndTime" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
+          </type>
+        </attributeProperty>
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />

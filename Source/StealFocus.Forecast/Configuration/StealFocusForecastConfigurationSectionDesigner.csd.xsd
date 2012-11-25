@@ -105,15 +105,15 @@
 					<xs:documentation>The DeploymentSlots.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Schedules.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="serviceName" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The ServiceName.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="dailyStartTime" use="required" type="xs:time">
-			<xs:annotation>
-				<xs:documentation>The DailyStartTime.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="id" use="required" type="xs:string">
@@ -131,11 +131,6 @@
 				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="dailyEndTime" use="required" type="xs:time">
-			<xs:annotation>
-				<xs:documentation>The DailyEndTime.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollectionCT">
 		<xs:sequence>
@@ -149,6 +144,34 @@
 	<xs:complexType name="StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCT">
 		<xs:sequence>
 		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="schedule" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The ScheduleConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.ScheduleConfigurationElementCT">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="dailyStartTime" use="required" type="xs:time">
+			<xs:annotation>
+				<xs:documentation>The DailyStartTime.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="dailyEndTime" use="required" type="xs:time">
+			<xs:annotation>
+				<xs:documentation>The DailyEndTime.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Name.</xs:documentation>

@@ -16,18 +16,21 @@
                 WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = this.WindowsAzureSubscriptions[windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId];
                 foreach (DeploymentSlotConfigurationElement deploymentSlotConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.DeploymentSlots)
                 {
-                    DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                        windowsAzureDeploymentDeleteConfigurationElement.Id,
-                        new Deployment(),
-                        new Operation(),
-                        windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
-                        windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
-                        windowsAzureDeploymentDeleteConfigurationElement.ServiceName,
-                        deploymentSlotConfigurationElement.Name,
-                        windowsAzureDeploymentDeleteConfigurationElement.DailyStartTime,
-                        windowsAzureDeploymentDeleteConfigurationElement.DailyEndTime,
-                        windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes);
-                    list.Add(deploymentDeleteForecastWorker);
+                    foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.Schedules)
+                    {
+                        DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+                            windowsAzureDeploymentDeleteConfigurationElement.Id,
+                            new Deployment(),
+                            new Operation(),
+                            windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
+                            windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
+                            windowsAzureDeploymentDeleteConfigurationElement.ServiceName,
+                            deploymentSlotConfigurationElement.Name,
+                            scheduleConfigurationElement.DailyStartTime,
+                            scheduleConfigurationElement.DailyEndTime,
+                            windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes);
+                        list.Add(deploymentDeleteForecastWorker);
+                    }
                 }
             }
 
