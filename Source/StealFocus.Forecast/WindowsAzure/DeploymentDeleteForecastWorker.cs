@@ -55,8 +55,7 @@
         {
             if (this.lastTimeWeDidWork.AddMinutes(this.pollingIntervalInMinutes) < DateTime.Now)
             {
-                string doingWorkLogMessage = string.Format(
-                    CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is doing work.", this.Id);
+                string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is doing work.", this.Id);
                 Logger.Debug(doingWorkLogMessage);
                 bool nowIsInTheSchedule = this.DetermineIfNowIsInTheSchedule();
                 if (nowIsInTheSchedule)
@@ -65,14 +64,12 @@
                     {
                         string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is checking if deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' exists.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                         Logger.Debug(checkingDeploymentExistsMessage);
-                        bool deploymentExists = this.deployment.CheckExists(
-                            this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                        bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                         if (deploymentExists)
                         {
                             string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "DeploymentDeleteForecastWorker '{0}' is deleting deployment for Subscription ID '{1}', Service Name '{2}' and Deployment Slot '{3}' as it was found to exist.", this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                             Logger.Debug(deleteDeploymentLogMessage);
-                            string deleteRequestId = this.deployment.DeleteRequest(
-                                this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                            string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                             this.WaitForResultOfDeleteRequest(deleteRequestId);
                         }
                         else
