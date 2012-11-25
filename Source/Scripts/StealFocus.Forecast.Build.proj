@@ -285,10 +285,10 @@
       <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
       <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
       <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.exe" />
-      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.config" />
+      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.exe.config" />
       <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.pdb" />
       <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.exe" />
-      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.config" />
+      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.exe.config" />
       <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.pdb" />
     </ItemGroup>
     <MSBuild.ExtensionPack.Compression.Zip
