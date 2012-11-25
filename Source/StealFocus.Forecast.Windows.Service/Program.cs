@@ -10,8 +10,6 @@
 
     internal class Program
     {
-        private const int OneSecondInMilliseconds = 1000;
-
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         internal static void Main(string[] args)
@@ -36,31 +34,8 @@
                         });
                     serviceConfigurator.WhenStopped(host =>
                         {
-                            const string StoppingMessage = "Stopping the workers...";
-                            Console.WriteLine(StoppingMessage);
-                            Logger.Info(StoppingMessage);
-                            host.Stop();
-                            bool keepPolling = true;
-                            while (keepPolling)
-                            {
-                                keepPolling = false;
-                                foreach (ForecastWorker forecastWorker in host.ForecastWorkers)
-                                {
-                                    const string CheckingMessage = "Checking, please wait.";
-                                    Console.WriteLine(CheckingMessage);
-                                    Logger.Info(CheckingMessage);
-                                    if (forecastWorker.IsStopped == false)
-                                    {
-                                        keepPolling = true;
-                                    }
-                                }
-
-                                System.Threading.Thread.Sleep(OneSecondInMilliseconds);
-                            }
-
-                            const string StoppedMessage = "...the workers were stopped.";
-                            Console.WriteLine(StoppedMessage);
-                            Logger.Info(StoppedMessage);
+                            host.Stop(Logger);
+                            host.WaitForWorkersToStop(Logger);
                         });
                 });
                 hostConfigurator.RunAsLocalSystem();
