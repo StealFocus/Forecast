@@ -29,37 +29,24 @@
                     serviceConfigurator.ConstructUsing(name => new Forecast.Host());
                     serviceConfigurator.WhenStarted(host =>
                         {
-                            OutputVersionAndCopyrightMessage();
+                            string title = string.Format(CultureInfo.CurrentCulture, "StealFocus Forecast Windows Service. Version {0}", typeof(Program).Assembly.GetName().Version);
+                            Forecast.Host.OutputVersionAndCopyrightMessage(title);
                             host.Start();
                         });
                     serviceConfigurator.WhenStopped(host =>
                         {
-                            host.Stop(Logger);
-                            host.WaitForWorkersToStop(Logger);
+                            host.Stop();
+                            host.WaitForWorkersToStop();
                         });
                 });
-                hostConfigurator.RunAsLocalSystem();
+                hostConfigurator.RunAsPrompt(); // Prompt for the service credentials when installing the service.
                 hostConfigurator.SetDescription("The StealFocus Forecast Windows Service.");
                 Version version = typeof(Program).Assembly.GetName().Version;
                 string displayName = string.Format(CultureInfo.CurrentCulture, "StealFocus Forecast Windows Service v{0}", version);
                 hostConfigurator.SetDisplayName(displayName);
                 hostConfigurator.SetServiceName(displayName.Replace(' ', '.')); // No spaces allowed in service name
-                hostConfigurator.StartAutomatically();
+                hostConfigurator.StartAutomaticallyDelayed();
             });
-        }
-
-        private static void OutputVersionAndCopyrightMessage()
-        {
-            string line1 = string.Format(CultureInfo.CurrentCulture, "StealFocus Forecast Windows Service. Version {0}", typeof(Program).Assembly.GetName().Version);
-            const string Line2 = "Copyright (c) StealFocus. All rights reserved.";
-            Console.WriteLine();
-            Console.WriteLine(line1);
-            Console.WriteLine(Line2);
-            Console.WriteLine();
-            Logger.Info(string.Empty);
-            Logger.Info(line1);
-            Logger.Info(Line2);
-            Logger.Info(string.Empty);
         }
     }
 }
