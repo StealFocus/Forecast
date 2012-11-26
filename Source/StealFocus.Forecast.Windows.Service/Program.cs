@@ -46,6 +46,13 @@
                 hostConfigurator.SetDisplayName(displayName);
                 hostConfigurator.SetServiceName(displayName.Replace(' ', '.')); // No spaces allowed in service name
                 hostConfigurator.StartAutomaticallyDelayed();
+
+                // Enable automatic service recovery.
+                hostConfigurator.EnableServiceRecovery(src =>
+                {
+                    src.RestartService(10); // Wait 10 minutes before restarting.
+                    src.SetResetPeriod(1); // Set the reset interval to one day.
+                });
             });
         }
     }
