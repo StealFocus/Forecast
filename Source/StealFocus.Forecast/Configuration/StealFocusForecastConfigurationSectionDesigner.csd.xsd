@@ -26,6 +26,11 @@
 					<xs:documentation>The WindowsAzureDeploymentDeletes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="windowsAzureDeploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureDeploymentCreates.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
@@ -70,17 +75,17 @@
 		</xs:sequence>
 		<xs:attribute name="storageAccountName" use="required" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>The storageAccountName.</xs:documentation>
+				<xs:documentation>The StorageAccountName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="containerName" use="required" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>The containerName.</xs:documentation>
+				<xs:documentation>The ContainerName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="blobName" use="required" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>The blobName.</xs:documentation>
+				<xs:documentation>The BlobName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="id" use="required" type="xs:string">
@@ -175,6 +180,79 @@
 		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureDeploymentCreate" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureDeploymentCreateConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Schedules.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="serviceName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The ServiceName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="id" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="subscriptionConfigurationId" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The SubscriptionConfigurationId.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deploymentSlot" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The DeploymentSlot.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="windowsAzurePackageId" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The WindowsAzurePackageId.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deploymentName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The DeploymentName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deploymentLabel" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The DeploymentLabel.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="packageConfigurationFilePath" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The PackageConfigurationFilePath.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="startDeployment" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The StartDeployment.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="treatWarningsAsError" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The TreatWarningsAsError.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

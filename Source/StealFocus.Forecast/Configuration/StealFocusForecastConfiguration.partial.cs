@@ -1,8 +1,10 @@
 ﻿namespace StealFocus.Forecast.Configuration
 {
+    using System;
     using System.Collections;
 
     using StealFocus.AzureExtensions.HostedService;
+    using StealFocus.AzureExtensions.StorageService;
 
     using WindowsAzure;
 
@@ -35,6 +37,40 @@
             }
 
             return (DeploymentDeleteForecastWorker[])list.ToArray(typeof(DeploymentDeleteForecastWorker));
+        }
+
+        internal DeploymentCreateForecastWorker[] GetDeploymentCreateForecastWorkers()
+        {
+            ArrayList list = new ArrayList();
+            foreach (WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreateConfigurationElement in this.WindowsAzureDeploymentCreates)
+            {
+                WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = this.WindowsAzureSubscriptions[windowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationId];
+                WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = this.WindowsAzurePackages[windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId];
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentCreateConfigurationElement.Schedules)
+                {
+                    Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfigurationElement.StorageAccountName, windowsAzurePackageConfigurationElement.ContainerName, windowsAzurePackageConfigurationElement.BlobName);
+                    DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
+                        windowsAzureDeploymentCreateConfigurationElement.Id,
+                        new Deployment(),
+                        new Operation(),
+                        windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
+                        windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
+                        windowsAzureDeploymentCreateConfigurationElement.ServiceName,
+                        windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot,
+                        scheduleConfigurationElement.DailyStartTime,
+                        scheduleConfigurationElement.DailyEndTime,
+                        windowsAzureDeploymentCreateConfigurationElement.DeploymentName,
+                        packageUrl,
+                        windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel,
+                        windowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePath,
+                        windowsAzureDeploymentCreateConfigurationElement.StartDeployment,
+                        windowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsError,
+                        windowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutes);
+                    list.Add(deploymentCreateForecastWorker);
+                }
+            }
+
+            return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
         }
     }
 }

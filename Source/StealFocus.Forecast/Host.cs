@@ -20,6 +20,12 @@
             {
                 this.ForecastWorkers.Add(deploymentDeleteForecastWorker);
             }
+
+            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentCreateForecastWorkers();
+            foreach (DeploymentCreateForecastWorker deploymentCreateForecastWorker in deploymentCreateForecastWorkers)
+            {
+                this.ForecastWorkers.Add(deploymentCreateForecastWorker);
+            }
         }
 
         private List<ForecastWorker> ForecastWorkers { get; set; }

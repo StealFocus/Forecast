@@ -18,5 +18,16 @@
                 Assert.IsNotNull(deploymentDeleteForecastWorker);
             }
         }
+
+        [TestMethod]
+        public void UnitTestGetDeploymentCreateForecastWorkers()
+        {
+            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentCreateForecastWorkers();
+            Assert.AreEqual(1, deploymentCreateForecastWorkers.Length);
+            foreach (DeploymentCreateForecastWorker deploymentCreateForecastWorker in deploymentCreateForecastWorkers)
+            {
+                Assert.IsNotNull(deploymentCreateForecastWorker);
+            }
+        }
     }
 }

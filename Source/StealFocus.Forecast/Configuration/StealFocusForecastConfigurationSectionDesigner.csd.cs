@@ -151,6 +151,32 @@ namespace StealFocus.Forecast.Configuration
             }
         }
         #endregion
+        
+        #region WindowsAzureDeploymentCreates Property
+        /// <summary>
+        /// The XML name of the <see cref="WindowsAzureDeploymentCreates"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureDeploymentCreatesPropertyName = "windowsAzureDeploymentCreates";
+        
+        /// <summary>
+        /// Gets or sets the WindowsAzureDeploymentCreates.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureDeploymentCreates.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection WindowsAzureDeploymentCreates
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace StealFocus.Forecast.Configuration
@@ -614,80 +640,80 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region storageAccountName Property
+        #region StorageAccountName Property
         /// <summary>
-        /// The XML name of the <see cref="storageAccountName"/> property.
+        /// The XML name of the <see cref="StorageAccountName"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string storageAccountNamePropertyName = "storageAccountName";
+        internal const string StorageAccountNamePropertyName = "storageAccountName";
         
         /// <summary>
-        /// Gets or sets the storageAccountName.
+        /// Gets or sets the StorageAccountName.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The storageAccountName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.storageAccountNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string storageAccountName
+        [global::System.ComponentModel.DescriptionAttribute("The StorageAccountName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.StorageAccountNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string StorageAccountName
         {
             get
             {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.storageAccountNamePropertyName]));
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.StorageAccountNamePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.storageAccountNamePropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.StorageAccountNamePropertyName] = value;
             }
         }
         #endregion
         
-        #region containerName Property
+        #region ContainerName Property
         /// <summary>
-        /// The XML name of the <see cref="containerName"/> property.
+        /// The XML name of the <see cref="ContainerName"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string containerNamePropertyName = "containerName";
+        internal const string ContainerNamePropertyName = "containerName";
         
         /// <summary>
-        /// Gets or sets the containerName.
+        /// Gets or sets the ContainerName.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The containerName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.containerNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string containerName
+        [global::System.ComponentModel.DescriptionAttribute("The ContainerName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.ContainerNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string ContainerName
         {
             get
             {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.containerNamePropertyName]));
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.ContainerNamePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.containerNamePropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.ContainerNamePropertyName] = value;
             }
         }
         #endregion
         
-        #region blobName Property
+        #region BlobName Property
         /// <summary>
-        /// The XML name of the <see cref="blobName"/> property.
+        /// The XML name of the <see cref="BlobName"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string blobNamePropertyName = "blobName";
+        internal const string BlobNamePropertyName = "blobName";
         
         /// <summary>
-        /// Gets or sets the blobName.
+        /// Gets or sets the BlobName.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The blobName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.blobNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string blobName
+        [global::System.ComponentModel.DescriptionAttribute("The BlobName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.BlobNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string BlobName
         {
             get
             {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.blobNamePropertyName]));
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.BlobNamePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.blobNamePropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement.BlobNamePropertyName] = value;
             }
         }
         #endregion
@@ -1550,6 +1576,510 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.NamePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of WindowsAzureDeploymentCreateConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection.WindowsAzureDeploymentCreateConfigurationElementPropertyName)]
+    public partial class WindowsAzureDeploymentCreateConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureDeploymentCreateConfigurationElementPropertyName = "windowsAzureDeploymentCreate";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection.WindowsAzureDeploymentCreateConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection.WindowsAzureDeploymentCreateConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(element)).Id;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement this[object id]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(id)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureDeploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreate)
+        {
+            base.BaseAdd(windowsAzureDeploymentCreate);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureDeploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreate)
+        {
+            base.BaseRemove(this.GetElementKey(windowsAzureDeploymentCreate));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement GetItemByKey(string id)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(((object)(id)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureDeploymentCreateConfigurationElement Configuration Element.
+    /// </summary>
+    public partial class WindowsAzureDeploymentCreateConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region ServiceName Property
+        /// <summary>
+        /// The XML name of the <see cref="ServiceName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ServiceNamePropertyName = "serviceName";
+        
+        /// <summary>
+        /// Gets or sets the ServiceName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ServiceName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string ServiceName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Id Property
+        /// <summary>
+        /// The XML name of the <see cref="Id"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IdPropertyName = "id";
+        
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Id.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Id
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region SubscriptionConfigurationId Property
+        /// <summary>
+        /// The XML name of the <see cref="SubscriptionConfigurationId"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SubscriptionConfigurationIdPropertyName = "subscriptionConfigurationId";
+        
+        /// <summary>
+        /// Gets or sets the SubscriptionConfigurationId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The SubscriptionConfigurationId.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationIdPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string SubscriptionConfigurationId
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationIdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationIdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region PollingIntervalInMinutes Property
+        /// <summary>
+        /// The XML name of the <see cref="PollingIntervalInMinutes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PollingIntervalInMinutesPropertyName = "pollingIntervalInMinutes";
+        
+        /// <summary>
+        /// Gets or sets the PollingIntervalInMinutes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The PollingIntervalInMinutes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int PollingIntervalInMinutes
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentSlot Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentSlot"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentSlotPropertyName = "deploymentSlot";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentSlot.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentSlot.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentSlotPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string DeploymentSlot
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentSlotPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentSlotPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region WindowsAzurePackageId Property
+        /// <summary>
+        /// The XML name of the <see cref="WindowsAzurePackageId"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzurePackageIdPropertyName = "windowsAzurePackageId";
+        
+        /// <summary>
+        /// Gets or sets the WindowsAzurePackageId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzurePackageId.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageIdPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string WindowsAzurePackageId
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageIdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageIdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentName Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentNamePropertyName = "deploymentName";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string DeploymentName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentLabel Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentLabel"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentLabelPropertyName = "deploymentLabel";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentLabel.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentLabel.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentLabelPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string DeploymentLabel
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentLabelPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.DeploymentLabelPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region PackageConfigurationFilePath Property
+        /// <summary>
+        /// The XML name of the <see cref="PackageConfigurationFilePath"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PackageConfigurationFilePathPropertyName = "packageConfigurationFilePath";
+        
+        /// <summary>
+        /// Gets or sets the PackageConfigurationFilePath.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The PackageConfigurationFilePath.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePathPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string PackageConfigurationFilePath
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePathPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePathPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region StartDeployment Property
+        /// <summary>
+        /// The XML name of the <see cref="StartDeployment"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StartDeploymentPropertyName = "startDeployment";
+        
+        /// <summary>
+        /// Gets or sets the StartDeployment.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StartDeployment.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.StartDeploymentPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool StartDeployment
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.StartDeploymentPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.StartDeploymentPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region TreatWarningsAsError Property
+        /// <summary>
+        /// The XML name of the <see cref="TreatWarningsAsError"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string TreatWarningsAsErrorPropertyName = "treatWarningsAsError";
+        
+        /// <summary>
+        /// Gets or sets the TreatWarningsAsError.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The TreatWarningsAsError.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsErrorPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool TreatWarningsAsError
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsErrorPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsErrorPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Schedules Property
+        /// <summary>
+        /// The XML name of the <see cref="Schedules"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SchedulesPropertyName = "schedules";
+        
+        /// <summary>
+        /// Gets or sets the Schedules.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Schedules.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SchedulesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection Schedules
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SchedulesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.SchedulesPropertyName] = value;
             }
         }
         #endregion
