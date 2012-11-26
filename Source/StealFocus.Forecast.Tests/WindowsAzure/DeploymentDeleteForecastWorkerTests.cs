@@ -64,11 +64,9 @@
                 mockOperation, 
                 subscriptionId, 
                 CertificateThumbprint, 
-                ServiceName, 
-                DeploymentSlot, 
-                dailyStartTime,
-                dailyEndTime,
-                new[] { DateTime.Now.DayOfWeek }, 
+                ServiceName,
+                DeploymentSlot,
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             deploymentDeleteForecastWorker.DoWork();
 
@@ -110,9 +108,7 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
-                dailyStartTime,
-                dailyEndTime,
-                new[] { DateTime.Now.DayOfWeek }, 
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             deploymentDeleteForecastWorker.DoWork();
 
@@ -150,9 +146,7 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
-                dailyStartTime,
-                dailyEndTime,
-                new[] { DateTime.Now.DayOfWeek }, 
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             deploymentDeleteForecastWorker.DoWork();
 
@@ -198,9 +192,7 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
-                dailyStartTime,
-                dailyEndTime,
-                new[] { notToday },
+                new[] { new ScheduleDay { DayOfWeek = notToday, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             deploymentDeleteForecastWorker.DoWork();
 

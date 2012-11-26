@@ -150,16 +150,6 @@
     </configurationElementCollection>
     <configurationElement name="ScheduleConfigurationElement">
       <attributeProperties>
-        <attributeProperty name="DailyStartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyStartTime" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
-          </type>
-        </attributeProperty>
-        <attributeProperty name="DailyEndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="dailyEndTime" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
@@ -255,6 +245,16 @@
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="StartTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="startTime" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="EndTime" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="endTime" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/TimeSpan" />
           </type>
         </attributeProperty>
       </attributeProperties>

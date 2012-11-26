@@ -21,7 +21,7 @@
                 {
                     foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.Schedules)
                     {
-                        DayOfWeek[] daysOfWeek = GetDaysOfWeekFromScheduleConfigurationElement(scheduleConfigurationElement);
+                        ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfigurationElement(scheduleConfigurationElement);
                         DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                             windowsAzureDeploymentDeleteConfigurationElement.Id,
                             new Deployment(),
@@ -30,9 +30,7 @@
                             windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
                             windowsAzureDeploymentDeleteConfigurationElement.ServiceName,
                             deploymentSlotConfigurationElement.Name,
-                            scheduleConfigurationElement.DailyStartTime,
-                            scheduleConfigurationElement.DailyEndTime,
-                            daysOfWeek,
+                            scheduleDays,
                             windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes);
                         list.Add(deploymentDeleteForecastWorker);
                     }
@@ -51,7 +49,7 @@
                 WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = this.WindowsAzurePackages[windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId];
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentCreateConfigurationElement.Schedules)
                 {
-                    DayOfWeek[] daysOfWeek = GetDaysOfWeekFromScheduleConfigurationElement(scheduleConfigurationElement);
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfigurationElement(scheduleConfigurationElement);
                     Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfigurationElement.StorageAccountName, windowsAzurePackageConfigurationElement.ContainerName, windowsAzurePackageConfigurationElement.BlobName);
                     DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                         windowsAzureDeploymentCreateConfigurationElement.Id,
@@ -61,9 +59,7 @@
                         windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
                         windowsAzureDeploymentCreateConfigurationElement.ServiceName,
                         windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot,
-                        scheduleConfigurationElement.DailyStartTime,
-                        scheduleConfigurationElement.DailyEndTime,
-                        daysOfWeek,
+                        scheduleDays,
                         windowsAzureDeploymentCreateConfigurationElement.DeploymentName,
                         packageUrl,
                         windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel,
@@ -78,9 +74,9 @@
             return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
         }
 
-        private static DayOfWeek[] GetDaysOfWeekFromScheduleConfigurationElement(ScheduleConfigurationElement scheduleConfigurationElement)
+        private static ScheduleDay[] GetScheduleDaysFromScheduleConfigurationElement(ScheduleConfigurationElement scheduleConfigurationElement)
         {
-            DayOfWeek[] daysOfWeek = new DayOfWeek[scheduleConfigurationElement.Days.Count];
+            ScheduleDay[] scheduleDays = new ScheduleDay[scheduleConfigurationElement.Days.Count];
             for (int i = 0; i < scheduleConfigurationElement.Days.Count; i++)
             {
                 DayOfWeek dayOfWeek;
@@ -91,10 +87,15 @@
                     throw new ForecastException(exceptionMessage);
                 }
 
-                daysOfWeek[i] = dayOfWeek;
+                scheduleDays[i] = new ScheduleDay
+                    {
+                        DayOfWeek = dayOfWeek,
+                        EndTime = scheduleConfigurationElement.Days[i].EndTime,
+                        StartTime = scheduleConfigurationElement.Days[i].StartTime
+                    };
             }
 
-            return daysOfWeek;
+            return scheduleDays;
         }
     }
 }

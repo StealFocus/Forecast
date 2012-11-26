@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Forecast
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Reflection;
     using System.Threading;
@@ -112,42 +113,26 @@
             }
         }
 
-        protected static bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, string id, TimeSpan dailyStartTime, TimeSpan dailyEndTime, DayOfWeek[] daysOfWeek)
+        protected static bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, string id, IEnumerable<ScheduleDay> scheduleDays)
         {
             DateTime now = DateTime.Now;
-            if (!IsTodayInTheScheduledDays(now, daysOfWeek))
+            foreach (ScheduleDay scheduleDay in scheduleDays)
             {
-                string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that today ('{2}') does not fall into the scheduled days.", workerTypeName, id, now);
-                logger.Debug(deleteDeploymentLogMessage);
-                return false;
-            }
-
-            DateTime startTimeOfScheduleToday = DateTime.Today.Add(dailyStartTime);
-            DateTime endTimeOfScheduleToday = DateTime.Today.Add(dailyEndTime);
-            if (startTimeOfScheduleToday < now && now < endTimeOfScheduleToday)
-            {
-                string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') falls into the schedule with start time of '{3}' and end time of '{4}'.", workerTypeName, id, now, dailyStartTime, dailyEndTime);
-                logger.Debug(deleteDeploymentLogMessage);
-                return true;
-            }
-            else
-            {
-                string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') does not fall into the schedule with start time of '{3}' and end time of '{4}'.", workerTypeName, id, now, dailyStartTime, dailyEndTime);
-                logger.Debug(deleteDeploymentLogMessage);
-                return false;
-            }
-        }
-
-        private static bool IsTodayInTheScheduledDays(DateTime now, DayOfWeek[] daysOfWeek)
-        {
-            foreach (DayOfWeek dayOfWeek in daysOfWeek)
-            {
-                if (dayOfWeek == now.DayOfWeek)
+                if (scheduleDay.DayOfWeek == now.DayOfWeek)
                 {
-                    return true;
+                    DateTime startTimeOfScheduleToday = DateTime.Today.Add(scheduleDay.StartTime);
+                    DateTime endTimeOfScheduleToday = DateTime.Today.Add(scheduleDay.EndTime);
+                    if (startTimeOfScheduleToday < now && now < endTimeOfScheduleToday)
+                    {
+                        string logNowInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') falls into the schedule of '{3}' with start time of '{4}' and end time of '{5}'.", workerTypeName, id, now, scheduleDay.DayOfWeek, scheduleDay.StartTime, scheduleDay.EndTime);
+                        logger.Debug(logNowInScheduleMessage);
+                        return true;
+                    }
                 }
             }
 
+            string logNowNotInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') does not fall into any of the schedules.", workerTypeName, id, now);
+            logger.Debug(logNowNotInScheduleMessage);
             return false;
         }
 

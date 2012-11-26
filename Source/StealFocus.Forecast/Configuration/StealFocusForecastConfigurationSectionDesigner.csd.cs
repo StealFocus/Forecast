@@ -1502,58 +1502,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region DailyStartTime Property
-        /// <summary>
-        /// The XML name of the <see cref="DailyStartTime"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string DailyStartTimePropertyName = "dailyStartTime";
-        
-        /// <summary>
-        /// Gets or sets the DailyStartTime.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The DailyStartTime.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyStartTimePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public global::System.TimeSpan DailyStartTime
-        {
-            get
-            {
-                return ((global::System.TimeSpan)(base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyStartTimePropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyStartTimePropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region DailyEndTime Property
-        /// <summary>
-        /// The XML name of the <see cref="DailyEndTime"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string DailyEndTimePropertyName = "dailyEndTime";
-        
-        /// <summary>
-        /// Gets or sets the DailyEndTime.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The DailyEndTime.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyEndTimePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public global::System.TimeSpan DailyEndTime
-        {
-            get
-            {
-                return ((global::System.TimeSpan)(base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyEndTimePropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DailyEndTimePropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region Name Property
         /// <summary>
         /// The XML name of the <see cref="Name"/> property.
@@ -2324,6 +2272,58 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.NamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region StartTime Property
+        /// <summary>
+        /// The XML name of the <see cref="StartTime"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StartTimePropertyName = "startTime";
+        
+        /// <summary>
+        /// Gets or sets the StartTime.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StartTime.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.DayConfigurationElement.StartTimePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::System.TimeSpan StartTime
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.StartTimePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.StartTimePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region EndTime Property
+        /// <summary>
+        /// The XML name of the <see cref="EndTime"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string EndTimePropertyName = "endTime";
+        
+        /// <summary>
+        /// Gets or sets the EndTime.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The EndTime.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.DayConfigurationElement.EndTimePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::System.TimeSpan EndTime
+        {
+            get
+            {
+                return ((global::System.TimeSpan)(base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.EndTimePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.EndTimePropertyName] = value;
             }
         }
         #endregion

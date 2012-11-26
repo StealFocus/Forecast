@@ -172,16 +172,6 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="dailyStartTime" use="required" type="xs:time">
-			<xs:annotation>
-				<xs:documentation>The DailyStartTime.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="dailyEndTime" use="required" type="xs:time">
-			<xs:annotation>
-				<xs:documentation>The DailyEndTime.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Name.</xs:documentation>
@@ -276,6 +266,16 @@
 		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="startTime" use="required" type="xs:time">
+			<xs:annotation>
+				<xs:documentation>The StartTime.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="endTime" use="required" type="xs:time">
+			<xs:annotation>
+				<xs:documentation>The EndTime.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
