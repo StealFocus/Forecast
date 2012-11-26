@@ -30,6 +30,8 @@
 
         private readonly TimeSpan dailyEndTime;
 
+        private readonly DayOfWeek[] daysOfWeek;
+
         private readonly int pollingIntervalInMinutes;
 
         private DateTime lastTimeWeDidWork = DateTime.MinValue;
@@ -42,8 +44,9 @@
             string certificateThumbprint, 
             string serviceName, 
             string deploymentSlot, 
-            TimeSpan dailyStartTime, 
-            TimeSpan dailyEndTime, 
+            TimeSpan dailyStartTime,
+            TimeSpan dailyEndTime,
+            DayOfWeek[] daysOfWeek,
             int pollingIntervalInMinutes)
             : base(GetWorkerId(id, serviceName, deploymentSlot))
         {
@@ -55,6 +58,7 @@
             this.deploymentSlot = deploymentSlot;
             this.dailyStartTime = dailyStartTime;
             this.dailyEndTime = dailyEndTime;
+            this.daysOfWeek = daysOfWeek;
             this.pollingIntervalInMinutes = pollingIntervalInMinutes;
         }
 
@@ -64,7 +68,7 @@
             {
                 string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is doing work.", this.GetType().Name, this.Id);
                 Logger.Debug(doingWorkLogMessage);
-                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.Id, this.dailyStartTime, this.dailyEndTime);
+                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.Id, this.dailyStartTime, this.dailyEndTime, this.daysOfWeek);
                 if (nowIsInTheSchedule)
                 {
                     lock (SyncRoot)

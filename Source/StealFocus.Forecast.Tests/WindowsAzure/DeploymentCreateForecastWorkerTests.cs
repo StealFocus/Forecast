@@ -16,7 +16,7 @@
         private readonly TimeSpan oneHour = new TimeSpan(1, 0, 0);
 
         [TestMethod]
-        public void UnitTestDoWork_With_Now_In_The_Schedule_And_Deployment_Exists()
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists()
         {
             MockRepository mockRepository = new MockRepository();
             Guid subscriptionId = Guid.NewGuid();
@@ -74,6 +74,7 @@
                 DeploymentSlot, 
                 dailyStartTime, 
                 dailyEndTime,
+                new[] { DateTime.Now.DayOfWeek }, 
                 DeploymentName,
                 packageUrl,
                 Label,
@@ -88,7 +89,7 @@
         }
 
         [TestMethod]
-        public void UnitTestDoWork_With_Now_In_The_Schedule_And_Deployment_Does_Not_Exist()
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Does_Not_Exist()
         {
             MockRepository mockRepository = new MockRepository();
             Guid subscriptionId = Guid.NewGuid();
@@ -129,6 +130,7 @@
                 DeploymentSlot,
                 dailyStartTime,
                 dailyEndTime,
+                new[] { DateTime.Now.DayOfWeek }, 
                 DeploymentName,
                 packageUrl,
                 Label,
@@ -143,7 +145,7 @@
         }
 
         [TestMethod]
-        public void UnitTestDoWork_With_Now_Not_In_The_Schedule()
+        public void UnitTestDoWork_With_Now_Not_In_The_Scheduled_Time()
         {
             MockRepository mockRepository = new MockRepository();
             Guid subscriptionId = Guid.NewGuid();
@@ -180,6 +182,67 @@
                 DeploymentSlot,
                 dailyStartTime,
                 dailyEndTime,
+                new[] { DateTime.Now.DayOfWeek }, 
+                DeploymentName,
+                packageUrl,
+                Label,
+                ConfigurationFilePath,
+                StartDeployment,
+                TreatWarningsAsError,
+                PollingIntervalInMinutes);
+            deploymentCreateForecastWorker.DoWork();
+
+            // Assert
+            mockRepository.VerifyAll();
+        }
+
+        [TestMethod]
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_But_Not_On_A_Scheduled_Day()
+        {
+            MockRepository mockRepository = new MockRepository();
+            Guid subscriptionId = Guid.NewGuid();
+            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
+            const string ServiceName = "serviceName";
+            const string DeploymentSlot = "Production";
+            const string DeploymentName = "deploymentName";
+            Uri packageUrl = new Uri("http://my.url");
+            const string Label = "deploymentLabel";
+            const string ConfigurationFilePath = @"C:\PathTo\MyPackageConfiguration.cscfg";
+            const bool StartDeployment = true;
+            const bool TreatWarningsAsError = true;
+
+            // Set start time to 1 hour before now.
+            TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
+
+            // Set end time to 1 hour after now.
+            TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
+
+            // Get a day that is not today.
+            DayOfWeek notToday = DayOfWeek.Sunday;
+            if (DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+            {
+                notToday = DayOfWeek.Monday;
+            }
+
+            const int PollingIntervalInMinutes = 60;
+
+            // Arrange
+            IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
+            IOperation mockOperation = mockRepository.StrictMock<IOperation>();
+
+            // Act
+            mockRepository.ReplayAll();
+            DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
+                "myId",
+                mockDeployment,
+                mockOperation,
+                subscriptionId,
+                CertificateThumbprint,
+                ServiceName,
+                DeploymentSlot,
+                dailyStartTime,
+                dailyEndTime,
+                new[] { notToday },
                 DeploymentName,
                 packageUrl,
                 Label,

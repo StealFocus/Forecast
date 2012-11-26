@@ -112,26 +112,43 @@
             }
         }
 
-        protected static bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, string id, TimeSpan dailyStartTime, TimeSpan dailyEndTime)
+        protected static bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, string id, TimeSpan dailyStartTime, TimeSpan dailyEndTime, DayOfWeek[] daysOfWeek)
         {
+            DateTime now = DateTime.Now;
+            if (!IsTodayInTheScheduledDays(now, daysOfWeek))
+            {
+                string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that today ('{2}') does not fall into the scheduled days.", workerTypeName, id, now);
+                logger.Debug(deleteDeploymentLogMessage);
+                return false;
+            }
+
             DateTime startTimeOfScheduleToday = DateTime.Today.Add(dailyStartTime);
             DateTime endTimeOfScheduleToday = DateTime.Today.Add(dailyEndTime);
-            DateTime now = DateTime.Now;
-            bool result;
             if (startTimeOfScheduleToday < now && now < endTimeOfScheduleToday)
             {
                 string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') falls into the schedule with start time of '{3}' and end time of '{4}'.", workerTypeName, id, now, dailyStartTime, dailyEndTime);
                 logger.Debug(deleteDeploymentLogMessage);
-                result = true;
+                return true;
             }
             else
             {
                 string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') does not fall into the schedule with start time of '{3}' and end time of '{4}'.", workerTypeName, id, now, dailyStartTime, dailyEndTime);
                 logger.Debug(deleteDeploymentLogMessage);
-                result = false;
+                return false;
+            }
+        }
+
+        private static bool IsTodayInTheScheduledDays(DateTime now, DayOfWeek[] daysOfWeek)
+        {
+            foreach (DayOfWeek dayOfWeek in daysOfWeek)
+            {
+                if (dayOfWeek == now.DayOfWeek)
+                {
+                    return true;
+                }
             }
 
-            return result;
+            return false;
         }
 
         /// <summary>

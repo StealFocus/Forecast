@@ -30,6 +30,8 @@
 
         private readonly TimeSpan dailyEndTime;
 
+        private readonly DayOfWeek[] daysOfWeek;
+
         private readonly string deploymentName;
 
         private readonly Uri packageUrl;
@@ -56,6 +58,7 @@
             string deploymentSlot,
             TimeSpan dailyStartTime,
             TimeSpan dailyEndTime,
+            DayOfWeek[] daysOfWeek,
             string deploymentName,
             Uri packageUrl,
             string label,
@@ -73,6 +76,7 @@
             this.deploymentSlot = deploymentSlot;
             this.dailyStartTime = dailyStartTime;
             this.dailyEndTime = dailyEndTime;
+            this.daysOfWeek = daysOfWeek;
             this.deploymentName = deploymentName;
             this.packageUrl = packageUrl;
             this.label = label;
@@ -88,7 +92,7 @@
             {
                 string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is doing work.", this.GetType().Name, this.Id);
                 Logger.Debug(doingWorkLogMessage);
-                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.Id, this.dailyStartTime, this.dailyEndTime);
+                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.Id, this.dailyStartTime, this.dailyEndTime, this.daysOfWeek);
                 if (nowIsInTheSchedule)
                 {
                     lock (SyncRoot)

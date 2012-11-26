@@ -166,6 +166,13 @@
           </type>
         </attributeProperty>
       </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Days" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="days" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
     </configurationElement>
     <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" xmlItemName="windowsAzureDeploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
@@ -237,6 +244,20 @@
           </type>
         </elementProperty>
       </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="DayConfigurationElementCollection" xmlItemName="day" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="DayConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>
