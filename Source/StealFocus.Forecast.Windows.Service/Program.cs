@@ -41,10 +41,15 @@
                 {
                     if (!usernameArgumentFound)
                     {
-                        Logger.Warn("Without supplying the username and password arguments, this service will install as 'Local System'.");
+                        Logger.Warn("Without supplying the username ('-username:???') and password ('-password:???')");
+                        Logger.Warn("arguments, this service will install as 'Local System'.");
+                        Logger.Warn(string.Empty);
                     }
 
-                    Logger.Warn("The account under which this service will run must have certificates matching the thumbprints of those in the configuration.");
+                    Logger.Warn("The account under which this service will run must have certificates, matching");
+                    Logger.Warn("the thumbprints of those in the configuration, available in the 'Personal'");
+                    Logger.Warn("certificate store (run 'certmgr.msc' for certificate admin features).");
+                    Logger.Warn(string.Empty);
                 }
             }
         }
