@@ -279,6 +279,7 @@
 
   <Target Name="CreateApplicationSpecificZips">
     <ItemGroup>
+      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.dll" />
       <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
       <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
       <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.dll" />
