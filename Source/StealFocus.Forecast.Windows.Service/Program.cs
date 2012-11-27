@@ -17,9 +17,8 @@
             if (args != null && args.Length > 1)
             {
                 const string WarningMessage = "Additional arguments will be ignored.";
-                Logger.Info(WarningMessage);
-                Console.WriteLine(WarningMessage);
-                Console.WriteLine();
+                Logger.Warn(WarningMessage);
+                Logger.Warn(string.Empty);
             }
 
             HostFactory.Run(hostConfigurator =>

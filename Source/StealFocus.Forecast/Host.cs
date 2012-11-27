@@ -37,10 +37,6 @@
         {
             string line1 = title;
             const string Line2 = "Copyright (c) StealFocus. All rights reserved.";
-            Console.WriteLine();
-            Console.WriteLine(line1);
-            Console.WriteLine(Line2);
-            Console.WriteLine();
             Logger.Info(string.Empty);
             Logger.Info(line1);
             Logger.Info(Line2);
@@ -58,7 +54,6 @@
         public void Stop()
         {
             const string StoppingMessage = "Stopping the workers...";
-            Console.WriteLine(StoppingMessage);
             Logger.Info(StoppingMessage);
             foreach (ForecastWorker forecastWorker in this.ForecastWorkers)
             {
@@ -72,7 +67,6 @@
             while (keepPolling)
             {
                 const string CheckingMessage = "Checking, please wait.";
-                Console.WriteLine(CheckingMessage);
                 Logger.Info(CheckingMessage);
                 keepPolling = false;
                 foreach (ForecastWorker forecastWorker in this.ForecastWorkers)
@@ -87,7 +81,6 @@
             }
 
             const string StoppedMessage = "...the workers were stopped.";
-            Console.WriteLine(StoppedMessage);
             Logger.Info(StoppedMessage);
         }
     }

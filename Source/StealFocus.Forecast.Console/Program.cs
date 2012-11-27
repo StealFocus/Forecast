@@ -17,8 +17,7 @@
             {
                 const string WarningMessage = "The supplied arguments will be ignored.";
                 Logger.Info(WarningMessage);
-                System.Console.WriteLine(WarningMessage);
-                System.Console.WriteLine();
+                Logger.Info(string.Empty);
             }
 
             Host host = new Host();
