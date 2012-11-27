@@ -12,8 +12,15 @@
   </typeDefinitions>
   <configurationElements>
     <configurationSection name="StealFocusForecastConfiguration" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="stealFocusForecastConfiguration">
+      <attributeProperties>
+        <attributeProperty name="CustomConfigurationSourceType" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="customConfigurationSourceType" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
       <elementProperties>
-        <elementProperty name="WindowsAzureSubscriptions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
+        <elementProperty name="WindowsAzureSubscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>

@@ -11,7 +11,7 @@
 	<xs:element name="stealFocusForecastConfiguration" type="tns:StealFocus.Forecast.Configuration.StealFocusForecastConfigurationCT" />
 	<xs:complexType name="StealFocus.Forecast.Configuration.StealFocusForecastConfigurationCT">
 		<xs:sequence>
-			<xs:element minOccurs="1" name="windowsAzureSubscriptions" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
+			<xs:element minOccurs="0" name="windowsAzureSubscriptions" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureSubscriptions.</xs:documentation>
 				</xs:annotation>
@@ -32,6 +32,11 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
+		<xs:attribute name="customConfigurationSourceType" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The CustomConfigurationSourceType.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
 		<xs:sequence>

@@ -18,13 +18,13 @@
         public Host()
         {
             this.ForecastWorkers = new List<ForecastWorker>();
-            DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentDeleteForecastWorkers();
+            DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.GetDeploymentDeleteForecastWorkers();
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {
                 this.ForecastWorkers.Add(deploymentDeleteForecastWorker);
             }
 
-            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentCreateForecastWorkers();
+            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.GetDeploymentCreateForecastWorkers();
             foreach (DeploymentCreateForecastWorker deploymentCreateForecastWorker in deploymentCreateForecastWorkers)
             {
                 this.ForecastWorkers.Add(deploymentCreateForecastWorker);

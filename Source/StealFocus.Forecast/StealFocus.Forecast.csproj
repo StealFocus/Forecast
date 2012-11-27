@@ -58,12 +58,21 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigSectionConfigurationSource.cs" />
+    <Compile Include="Configuration\DayConfiguration.cs" />
+    <Compile Include="Configuration\DayConfigurationElement.partial.cs" />
+    <Compile Include="Configuration\IConfigurationSource.cs" />
+    <Compile Include="Configuration\ScheduleConfiguration.cs" />
     <Compile Include="Configuration\StealFocusForecastConfiguration.partial.cs" />
     <Compile Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzureDeploymentCreateConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzureDeploymentDeleteConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzurePackageConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzureSubscriptionConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfigurationElement.partial.cs" />
     <Compile Include="ForecastException.cs" />
     <Compile Include="ForecastWorker.cs" />

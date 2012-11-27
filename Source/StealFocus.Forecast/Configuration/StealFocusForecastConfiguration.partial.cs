@@ -11,27 +11,29 @@
 
     public partial class StealFocusForecastConfiguration
     {
-        internal DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
+        internal static DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
         {
+            IConfigurationSource configurationSource = GetConfigurationSource();
             ArrayList list = new ArrayList();
-            foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in this.WindowsAzureDeploymentDeletes)
+            foreach (WindowsAzureDeploymentDeleteConfiguration windowsAzureDeploymentDeleteConfiguration in configurationSource.GetWindowsAzureDeploymentDeleteConfigurations())
             {
-                WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = this.WindowsAzureSubscriptions[windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId];
-                foreach (DeploymentSlotConfigurationElement deploymentSlotConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.DeploymentSlots)
+                WindowsAzureSubscriptionConfiguration windowsAzureSubscriptionConfiguration = 
+                    configurationSource.GetWindowsAzureSubscriptionConfiguration(windowsAzureDeploymentDeleteConfiguration.SubscriptionConfigurationId);
+                foreach (string deploymentSlot in windowsAzureDeploymentDeleteConfiguration.DeploymentSlots)
                 {
-                    foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.Schedules)
+                    foreach (ScheduleConfiguration scheduleConfiguration in windowsAzureDeploymentDeleteConfiguration.Schedules)
                     {
-                        ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfigurationElement(scheduleConfigurationElement);
+                        ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
                         DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                            windowsAzureDeploymentDeleteConfigurationElement.Id,
+                            windowsAzureDeploymentDeleteConfiguration.Id,
                             new Deployment(),
                             new Operation(),
-                            windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
-                            windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
-                            windowsAzureDeploymentDeleteConfigurationElement.ServiceName,
-                            deploymentSlotConfigurationElement.Name,
+                            windowsAzureSubscriptionConfiguration.SubscriptionId,
+                            windowsAzureSubscriptionConfiguration.CertificateThumbprint,
+                            windowsAzureDeploymentDeleteConfiguration.ServiceName,
+                            deploymentSlot,
                             scheduleDays,
-                            windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes);
+                            windowsAzureDeploymentDeleteConfiguration.PollingIntervalInMinutes);
                         list.Add(deploymentDeleteForecastWorker);
                     }
                 }
@@ -40,33 +42,34 @@
             return (DeploymentDeleteForecastWorker[])list.ToArray(typeof(DeploymentDeleteForecastWorker));
         }
 
-        internal DeploymentCreateForecastWorker[] GetDeploymentCreateForecastWorkers()
+        internal static DeploymentCreateForecastWorker[] GetDeploymentCreateForecastWorkers()
         {
+            IConfigurationSource configurationSource = GetConfigurationSource();
             ArrayList list = new ArrayList();
-            foreach (WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreateConfigurationElement in this.WindowsAzureDeploymentCreates)
+            foreach (WindowsAzureDeploymentCreateConfiguration windowsAzureDeploymentCreateConfiguration in configurationSource.GetWindowsAzureDeploymentCreateConfigurations())
             {
-                WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = this.WindowsAzureSubscriptions[windowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationId];
-                WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = this.WindowsAzurePackages[windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId];
-                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentCreateConfigurationElement.Schedules)
+                WindowsAzureSubscriptionConfiguration windowsAzureSubscriptionConfiguration = configurationSource.GetWindowsAzureSubscriptionConfiguration(windowsAzureDeploymentCreateConfiguration.SubscriptionConfigurationId);
+                WindowsAzurePackageConfiguration windowsAzurePackageConfiguration = configurationSource.GetWindowsAzurePackageConfiguration(windowsAzureDeploymentCreateConfiguration.WindowsAzurePackageId);
+                foreach (ScheduleConfiguration scheduleConfiguration in windowsAzureDeploymentCreateConfiguration.Schedules)
                 {
-                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfigurationElement(scheduleConfigurationElement);
-                    Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfigurationElement.StorageAccountName, windowsAzurePackageConfigurationElement.ContainerName, windowsAzurePackageConfigurationElement.BlobName);
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
+                    Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfiguration.StorageAccountName, windowsAzurePackageConfiguration.ContainerName, windowsAzurePackageConfiguration.BlobName);
                     DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                        windowsAzureDeploymentCreateConfigurationElement.Id,
+                        windowsAzureDeploymentCreateConfiguration.Id,
                         new Deployment(),
                         new Operation(),
-                        windowsAzureSubscriptionConfigurationElement.GetWindowsAzureSubscriptionId(),
-                        windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
-                        windowsAzureDeploymentCreateConfigurationElement.ServiceName,
-                        windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot,
+                        windowsAzureSubscriptionConfiguration.SubscriptionId,
+                        windowsAzureSubscriptionConfiguration.CertificateThumbprint,
+                        windowsAzureDeploymentCreateConfiguration.ServiceName,
+                        windowsAzureDeploymentCreateConfiguration.DeploymentSlot,
                         scheduleDays,
-                        windowsAzureDeploymentCreateConfigurationElement.DeploymentName,
+                        windowsAzureDeploymentCreateConfiguration.DeploymentName,
                         packageUrl,
-                        windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel,
-                        windowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePath,
-                        windowsAzureDeploymentCreateConfigurationElement.StartDeployment,
-                        windowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsError,
-                        windowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutes);
+                        windowsAzureDeploymentCreateConfiguration.DeploymentLabel,
+                        windowsAzureDeploymentCreateConfiguration.PackageConfigurationFilePath,
+                        windowsAzureDeploymentCreateConfiguration.StartDeployment,
+                        windowsAzureDeploymentCreateConfiguration.TreatWarningsAsError,
+                        windowsAzureDeploymentCreateConfiguration.PollingIntervalInMinutes);
                     list.Add(deploymentCreateForecastWorker);
                 }
             }
@@ -74,28 +77,47 @@
             return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
         }
 
-        private static ScheduleDay[] GetScheduleDaysFromScheduleConfigurationElement(ScheduleConfigurationElement scheduleConfigurationElement)
+        private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleConfiguration scheduleConfiguration)
         {
-            ScheduleDay[] scheduleDays = new ScheduleDay[scheduleConfigurationElement.Days.Count];
-            for (int i = 0; i < scheduleConfigurationElement.Days.Count; i++)
+            ScheduleDay[] scheduleDays = new ScheduleDay[scheduleConfiguration.Days.Count];
+            for (int i = 0; i < scheduleConfiguration.Days.Count; i++)
             {
-                DayOfWeek dayOfWeek;
-                bool tryParseSuccess = Enum.TryParse(scheduleConfigurationElement.Days[i].Name, true, out dayOfWeek);
-                if (!tryParseSuccess)
-                {
-                    string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The configured schedule day name of '{0}' could not be parsed as a valid day of the week.", scheduleConfigurationElement.Days[i].Name);
-                    throw new ForecastException(exceptionMessage);
-                }
-
                 scheduleDays[i] = new ScheduleDay
                     {
-                        DayOfWeek = dayOfWeek,
-                        EndTime = scheduleConfigurationElement.Days[i].EndTime,
-                        StartTime = scheduleConfigurationElement.Days[i].StartTime
+                        DayOfWeek = scheduleConfiguration.Days[i].DayOfWeek,
+                        EndTime = scheduleConfiguration.Days[i].EndTime,
+                        StartTime = scheduleConfiguration.Days[i].StartTime
                     };
             }
 
             return scheduleDays;
+        }
+
+        private static IConfigurationSource GetConfigurationSource()
+        {
+            string configurationSourceTypeName = StealFocusForecastConfiguration.Instance.CustomConfigurationSourceType;
+            if (string.IsNullOrEmpty(configurationSourceTypeName))
+            {
+                return new ConfigSectionConfigurationSource();
+            }
+
+            Type configurationSourceType = Type.GetType(configurationSourceTypeName);
+            if (configurationSourceType == null)
+            {
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "Could not load the type '{0}' specified the 'configurationSourceType' value in the configuration.", configurationSourceTypeName);
+                throw new ForecastException(exceptionMessage);
+            }
+
+            object configurationSourceInstance = Activator.CreateInstance(configurationSourceType);
+            try
+            {
+                return (IConfigurationSource)configurationSourceInstance;
+            }
+            catch (InvalidCastException e)
+            {
+                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "Could not cast the '{0}' type to a '{1}' type, was the interface implemented?", configurationSourceType.FullName, typeof(IConfigurationSource).FullName);
+                throw new ForecastException(exceptionMessage, e);
+            }
         }
     }
 }

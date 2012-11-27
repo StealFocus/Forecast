@@ -74,6 +74,32 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
+        #region CustomConfigurationSourceType Property
+        /// <summary>
+        /// The XML name of the <see cref="CustomConfigurationSourceType"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string CustomConfigurationSourceTypePropertyName = "customConfigurationSourceType";
+        
+        /// <summary>
+        /// Gets or sets the CustomConfigurationSourceType.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The CustomConfigurationSourceType.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.CustomConfigurationSourceTypePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public string CustomConfigurationSourceType
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.CustomConfigurationSourceTypePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.CustomConfigurationSourceTypePropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region WindowsAzureSubscriptions Property
         /// <summary>
         /// The XML name of the <see cref="WindowsAzureSubscriptions"/> property.
@@ -86,7 +112,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureSubscriptions.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection WindowsAzureSubscriptions
         {
             get

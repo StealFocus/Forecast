@@ -67,6 +67,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigSectionConfigurationSourceTests.cs" />
     <Compile Include="Configuration\StealFocusForecastConfigurationTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="WindowsAzure\DeploymentCreateForecastWorkerTests.cs" />

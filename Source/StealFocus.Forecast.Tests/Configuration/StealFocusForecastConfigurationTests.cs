@@ -11,7 +11,7 @@
         [TestMethod]
         public void UnitTestGetDeploymentDeleteForecastWorkers()
         {
-            DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentDeleteForecastWorkers();
+            DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.GetDeploymentDeleteForecastWorkers();
             Assert.AreEqual(4, deploymentDeleteForecastWorkers.Length);
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {
@@ -22,7 +22,7 @@
         [TestMethod]
         public void UnitTestGetDeploymentCreateForecastWorkers()
         {
-            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.Instance.GetDeploymentCreateForecastWorkers();
+            DeploymentCreateForecastWorker[] deploymentCreateForecastWorkers = StealFocusForecastConfiguration.GetDeploymentCreateForecastWorkers();
             Assert.AreEqual(1, deploymentCreateForecastWorkers.Length);
             foreach (DeploymentCreateForecastWorker deploymentCreateForecastWorker in deploymentCreateForecastWorkers)
             {
