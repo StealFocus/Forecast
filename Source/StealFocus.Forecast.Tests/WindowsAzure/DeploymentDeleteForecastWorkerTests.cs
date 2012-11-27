@@ -59,7 +59,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                "myId",
                 mockDeployment, 
                 mockOperation, 
                 subscriptionId, 
@@ -101,7 +100,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -139,7 +137,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -185,7 +182,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,

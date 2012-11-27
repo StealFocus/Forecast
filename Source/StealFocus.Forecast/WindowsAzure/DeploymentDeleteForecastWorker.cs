@@ -33,7 +33,6 @@
         private DateTime lastTimeWeDidWork = DateTime.MinValue;
 
         public DeploymentDeleteForecastWorker(
-            string id, 
             IDeployment deployment, 
             IOperation operation, 
             Guid subscriptionId, 
@@ -42,7 +41,7 @@
             string deploymentSlot,
             ScheduleDay[] scheduleDays,
             int pollingIntervalInMinutes)
-            : base(GetWorkerId(id, serviceName, deploymentSlot))
+            : base(GetWorkerId(serviceName, deploymentSlot))
         {
             this.deployment = deployment;
             this.operation = operation;
@@ -92,9 +91,9 @@
             }
         }
 
-        private static string GetWorkerId(string id, string serviceName, string deploymentSlot)
+        private static string GetWorkerId(string serviceName, string deploymentSlot)
         {
-            return string.Format(CultureInfo.CurrentCulture, "{0}-{1}-{2}", id, serviceName, deploymentSlot);
+            return string.Format(CultureInfo.CurrentCulture, "{0}-{1}", serviceName, deploymentSlot);
         }
     }
 }

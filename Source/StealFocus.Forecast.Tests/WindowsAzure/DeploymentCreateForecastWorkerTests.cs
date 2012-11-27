@@ -65,7 +65,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                "myId",
                 mockDeployment, 
                 mockOperation, 
                 subscriptionId, 
@@ -119,7 +118,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -169,7 +167,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -227,7 +224,6 @@
             // Act
             mockRepository.ReplayAll();
             DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                "myId",
                 mockDeployment,
                 mockOperation,
                 subscriptionId,

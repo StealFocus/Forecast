@@ -25,7 +25,6 @@
                     {
                         ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
                         DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
-                            windowsAzureDeploymentDeleteConfiguration.Id,
                             new Deployment(),
                             new Operation(),
                             windowsAzureSubscriptionConfiguration.SubscriptionId,
@@ -55,7 +54,6 @@
                     ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
                     Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfiguration.StorageAccountName, windowsAzurePackageConfiguration.ContainerName, windowsAzurePackageConfiguration.BlobName);
                     DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
-                        windowsAzureDeploymentCreateConfiguration.Id,
                         new Deployment(),
                         new Operation(),
                         windowsAzureSubscriptionConfiguration.SubscriptionId,

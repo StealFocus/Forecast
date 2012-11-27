@@ -102,12 +102,7 @@
     </configurationElementCollection>
     <configurationElement name="WindowsAzureDeploymentDeleteConfigurationElement">
       <attributeProperties>
-        <attributeProperty name="ServiceName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
-        <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
+        <attributeProperty name="ServiceName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
@@ -178,12 +173,7 @@
     </configurationElementCollection>
     <configurationElement name="WindowsAzureDeploymentCreateConfigurationElement">
       <attributeProperties>
-        <attributeProperty name="ServiceName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
-        <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
+        <attributeProperty name="ServiceName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>

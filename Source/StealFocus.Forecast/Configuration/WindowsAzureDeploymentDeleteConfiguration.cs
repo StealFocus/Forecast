@@ -12,8 +12,6 @@
 
         public string ServiceName { get; set; }
 
-        public string Id { get; set; }
-
         public string SubscriptionConfigurationId { get; set; }
 
         public int PollingIntervalInMinutes { get; set; }

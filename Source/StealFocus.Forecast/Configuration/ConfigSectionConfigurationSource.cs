@@ -34,7 +34,6 @@
             foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentDeletes)
             {
                 WindowsAzureDeploymentDeleteConfiguration windowsAzureDeploymentDeleteConfiguration = new WindowsAzureDeploymentDeleteConfiguration();
-                windowsAzureDeploymentDeleteConfiguration.Id = windowsAzureDeploymentDeleteConfigurationElement.Id;
                 windowsAzureDeploymentDeleteConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes;
                 windowsAzureDeploymentDeleteConfiguration.ServiceName = windowsAzureDeploymentDeleteConfigurationElement.ServiceName;
                 windowsAzureDeploymentDeleteConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId;
@@ -63,7 +62,6 @@
                 windowsAzureDeploymentCreateConfiguration.DeploymentLabel = windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel;
                 windowsAzureDeploymentCreateConfiguration.DeploymentName = windowsAzureDeploymentCreateConfigurationElement.DeploymentName;
                 windowsAzureDeploymentCreateConfiguration.DeploymentSlot = windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot;
-                windowsAzureDeploymentCreateConfiguration.Id = windowsAzureDeploymentCreateConfigurationElement.Id;
                 windowsAzureDeploymentCreateConfiguration.PackageConfigurationFilePath = windowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePath;
                 windowsAzureDeploymentCreateConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutes;
                 windowsAzureDeploymentCreateConfiguration.ServiceName = windowsAzureDeploymentCreateConfigurationElement.ServiceName;

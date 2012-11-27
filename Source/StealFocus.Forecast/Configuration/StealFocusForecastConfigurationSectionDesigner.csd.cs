@@ -839,7 +839,7 @@ namespace StealFocus.Forecast.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
         {
-            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(element)).Id;
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(element)).ServiceName;
         }
         
         /// <summary>
@@ -872,13 +872,13 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to retrieve.</param>
+        /// <param name="serviceName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement this[object id]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement this[object serviceName]
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(base.BaseGet(id)));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(base.BaseGet(serviceName)));
             }
         }
         #endregion
@@ -921,11 +921,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to retrieve.</param>
+        /// <param name="serviceName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement GetItemByKey(string id)
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement GetItemByKey(string serviceName)
         {
-            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(base.BaseGet(((object)(id)))));
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement)(base.BaseGet(((object)(serviceName)))));
         }
         #endregion
         
@@ -974,7 +974,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The ServiceName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
         public string ServiceName
         {
             get
@@ -984,32 +984,6 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.ServiceNamePropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region Id Property
-        /// <summary>
-        /// The XML name of the <see cref="Id"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string IdPropertyName = "id";
-        
-        /// <summary>
-        /// Gets or sets the Id.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The Id.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.IdPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
-        public string Id
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.IdPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement.IdPropertyName] = value;
             }
         }
         #endregion
@@ -1649,7 +1623,7 @@ namespace StealFocus.Forecast.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
         {
-            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(element)).Id;
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(element)).ServiceName;
         }
         
         /// <summary>
@@ -1682,13 +1656,13 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        /// <param name="serviceName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement this[object id]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement this[object serviceName]
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(id)));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(serviceName)));
             }
         }
         #endregion
@@ -1731,11 +1705,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
+        /// <param name="serviceName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement GetItemByKey(string id)
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement GetItemByKey(string serviceName)
         {
-            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(((object)(id)))));
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement)(base.BaseGet(((object)(serviceName)))));
         }
         #endregion
         
@@ -1784,7 +1758,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The ServiceName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
         public string ServiceName
         {
             get
@@ -1794,32 +1768,6 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.ServiceNamePropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region Id Property
-        /// <summary>
-        /// The XML name of the <see cref="Id"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string IdPropertyName = "id";
-        
-        /// <summary>
-        /// Gets or sets the Id.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The Id.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
-        public string Id
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement.IdPropertyName] = value;
             }
         }
         #endregion

@@ -126,11 +126,6 @@
 				<xs:documentation>The ServiceName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="id" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The Id.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="subscriptionConfigurationId" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The SubscriptionConfigurationId.</xs:documentation>
@@ -203,11 +198,6 @@
 		<xs:attribute name="serviceName" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The ServiceName.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="id" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The Id.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="subscriptionConfigurationId" use="required" type="xs:string">
