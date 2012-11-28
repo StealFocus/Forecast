@@ -93,7 +93,13 @@
 
         private static IConfigurationSource GetConfigurationSource()
         {
-            string configurationSourceTypeName = StealFocusForecastConfiguration.Instance.CustomConfigurationSourceType;
+            StealFocusForecastConfiguration stealFocusForecastConfiguration = StealFocusForecastConfiguration.Instance;
+            if (stealFocusForecastConfiguration == null)
+            {
+                throw new ForecastException("Could not find the StealFocus Forecast Configuration Section, was the configuration section defined properly?");
+            }
+            
+            string configurationSourceTypeName = stealFocusForecastConfiguration.CustomConfigurationSourceType;
             if (string.IsNullOrEmpty(configurationSourceTypeName))
             {
                 return new ConfigSectionConfigurationSource();
