@@ -282,10 +282,9 @@
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.dll" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.dll" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe.config" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
     </ItemGroup>
     <MSBuild.ExtensionPack.Compression.Zip
