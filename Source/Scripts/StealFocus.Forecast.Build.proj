@@ -279,29 +279,20 @@
 
   <Target Name="CreateApplicationSpecificZips">
     <ItemGroup>
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.dll" />
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.dll" />
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
-      <CommonFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
-      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.exe" />
-      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.exe.config" />
-      <WindowsServiceFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Windows.Service.pdb" />
-      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.exe" />
-      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.exe.config" />
-      <ConsoleFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.Console.pdb" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.dll" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.dll" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe.config" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
     </ItemGroup>
     <MSBuild.ExtensionPack.Compression.Zip
       TaskAction="Create"
-      CompressFiles="@(CommonFiles);@(WindowsServiceFiles)"
+      CompressFiles="@(ApplicationFiles)"
       RemoveRoot="$(BuildDirectoryPath)\$(Configuration)"
-      ZipFileName="$(BuildDirectoryPath)\StealFocus.Forecast.Windows.Service-$(Configuration).zip" />
-    <MSBuild.ExtensionPack.Compression.Zip
-      TaskAction="Create"
-      CompressFiles="@(CommonFiles);@(ConsoleFiles)"
-      RemoveRoot="$(BuildDirectoryPath)\$(Configuration)"
-      ZipFileName="$(BuildDirectoryPath)\StealFocus.Forecast.Console-$(Configuration).zip" />
+      ZipFileName="$(BuildDirectoryPath)\Application-$(Configuration).zip" />
   </Target>
 
   <Target Name="AfterPackageCustom">
