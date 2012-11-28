@@ -70,14 +70,14 @@
                         if (deploymentExists)
                         {
                             string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Debug(deleteDeploymentLogMessage);
+                            Logger.Info(deleteDeploymentLogMessage);
                             string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                             ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, deleteRequestId);
                         }
                         else
                         {
                             string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Debug(deleteDeploymentLogMessage);
+                            Logger.Info(deleteDeploymentLogMessage);
                         }
                     }
                 }

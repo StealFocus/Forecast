@@ -94,14 +94,14 @@
                         if (!deploymentExists)
                         {
                             string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Debug(createDeploymentLogMessage);
+                            Logger.Info(createDeploymentLogMessage);
                             string createRequestId = this.deployment.CreateRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.deploymentName, this.packageUrl, this.label, this.configurationFilePath, this.startDeployment, this.treatWarningsAsError);
                             ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
                         }
                         else
                         {
                             string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to already exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Debug(createDeploymentLogMessage);
+                            Logger.Info(createDeploymentLogMessage);
                         }
                     }
                 }

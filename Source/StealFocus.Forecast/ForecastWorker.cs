@@ -92,7 +92,7 @@
                 if (operationResult.Status == OperationStatus.InProgress)
                 {
                     string logMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' submitted a deployment request with ID '{2}', the operation was found to be in process, waiting for '{3}' seconds.", workerTypeName, id, requestId, FiveSecondsInMilliseconds / 1000);
-                    logger.Debug(logMessage);
+                    logger.Info(logMessage);
                     Thread.Sleep(FiveSecondsInMilliseconds);
                 }
                 else
