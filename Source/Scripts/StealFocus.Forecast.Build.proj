@@ -302,7 +302,7 @@
 		  CompressPath="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild)"
       RemoveRoot="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild)"
 		  ZipFileName="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild).zip"/>
-    <!-- Create a ZIP for the Windows Service and one for the Console. -->
+    <!-- Create a ZIP for the application. -->
     <MSBuild 
       Projects="$(MSBuildProjectFile)" 
       Targets="CreateApplicationSpecificZips" 
@@ -328,10 +328,7 @@
       SourceFiles="$(BuildDirectoryPath)\%(ConfigurationToBuild.FlavorToBuild).zip"
       DestinationFolder="$(DropLocationForBuild)" />
     <Copy
-      SourceFiles="$(BuildDirectoryPath)\StealFocus.Forecast.Windows.Service-%(ConfigurationToBuild.FlavorToBuild).zip"
-      DestinationFolder="$(DropLocationForBuild)" />
-    <Copy
-      SourceFiles="$(BuildDirectoryPath)\StealFocus.Forecast.Console-%(ConfigurationToBuild.FlavorToBuild).zip"
+      SourceFiles="$(BuildDirectoryPath)\Application-%(ConfigurationToBuild.FlavorToBuild).zip"
       DestinationFolder="$(DropLocationForBuild)" />
   </Target>
 
