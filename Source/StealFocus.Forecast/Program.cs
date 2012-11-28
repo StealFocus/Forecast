@@ -1,4 +1,4 @@
-﻿namespace StealFocus.Forecast.Windows.Service
+﻿namespace StealFocus.Forecast
 {
     using System;
     using System.Globalization;
@@ -13,6 +13,53 @@
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         internal static void Main(string[] args)
+        {
+            if (args != null && args.Length > 0)
+            {
+                Logger.Info(string.Empty);
+                Logger.Info("Command line arguments supplied so using those arguments to install/uninstall as a windows service.");
+                Logger.Info(string.Empty);
+                Logger.Info("To run as a console application, run with no arguments.");
+                Logger.Info(string.Empty);
+                InstallAsWindowsServiceUsingTopShelf(args);
+            }
+            else
+            {
+                Logger.Info(string.Empty);
+                Logger.Info("No command line arguments supplied so running in console mode.");
+                Logger.Info(string.Empty);
+                Logger.Info("If you wish to install/uninstall as a windows please supply 'install' or");
+                Logger.Info("'uninstall' arguments as appropriate.");
+                RunAsConsole();
+            }
+        }
+
+        private static void OutputVersionAndCopyrightMessage(string title)
+        {
+            string line1 = title;
+            const string Line2 = "Copyright (c) StealFocus. All rights reserved.";
+            Logger.Info(string.Empty);
+            Logger.Info(line1);
+            Logger.Info(Line2);
+            Logger.Info(string.Empty);
+        }
+
+        private static void RunAsConsole()
+        {
+            string title = string.Format(CultureInfo.CurrentCulture, "StealFocus Forecast Console. Version {0}", typeof(Program).Assembly.GetName().Version);
+            OutputVersionAndCopyrightMessage(title);
+            Host host = new Host();
+            host.Start();
+
+            // Write with the console (and not via the logger) to guarantee this message
+            // is displayed to the user (in case the logger is misconfigured).
+            System.Console.WriteLine("Press return to stop the workers.");
+            System.Console.ReadLine();
+            host.Stop();
+            host.WaitForWorkersToStop();
+        }
+
+        private static void InstallAsWindowsServiceUsingTopShelf(string[] args)
         {
             CheckArguments(args);
             ConfigureWindowsService();
@@ -64,7 +111,7 @@
                     serviceConfigurator.WhenStarted(host =>
                     {
                         string title = string.Format(CultureInfo.CurrentCulture, "StealFocus Forecast Windows Service. Version {0}", typeof(Program).Assembly.GetName().Version);
-                        Forecast.Host.OutputVersionAndCopyrightMessage(title);
+                        OutputVersionAndCopyrightMessage(title);
                         host.Start();
                     });
                     serviceConfigurator.WhenStopped(host =>

@@ -43,10 +43,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Forecast.Console", "StealFocus.Forecast.Console\StealFocus.Forecast.Console.csproj", "{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StealFocus.Forecast.Windows.Service", "StealFocus.Forecast.Windows.Service\StealFocus.Forecast.Windows.Service.csproj", "{AA1F5D99-79E7-42CF-8970-1D70C84FA992}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = StealFocus.Forecast.vsmdi
@@ -80,30 +76,6 @@ Global
 		{C7550F26-96F5-460C-B257-2C9BE621CA17}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C7550F26-96F5-460C-B257-2C9BE621CA17}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C7550F26-96F5-460C-B257-2C9BE621CA17}.Release|x86.ActiveCfg = Release|Any CPU
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|Any CPU.Build.0 = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|x86.ActiveCfg = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Debug|x86.Build.0 = Debug|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|Any CPU.ActiveCfg = Release|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|Any CPU.Build.0 = Release|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|Mixed Platforms.Build.0 = Release|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|x86.ActiveCfg = Release|x86
-		{8AE30F01-884E-4BD9-BC6C-9D6FD0D80A28}.Release|x86.Build.0 = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|Any CPU.Build.0 = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|x86.ActiveCfg = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Debug|x86.Build.0 = Debug|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|Any CPU.ActiveCfg = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|Any CPU.Build.0 = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|Mixed Platforms.Build.0 = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|x86.ActiveCfg = Release|x86
-		{AA1F5D99-79E7-42CF-8970-1D70C84FA992}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,5 @@
 ﻿namespace StealFocus.Forecast
 {
-    using System;
     using System.Collections.Generic;
     using System.Reflection;
 
@@ -32,16 +31,6 @@
         }
 
         private List<ForecastWorker> ForecastWorkers { get; set; }
-
-        public static void OutputVersionAndCopyrightMessage(string title)
-        {
-            string line1 = title;
-            const string Line2 = "Copyright (c) StealFocus. All rights reserved.";
-            Logger.Info(string.Empty);
-            Logger.Info(line1);
-            Logger.Info(Line2);
-            Logger.Info(string.Empty);
-        }
 
         public void Start()
         {
