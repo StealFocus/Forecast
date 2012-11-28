@@ -273,24 +273,41 @@
     <!-- Enter your custom steps here. -->
   </Target>
 
+  <Target Name="CreateILMergedVersionOfApplication">
+    <PropertyGroup>
+      <ILMergeSourceDirectoryPath>$(BuildDirectoryPath)\$(Configuration)</ILMergeSourceDirectoryPath>
+      <ILMergeTargetDirectoryPath>$(BuildDirectoryPath)\$(Configuration)\ILMerged</ILMergeTargetDirectoryPath>
+    </PropertyGroup>
+    <MakeDir
+      Condition=" !Exists('$(ILMergeTargetDirectoryPath)') "
+      Directories="$(ILMergeTargetDirectoryPath)" />
+    <Exec
+      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe /keyfile:$(StrongNameKeyPairPath) $(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe $(ILMergeSourceDirectoryPath)\log4net.dll $(ILMergeSourceDirectoryPath)\StealFocus.AzureExtensions.dll $(ILMergeSourceDirectoryPath)\Topshelf.dll /targetplatform:v4" />
+    <Copy
+      SourceFiles="$(ILMergeSourceDirectoryPath)\log4net.config;$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe.config" 
+      DestinationFolder="$(ILMergeTargetDirectoryPath)" />
+  </Target>
+  
   <Target Name="BeforePackageCustom">
     <!-- Enter your custom steps here. -->
+    <!-- ILMerge the application. -->
+    <MSBuild
+      Projects="$(MSBuildProjectFile)"
+      Targets="CreateILMergedVersionOfApplication"
+      Properties="BuildDirectoryPath=$(BuildDirectoryPath);Configuration=%(ConfigurationToBuild.FlavorToBuild);StrongNameKeyPairPath=$(StrongNameKeyPairPath)" />
   </Target>
 
   <Target Name="CreateApplicationSpecificZips">
     <ItemGroup>
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.dll" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\log4net.config" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.AzureExtensions*.*" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.exe.config" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\StealFocus.Forecast.pdb" />
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\Topshelf.dll" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\log4net.config" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.exe.config" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.exe" />
+      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.pdb" />
     </ItemGroup>
     <MSBuild.ExtensionPack.Compression.Zip
       TaskAction="Create"
       CompressFiles="@(ApplicationFiles)"
-      RemoveRoot="$(BuildDirectoryPath)\$(Configuration)"
+      RemoveRoot="$(BuildDirectoryPath)\$(Configuration)\ILMerged"
       ZipFileName="$(BuildDirectoryPath)\Application-$(Configuration).zip" />
   </Target>
 
