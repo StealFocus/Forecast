@@ -29,6 +29,7 @@ Thumbs.db
 
 *.cscf
 *.sdf
-StealFocus.Build.state
-!Source/.nuget/NuGet.exe
 AssemblyInfoCommon.g.cs
+StealFocus.Build.state
+!NuGet.exe
+!ILMerge.exe
