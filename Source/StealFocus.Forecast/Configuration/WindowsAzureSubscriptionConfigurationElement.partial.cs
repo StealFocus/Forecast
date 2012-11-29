@@ -3,7 +3,7 @@
     using System;
     using System.Globalization;
 
-    public partial class WindowsAzureSubscriptionConfigurationElement
+    internal partial class WindowsAzureSubscriptionConfigurationElement
     {
         public Guid GetWindowsAzureSubscriptionId()
         {

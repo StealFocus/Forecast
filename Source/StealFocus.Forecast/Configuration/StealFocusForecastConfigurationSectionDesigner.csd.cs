@@ -15,7 +15,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The StealFocusForecastConfiguration Configuration Section.
     /// </summary>
-    public partial class StealFocusForecastConfiguration : global::System.Configuration.ConfigurationSection
+    internal partial class StealFocusForecastConfiguration : global::System.Configuration.ConfigurationSection
     {
         
         #region Singleton Instance
@@ -213,7 +213,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of WindowsAzureSubscriptionConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection.WindowsAzureSubscriptionConfigurationElementPropertyName)]
-    public partial class WindowsAzureSubscriptionConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class WindowsAzureSubscriptionConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -382,7 +382,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The WindowsAzureSubscriptionConfigurationElement Configuration Element.
     /// </summary>
-    public partial class WindowsAzureSubscriptionConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class WindowsAzureSubscriptionConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -483,7 +483,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of WindowsAzurePackageConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection.WindowsAzurePackageConfigurationElementPropertyName)]
-    public partial class WindowsAzurePackageConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class WindowsAzurePackageConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -652,7 +652,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The WindowsAzurePackageConfigurationElement Configuration Element.
     /// </summary>
-    public partial class WindowsAzurePackageConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class WindowsAzurePackageConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -779,7 +779,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of WindowsAzureDeploymentDeleteConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection.WindowsAzureDeploymentDeleteConfigurationElementPropertyName)]
-    public partial class WindowsAzureDeploymentDeleteConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class WindowsAzureDeploymentDeleteConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -948,7 +948,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The WindowsAzureDeploymentDeleteConfigurationElement Configuration Element.
     /// </summary>
-    public partial class WindowsAzureDeploymentDeleteConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class WindowsAzureDeploymentDeleteConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -1101,7 +1101,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of DeploymentSlotConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.DeploymentSlotConfigurationElementCollection.DeploymentSlotConfigurationElementPropertyName)]
-    public partial class DeploymentSlotConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class DeploymentSlotConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -1270,7 +1270,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The DeploymentSlotConfigurationElement Configuration Element.
     /// </summary>
-    public partial class DeploymentSlotConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class DeploymentSlotConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -1319,7 +1319,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of ScheduleConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection.ScheduleConfigurationElementPropertyName)]
-    public partial class ScheduleConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class ScheduleConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -1488,7 +1488,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The ScheduleConfigurationElement Configuration Element.
     /// </summary>
-    public partial class ScheduleConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class ScheduleConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -1563,7 +1563,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of WindowsAzureDeploymentCreateConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection.WindowsAzureDeploymentCreateConfigurationElementPropertyName)]
-    public partial class WindowsAzureDeploymentCreateConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class WindowsAzureDeploymentCreateConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -1732,7 +1732,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The WindowsAzureDeploymentCreateConfigurationElement Configuration Element.
     /// </summary>
-    public partial class WindowsAzureDeploymentCreateConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class WindowsAzureDeploymentCreateConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override
@@ -2041,7 +2041,7 @@ namespace StealFocus.Forecast.Configuration
     /// A collection of DayConfigurationElement instances.
     /// </summary>
     [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.DayConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.DayConfigurationElementCollection.DayConfigurationElementPropertyName)]
-    public partial class DayConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    internal partial class DayConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
     {
         
         #region Constants
@@ -2210,7 +2210,7 @@ namespace StealFocus.Forecast.Configuration
     /// <summary>
     /// The DayConfigurationElement Configuration Element.
     /// </summary>
-    public partial class DayConfigurationElement : global::System.Configuration.ConfigurationElement
+    internal partial class DayConfigurationElement : global::System.Configuration.ConfigurationElement
     {
         
         #region IsReadOnly override

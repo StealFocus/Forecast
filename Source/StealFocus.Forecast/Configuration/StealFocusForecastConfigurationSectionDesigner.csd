@@ -11,7 +11,7 @@
     <externalType name="TimeSpan" namespace="System" />
   </typeDefinitions>
   <configurationElements>
-    <configurationSection name="StealFocusForecastConfiguration" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="stealFocusForecastConfiguration">
+    <configurationSection name="StealFocusForecastConfiguration" accessModifier="Internal" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="stealFocusForecastConfiguration">
       <attributeProperties>
         <attributeProperty name="CustomConfigurationSourceType" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="customConfigurationSourceType" isReadOnly="false">
           <type>
@@ -42,12 +42,12 @@
         </elementProperty>
       </elementProperties>
     </configurationSection>
-    <configurationElementCollection name="WindowsAzureSubscriptionConfigurationElementCollection" xmlItemName="windowsAzureSubscription" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureSubscriptionConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureSubscription" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="WindowsAzureSubscriptionConfigurationElement">
+    <configurationElement name="WindowsAzureSubscriptionConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="SubscriptionId" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="subscriptionId" isReadOnly="false">
           <type>
@@ -66,12 +66,12 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzurePackageConfigurationElementCollection" xmlItemName="windowsAzurePackage" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzurePackageConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzurePackage" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="WindowsAzurePackageConfigurationElement">
+    <configurationElement name="WindowsAzurePackageConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="StorageAccountName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountName" isReadOnly="false">
           <type>
@@ -95,12 +95,12 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureDeploymentDeleteConfigurationElementCollection" xmlItemName="windowsAzureDeploymentDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureDeploymentDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureDeploymentDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="WindowsAzureDeploymentDeleteConfigurationElement">
+    <configurationElement name="WindowsAzureDeploymentDeleteConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="ServiceName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
           <type>
@@ -131,12 +131,12 @@
         </elementProperty>
       </elementProperties>
     </configurationElement>
-    <configurationElementCollection name="DeploymentSlotConfigurationElementCollection" xmlItemName="deploymentSlot" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="DeploymentSlotConfigurationElementCollection" accessModifier="Internal" xmlItemName="deploymentSlot" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DeploymentSlotConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="DeploymentSlotConfigurationElement">
+    <configurationElement name="DeploymentSlotConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>
@@ -145,12 +145,12 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="ScheduleConfigurationElementCollection" xmlItemName="schedule" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="ScheduleConfigurationElementCollection" accessModifier="Internal" xmlItemName="schedule" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="ScheduleConfigurationElement">
+    <configurationElement name="ScheduleConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>
@@ -166,12 +166,12 @@
         </elementProperty>
       </elementProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" xmlItemName="windowsAzureDeploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureDeploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="WindowsAzureDeploymentCreateConfigurationElement">
+    <configurationElement name="WindowsAzureDeploymentCreateConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="ServiceName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
           <type>
@@ -232,12 +232,12 @@
         </elementProperty>
       </elementProperties>
     </configurationElement>
-    <configurationElementCollection name="DayConfigurationElementCollection" xmlItemName="day" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="DayConfigurationElementCollection" accessModifier="Internal" xmlItemName="day" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElement" />
       </itemType>
     </configurationElementCollection>
-    <configurationElement name="DayConfigurationElement">
+    <configurationElement name="DayConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
           <type>

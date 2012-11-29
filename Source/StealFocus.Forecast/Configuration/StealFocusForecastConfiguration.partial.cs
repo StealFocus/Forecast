@@ -9,7 +9,7 @@
 
     using WindowsAzure.HostedService;
 
-    public partial class StealFocusForecastConfiguration
+    internal partial class StealFocusForecastConfiguration
     {
         internal static DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
         {

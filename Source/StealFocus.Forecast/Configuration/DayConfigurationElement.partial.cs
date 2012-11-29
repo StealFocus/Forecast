@@ -3,7 +3,7 @@
     using System;
     using System.Globalization;
 
-    public partial class DayConfigurationElement
+    internal partial class DayConfigurationElement
     {
         public DayOfWeek GetDayOfWeek()
         {
