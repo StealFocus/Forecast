@@ -65,7 +65,7 @@
                     lock (SyncRoot)
                     {
                         string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is checking if deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' exists.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                        Logger.Debug(checkingDeploymentExistsMessage);
+                        Logger.Info(checkingDeploymentExistsMessage);
                         bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                         if (deploymentExists)
                         {
