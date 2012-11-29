@@ -7,7 +7,7 @@
         public WindowsAzureDeploymentDeleteConfiguration()
         {
             this.DeploymentSlots = new Collection<string>();
-            this.Schedules = new Collection<ScheduleConfiguration>();
+            this.Schedules = new Collection<ScheduleDefinitionConfiguration>();
         }
 
         public string ServiceName { get; set; }
@@ -18,6 +18,6 @@
 
         public Collection<string> DeploymentSlots { get; private set; }
 
-        public Collection<ScheduleConfiguration> Schedules { get; private set; }
+        public Collection<ScheduleDefinitionConfiguration> Schedules { get; private set; }
     }
 }

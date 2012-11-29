@@ -20,7 +20,7 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
-        <elementProperty name="WindowsAzureSubscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
+        <elementProperty name="WindowsAzureSubscriptions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
@@ -28,6 +28,11 @@
         <elementProperty name="WindowsAzurePackages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="ScheduleDefinitions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="scheduleDefinitions" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleDefinitionConfigurationElementCollection" />
           </type>
         </elementProperty>
         <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
@@ -152,19 +157,12 @@
     </configurationElementCollection>
     <configurationElement name="ScheduleConfigurationElement" accessModifier="Internal">
       <attributeProperties>
-        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+        <attributeProperty name="ScheduleDefinitionName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="scheduleDefinitionName" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
       </attributeProperties>
-      <elementProperties>
-        <elementProperty name="Days" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="days" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-      </elementProperties>
     </configurationElement>
     <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureDeploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
@@ -255,6 +253,27 @@
           </type>
         </attributeProperty>
       </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="ScheduleDefinitionConfigurationElementCollection" accessModifier="Internal" xmlItemName="scheduleDefinition" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleDefinitionConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="ScheduleDefinitionConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Days" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="days" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>

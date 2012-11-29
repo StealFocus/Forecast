@@ -68,7 +68,7 @@
     <Compile Include="Configuration\DayConfiguration.cs" />
     <Compile Include="Configuration\DayConfigurationElement.partial.cs" />
     <Compile Include="Configuration\IConfigurationSource.cs" />
-    <Compile Include="Configuration\ScheduleConfiguration.cs" />
+    <Compile Include="Configuration\ScheduleDefinitionConfiguration.cs" />
     <Compile Include="Configuration\StealFocusForecastConfiguration.partial.cs" />
     <Compile Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.cs">
       <AutoGen>True</AutoGen>

@@ -40,9 +40,10 @@
             WindowsAzureDeploymentDeleteConfiguration[] windowsAzureDeploymentDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureDeploymentDeleteConfigurations();
             Assert.AreEqual(1, windowsAzureDeploymentDeleteConfigurations.Length);
             Assert.AreEqual(2, windowsAzureDeploymentDeleteConfigurations[0].DeploymentSlots.Count);
-            Assert.AreEqual(2, windowsAzureDeploymentDeleteConfigurations[0].Schedules.Count);
+            Assert.AreEqual(3, windowsAzureDeploymentDeleteConfigurations[0].Schedules.Count);
             Assert.AreEqual(5, windowsAzureDeploymentDeleteConfigurations[0].Schedules[0].Days.Count);
             Assert.AreEqual(5, windowsAzureDeploymentDeleteConfigurations[0].Schedules[1].Days.Count);
+            Assert.AreEqual(2, windowsAzureDeploymentDeleteConfigurations[0].Schedules[2].Days.Count);
         }
     }
 }

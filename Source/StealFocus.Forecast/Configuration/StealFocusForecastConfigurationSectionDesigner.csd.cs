@@ -112,7 +112,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureSubscriptions.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection WindowsAzureSubscriptions
         {
             get
@@ -148,6 +148,32 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region ScheduleDefinitions Property
+        /// <summary>
+        /// The XML name of the <see cref="ScheduleDefinitions"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ScheduleDefinitionsPropertyName = "scheduleDefinitions";
+        
+        /// <summary>
+        /// Gets or sets the ScheduleDefinitions.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ScheduleDefinitions.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.ScheduleDefinitionsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection ScheduleDefinitions
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.ScheduleDefinitionsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.ScheduleDefinitionsPropertyName] = value;
             }
         }
         #endregion
@@ -1379,7 +1405,7 @@ namespace StealFocus.Forecast.Configuration
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
         {
-            return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(element)).Name;
+            return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(element)).ScheduleDefinitionName;
         }
         
         /// <summary>
@@ -1412,13 +1438,13 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> to retrieve.</param>
+        /// <param name="scheduleDefinitionName">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement this[object name]
+        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement this[object scheduleDefinitionName]
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(base.BaseGet(name)));
+                return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(base.BaseGet(scheduleDefinitionName)));
             }
         }
         #endregion
@@ -1461,11 +1487,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> with the specified key.
         /// </summary>
-        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> to retrieve.</param>
+        /// <param name="scheduleDefinitionName">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement GetItemByKey(string name)
+        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement GetItemByKey(string scheduleDefinitionName)
         {
-            return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(base.BaseGet(((object)(name)))));
+            return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement)(base.BaseGet(((object)(scheduleDefinitionName)))));
         }
         #endregion
         
@@ -1502,54 +1528,28 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region Name Property
+        #region ScheduleDefinitionName Property
         /// <summary>
-        /// The XML name of the <see cref="Name"/> property.
+        /// The XML name of the <see cref="ScheduleDefinitionName"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string NamePropertyName = "name";
+        internal const string ScheduleDefinitionNamePropertyName = "scheduleDefinitionName";
         
         /// <summary>
-        /// Gets or sets the Name.
+        /// Gets or sets the ScheduleDefinitionName.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
-        public string Name
+        [global::System.ComponentModel.DescriptionAttribute("The ScheduleDefinitionName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.ScheduleDefinitionNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string ScheduleDefinitionName
         {
             get
             {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.NamePropertyName]));
+                return ((string)(base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.ScheduleDefinitionNamePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.NamePropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region Days Property
-        /// <summary>
-        /// The XML name of the <see cref="Days"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string DaysPropertyName = "days";
-        
-        /// <summary>
-        /// Gets or sets the Days.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The Days.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DaysPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.DayConfigurationElementCollection Days
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.DayConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DaysPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.DaysPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.ScheduleConfigurationElement.ScheduleDefinitionNamePropertyName] = value;
             }
         }
         #endregion
@@ -2298,6 +2298,250 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.DayConfigurationElement.EndTimePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of ScheduleDefinitionConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection.ScheduleDefinitionConfigurationElementPropertyName)]
+    internal partial class ScheduleDefinitionConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ScheduleDefinitionConfigurationElementPropertyName = "scheduleDefinition";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection.ScheduleDefinitionConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection.ScheduleDefinitionConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement)(element)).Name;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement this[object name]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement)(base.BaseGet(name)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="scheduleDefinition">The <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement scheduleDefinition)
+        {
+            base.BaseAdd(scheduleDefinition);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="scheduleDefinition">The <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement scheduleDefinition)
+        {
+            base.BaseRemove(this.GetElementKey(scheduleDefinition));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement GetItemByKey(string name)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement)(base.BaseGet(((object)(name)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The ScheduleDefinitionConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class ScheduleDefinitionConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Name
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.NamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.NamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Days Property
+        /// <summary>
+        /// The XML name of the <see cref="Days"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DaysPropertyName = "days";
+        
+        /// <summary>
+        /// Gets or sets the Days.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Days.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.DaysPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.DayConfigurationElementCollection Days
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.DayConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.DaysPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElement.DaysPropertyName] = value;
             }
         }
         #endregion

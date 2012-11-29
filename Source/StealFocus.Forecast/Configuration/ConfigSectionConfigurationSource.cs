@@ -1,7 +1,7 @@
 ﻿namespace StealFocus.Forecast.Configuration
 {
     using System.Collections;
-    using System.Collections.Generic;
+    using System.Globalization;
 
     internal class ConfigSectionConfigurationSource : IConfigurationSource
     {
@@ -27,7 +27,7 @@
                     StorageAccountName = windowsAzurePackageConfigurationElement.StorageAccountName
                 };
         }
-        
+
         public WindowsAzureDeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentDeletes.Count);
@@ -42,9 +42,10 @@
                     windowsAzureDeploymentDeleteConfiguration.DeploymentSlots.Add(deploymentSlotConfigurationElement.Name);
                 }
 
-                foreach (ScheduleConfiguration scheduleConfiguration in GetScheduleConfigurations(windowsAzureDeploymentDeleteConfigurationElement.Schedules))
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.Schedules)
                 {
-                    windowsAzureDeploymentDeleteConfiguration.Schedules.Add(scheduleConfiguration);
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
+                    windowsAzureDeploymentDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
                 list.Add(windowsAzureDeploymentDeleteConfiguration);
@@ -69,9 +70,10 @@
                 windowsAzureDeploymentCreateConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationId;
                 windowsAzureDeploymentCreateConfiguration.TreatWarningsAsError = windowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsError;
                 windowsAzureDeploymentCreateConfiguration.WindowsAzurePackageId = windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId;
-                foreach (ScheduleConfiguration scheduleConfiguration in GetScheduleConfigurations(windowsAzureDeploymentCreateConfigurationElement.Schedules))
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentCreateConfigurationElement.Schedules)
                 {
-                    windowsAzureDeploymentCreateConfiguration.Schedules.Add(scheduleConfiguration);
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
+                    windowsAzureDeploymentCreateConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
                 list.Add(windowsAzureDeploymentCreateConfiguration);
@@ -80,26 +82,29 @@
             return (WindowsAzureDeploymentCreateConfiguration[])list.ToArray(typeof(WindowsAzureDeploymentCreateConfiguration));
         }
 
-        private static IEnumerable<ScheduleConfiguration> GetScheduleConfigurations(ScheduleConfigurationElementCollection scheduleConfigurationElementCollection)
+        private static ScheduleDefinitionConfiguration GetScheduleDefinitionConfiguration(string scheduleDefinitionName)
         {
-            ArrayList list = new ArrayList(scheduleConfigurationElementCollection.Count);
-            foreach (ScheduleConfigurationElement scheduleConfigurationElement in scheduleConfigurationElementCollection)
+            foreach (ScheduleDefinitionConfigurationElement scheduleDefinitionConfigurationElement in StealFocusForecastConfiguration.Instance.ScheduleDefinitions)
             {
-                ScheduleConfiguration scheduleConfiguration = new ScheduleConfiguration();
-                scheduleConfiguration.Name = scheduleConfigurationElement.Name;
-                foreach (DayConfigurationElement dayConfigurationElement in scheduleConfigurationElement.Days)
+                if (scheduleDefinitionConfigurationElement.Name == scheduleDefinitionName)
                 {
-                    DayConfiguration dayConfiguration = new DayConfiguration();
-                    dayConfiguration.DayOfWeek = dayConfigurationElement.GetDayOfWeek();
-                    dayConfiguration.EndTime = dayConfigurationElement.EndTime;
-                    dayConfiguration.StartTime = dayConfigurationElement.StartTime;
-                    scheduleConfiguration.Days.Add(dayConfiguration);
-                }
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = new ScheduleDefinitionConfiguration();
+                    scheduleDefinitionConfiguration.Name = scheduleDefinitionConfigurationElement.Name;
+                    foreach (DayConfigurationElement dayConfigurationElement in scheduleDefinitionConfigurationElement.Days)
+                    {
+                        DayConfiguration dayConfiguration = new DayConfiguration();
+                        dayConfiguration.DayOfWeek = dayConfigurationElement.GetDayOfWeek();
+                        dayConfiguration.EndTime = dayConfigurationElement.EndTime;
+                        dayConfiguration.StartTime = dayConfigurationElement.StartTime;
+                        scheduleDefinitionConfiguration.Days.Add(dayConfiguration);
+                    }
 
-                list.Add(scheduleConfiguration);
+                    return scheduleDefinitionConfiguration;
+                }
             }
 
-            return (ScheduleConfiguration[])list.ToArray(typeof(ScheduleConfiguration));
+            string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The required schedule definition name of '{0}' was not found in the set of schedule definitions.", scheduleDefinitionName);
+            throw new ForecastException(exceptionMessage);
         }
     }
 }

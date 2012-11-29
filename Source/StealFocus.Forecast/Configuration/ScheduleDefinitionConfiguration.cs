@@ -2,9 +2,9 @@
 {
     using System.Collections.ObjectModel;
 
-    public class ScheduleConfiguration
+    public class ScheduleDefinitionConfiguration
     {
-        public ScheduleConfiguration()
+        public ScheduleDefinitionConfiguration()
         {
             this.Days = new Collection<DayConfiguration>();
         }

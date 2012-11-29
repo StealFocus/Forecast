@@ -21,9 +21,9 @@
                     configurationSource.GetWindowsAzureSubscriptionConfiguration(windowsAzureDeploymentDeleteConfiguration.SubscriptionConfigurationId);
                 foreach (string deploymentSlot in windowsAzureDeploymentDeleteConfiguration.DeploymentSlots)
                 {
-                    foreach (ScheduleConfiguration scheduleConfiguration in windowsAzureDeploymentDeleteConfiguration.Schedules)
+                    foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in windowsAzureDeploymentDeleteConfiguration.Schedules)
                     {
-                        ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
+                        ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
                         DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                             new Deployment(),
                             new Operation(),
@@ -49,9 +49,9 @@
             {
                 WindowsAzureSubscriptionConfiguration windowsAzureSubscriptionConfiguration = configurationSource.GetWindowsAzureSubscriptionConfiguration(windowsAzureDeploymentCreateConfiguration.SubscriptionConfigurationId);
                 WindowsAzurePackageConfiguration windowsAzurePackageConfiguration = configurationSource.GetWindowsAzurePackageConfiguration(windowsAzureDeploymentCreateConfiguration.WindowsAzurePackageId);
-                foreach (ScheduleConfiguration scheduleConfiguration in windowsAzureDeploymentCreateConfiguration.Schedules)
+                foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in windowsAzureDeploymentCreateConfiguration.Schedules)
                 {
-                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleConfiguration);
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
                     Uri packageUrl = Blob.GetUrl(windowsAzurePackageConfiguration.StorageAccountName, windowsAzurePackageConfiguration.ContainerName, windowsAzurePackageConfiguration.BlobName);
                     DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                         new Deployment(),
@@ -75,7 +75,7 @@
             return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
         }
 
-        private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleConfiguration scheduleConfiguration)
+        private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleDefinitionConfiguration scheduleConfiguration)
         {
             ScheduleDay[] scheduleDays = new ScheduleDay[scheduleConfiguration.Days.Count];
             for (int i = 0; i < scheduleConfiguration.Days.Count; i++)
