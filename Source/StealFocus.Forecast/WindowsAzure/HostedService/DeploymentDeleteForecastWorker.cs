@@ -1,4 +1,4 @@
-﻿namespace StealFocus.Forecast.WindowsAzure
+﻿namespace StealFocus.Forecast.WindowsAzure.HostedService
 {
     using System;
     using System.Globalization;
@@ -8,7 +8,7 @@
 
     using StealFocus.AzureExtensions.HostedService;
 
-    internal class DeploymentCreateForecastWorker : ForecastWorker
+    internal class DeploymentDeleteForecastWorker : ForecastWorker
     {
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -28,36 +28,18 @@
 
         private readonly ScheduleDay[] scheduleDays;
 
-        private readonly string deploymentName;
-
-        private readonly Uri packageUrl;
-
-        private readonly string label;
-
-        private readonly string configurationFilePath;
-
-        private readonly bool startDeployment;
-
-        private readonly bool treatWarningsAsError;
-
         private readonly int pollingIntervalInMinutes;
 
         private DateTime lastTimeWeDidWork = DateTime.MinValue;
 
-        public DeploymentCreateForecastWorker(
-            IDeployment deployment,
-            IOperation operation,
-            Guid subscriptionId,
+        public DeploymentDeleteForecastWorker(
+            IDeployment deployment, 
+            IOperation operation, 
+            Guid subscriptionId, 
             string certificateThumbprint, 
             string serviceName,
             string deploymentSlot,
             ScheduleDay[] scheduleDays,
-            string deploymentName,
-            Uri packageUrl,
-            string label,
-            string configurationFilePath,
-            bool startDeployment,
-            bool treatWarningsAsError,
             int pollingIntervalInMinutes)
             : base(GetWorkerId(serviceName, deploymentSlot))
         {
@@ -68,12 +50,6 @@
             this.serviceName = serviceName;
             this.deploymentSlot = deploymentSlot;
             this.scheduleDays = scheduleDays;
-            this.deploymentName = deploymentName;
-            this.packageUrl = packageUrl;
-            this.label = label;
-            this.configurationFilePath = configurationFilePath;
-            this.startDeployment = startDeployment;
-            this.treatWarningsAsError = treatWarningsAsError;
             this.pollingIntervalInMinutes = pollingIntervalInMinutes;
         }
 
@@ -91,17 +67,17 @@
                         string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is checking if deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' exists.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                         Logger.Info(checkingDeploymentExistsMessage);
                         bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                        if (!deploymentExists)
+                        if (deploymentExists)
                         {
-                            string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Info(createDeploymentLogMessage);
-                            string createRequestId = this.deployment.CreateRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.deploymentName, this.packageUrl, this.label, this.configurationFilePath, this.startDeployment, this.treatWarningsAsError);
-                            ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
+                            string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Info(deleteDeploymentLogMessage);
+                            string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                            ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, deleteRequestId);
                         }
                         else
                         {
-                            string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to already exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Info(createDeploymentLogMessage);
+                            string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Info(deleteDeploymentLogMessage);
                         }
                     }
                 }

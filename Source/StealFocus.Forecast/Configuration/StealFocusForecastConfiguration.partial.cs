@@ -7,7 +7,7 @@
     using StealFocus.AzureExtensions.HostedService;
     using StealFocus.AzureExtensions.StorageService;
 
-    using WindowsAzure;
+    using WindowsAzure.HostedService;
 
     public partial class StealFocusForecastConfiguration
     {

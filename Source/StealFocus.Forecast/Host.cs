@@ -6,7 +6,7 @@
     using log4net;
 
     using StealFocus.Forecast.Configuration;
-    using StealFocus.Forecast.WindowsAzure;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
 
     internal class Host
     {

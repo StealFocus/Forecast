@@ -8,7 +8,7 @@
     using Rhino.Mocks;
 
     using StealFocus.AzureExtensions.HostedService;
-    using StealFocus.Forecast.WindowsAzure;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
     public class DeploymentDeleteForecastWorkerTests

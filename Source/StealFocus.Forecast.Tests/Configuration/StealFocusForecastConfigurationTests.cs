@@ -3,7 +3,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using StealFocus.Forecast.Configuration;
-    using StealFocus.Forecast.WindowsAzure;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
     public class StealFocusForecastConfigurationTests
