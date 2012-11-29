@@ -1,4 +1,4 @@
-﻿namespace StealFocus.Forecast.Tests.WindowsAzure
+﻿namespace StealFocus.Forecast.Tests.WindowsAzure.HostedService
 {
     using System;
     using System.Net;
@@ -11,7 +11,7 @@
     using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
-    public class DeploymentDeleteForecastWorkerTests
+    public class DeploymentCreateForecastWorkerTests
     {
         private readonly TimeSpan oneHour = new TimeSpan(1, 0, 0);
 
@@ -23,7 +23,13 @@
             const string CertificateThumbprint = "0000000000000000000000000000000000000000";
             const string ServiceName = "serviceName";
             const string DeploymentSlot = "Production";
-            const string DeleteRequestId = "id";
+            const string RequestId = "id";
+            const string DeploymentName = "deploymentName";
+            Uri packageUrl = new Uri("http://my.url");
+            const string Label = "deploymentLabel";
+            const string ConfigurationFilePath = @"C:\PathTo\MyPackageConfiguration.cscfg";
+            const bool StartDeployment = true;
+            const bool TreatWarningsAsError = true;
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -46,28 +52,34 @@
             mockDeployment
                 .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
-                .Return(true);
+                .Return(false);
             mockDeployment
-                .Expect(d => d.DeleteRequest(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.CreateRequest(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, DeploymentName, packageUrl, Label, ConfigurationFilePath, StartDeployment, TreatWarningsAsError))
                 .Repeat.Once()
-                .Return(DeleteRequestId);
+                .Return(RequestId);
             mockOperation
-                .Expect(o => o.StatusCheck(subscriptionId, CertificateThumbprint, DeleteRequestId))
+                .Expect(o => o.StatusCheck(subscriptionId, CertificateThumbprint, RequestId))
                 .Repeat.Once()
                 .Return(operationResult);
 
             // Act
             mockRepository.ReplayAll();
-            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+            DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                 mockDeployment, 
                 mockOperation, 
                 subscriptionId, 
                 CertificateThumbprint, 
-                ServiceName,
+                ServiceName, 
                 DeploymentSlot,
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                DeploymentName,
+                packageUrl,
+                Label,
+                ConfigurationFilePath,
+                StartDeployment,
+                TreatWarningsAsError,
                 PollingIntervalInMinutes);
-            deploymentDeleteForecastWorker.DoWork();
+            deploymentCreateForecastWorker.DoWork();
 
             // Assert
             mockRepository.VerifyAll();
@@ -81,6 +93,12 @@
             const string CertificateThumbprint = "0000000000000000000000000000000000000000";
             const string ServiceName = "serviceName";
             const string DeploymentSlot = "Production";
+            const string DeploymentName = "deploymentName";
+            Uri packageUrl = new Uri("http://my.url");
+            const string Label = "deploymentLabel";
+            const string ConfigurationFilePath = @"C:\PathTo\MyPackageConfiguration.cscfg";
+            const bool StartDeployment = true;
+            const bool TreatWarningsAsError = true;
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -95,11 +113,11 @@
             mockDeployment
                 .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
-                .Return(false);
+                .Return(true);
 
             // Act
             mockRepository.ReplayAll();
-            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+            DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -107,8 +125,14 @@
                 ServiceName,
                 DeploymentSlot,
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                DeploymentName,
+                packageUrl,
+                Label,
+                ConfigurationFilePath,
+                StartDeployment,
+                TreatWarningsAsError,
                 PollingIntervalInMinutes);
-            deploymentDeleteForecastWorker.DoWork();
+            deploymentCreateForecastWorker.DoWork();
 
             // Assert
             mockRepository.VerifyAll();
@@ -122,6 +146,12 @@
             const string CertificateThumbprint = "0000000000000000000000000000000000000000";
             const string ServiceName = "serviceName";
             const string DeploymentSlot = "Production";
+            const string DeploymentName = "deploymentName";
+            Uri packageUrl = new Uri("http://my.url");
+            const string Label = "deploymentLabel";
+            const string ConfigurationFilePath = @"C:\PathTo\MyPackageConfiguration.cscfg";
+            const bool StartDeployment = true;
+            const bool TreatWarningsAsError = true;
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
@@ -136,7 +166,7 @@
 
             // Act
             mockRepository.ReplayAll();
-            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+            DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -144,8 +174,14 @@
                 ServiceName,
                 DeploymentSlot,
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                DeploymentName,
+                packageUrl,
+                Label,
+                ConfigurationFilePath,
+                StartDeployment,
+                TreatWarningsAsError,
                 PollingIntervalInMinutes);
-            deploymentDeleteForecastWorker.DoWork();
+            deploymentCreateForecastWorker.DoWork();
 
             // Assert
             mockRepository.VerifyAll();
@@ -159,6 +195,12 @@
             const string CertificateThumbprint = "0000000000000000000000000000000000000000";
             const string ServiceName = "serviceName";
             const string DeploymentSlot = "Production";
+            const string DeploymentName = "deploymentName";
+            Uri packageUrl = new Uri("http://my.url");
+            const string Label = "deploymentLabel";
+            const string ConfigurationFilePath = @"C:\PathTo\MyPackageConfiguration.cscfg";
+            const bool StartDeployment = true;
+            const bool TreatWarningsAsError = true;
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -172,7 +214,7 @@
             {
                 notToday = DayOfWeek.Monday;
             }
-            
+
             const int PollingIntervalInMinutes = 60;
 
             // Arrange
@@ -181,7 +223,7 @@
 
             // Act
             mockRepository.ReplayAll();
-            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+            DeploymentCreateForecastWorker deploymentCreateForecastWorker = new DeploymentCreateForecastWorker(
                 mockDeployment,
                 mockOperation,
                 subscriptionId,
@@ -189,8 +231,14 @@
                 ServiceName,
                 DeploymentSlot,
                 new[] { new ScheduleDay { DayOfWeek = notToday, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                DeploymentName,
+                packageUrl,
+                Label,
+                ConfigurationFilePath,
+                StartDeployment,
+                TreatWarningsAsError,
                 PollingIntervalInMinutes);
-            deploymentDeleteForecastWorker.DoWork();
+            deploymentCreateForecastWorker.DoWork();
 
             // Assert
             mockRepository.VerifyAll();
