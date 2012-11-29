@@ -7,6 +7,7 @@
 
     using StealFocus.Forecast.Configuration;
     using StealFocus.Forecast.WindowsAzure.HostedService;
+    using StealFocus.Forecast.WindowsAzure.StorageService;
 
     internal class Host
     {
@@ -27,6 +28,12 @@
             foreach (DeploymentCreateForecastWorker deploymentCreateForecastWorker in deploymentCreateForecastWorkers)
             {
                 this.ForecastWorkers.Add(deploymentCreateForecastWorker);
+            }
+
+            TableDeleteForecastWorker[] tableDeleteForecastWorkers = StealFocusForecastConfiguration.GetTableDeleteForecastWorkers();
+            foreach (TableDeleteForecastWorker tableDeleteForecastWorker in tableDeleteForecastWorkers)
+            {
+                this.ForecastWorkers.Add(tableDeleteForecastWorker);
             }
         }
 

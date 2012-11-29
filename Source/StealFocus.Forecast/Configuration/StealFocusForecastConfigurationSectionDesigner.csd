@@ -25,7 +25,7 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzurePackages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
+        <elementProperty name="WindowsAzurePackages" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
           </type>
@@ -35,14 +35,19 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleDefinitionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
+        <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentCreates" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentCreates" isReadOnly="false">
+        <elementProperty name="WindowsAzureDeploymentCreates" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentCreates" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="WindowsAzureTableDeletes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureTableDeletes" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>
@@ -129,7 +134,7 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DeploymentSlotConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="Schedules" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+        <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
@@ -223,7 +228,7 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
-        <elementProperty name="Schedules" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+        <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
@@ -271,6 +276,47 @@
         <elementProperty name="Days" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="days" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/DayConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="WindowsAzureTableDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureTableDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="WindowsAzureTableDeleteConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="StorageAccountName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="StorageAccountKey" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountKey" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="TableName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="tableName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>

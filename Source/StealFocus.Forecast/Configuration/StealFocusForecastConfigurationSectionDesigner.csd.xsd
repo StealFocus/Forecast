@@ -16,7 +16,7 @@
 					<xs:documentation>The WindowsAzureSubscriptions.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzurePackages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
+			<xs:element minOccurs="1" name="windowsAzurePackages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzurePackages.</xs:documentation>
 				</xs:annotation>
@@ -26,14 +26,19 @@
 					<xs:documentation>The ScheduleDefinitions.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureDeploymentDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
+			<xs:element minOccurs="1" name="windowsAzureDeploymentDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureDeploymentDeletes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureDeploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
+			<xs:element minOccurs="1" name="windowsAzureDeploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureDeploymentCreates.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="1" name="windowsAzureTableDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureTableDeletes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -120,7 +125,7 @@
 					<xs:documentation>The DeploymentSlots.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+			<xs:element minOccurs="1" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The Schedules.</xs:documentation>
 				</xs:annotation>
@@ -189,7 +194,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+			<xs:element minOccurs="1" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The Schedules.</xs:documentation>
 				</xs:annotation>
@@ -294,6 +299,49 @@
 		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureTableDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureTableDeleteConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="1" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Schedules.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="storageAccountName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The StorageAccountName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="storageAccountKey" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The StorageAccountKey.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="tableName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The TableName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

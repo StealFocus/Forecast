@@ -6,8 +6,8 @@
 
     using StealFocus.AzureExtensions.HostedService;
     using StealFocus.AzureExtensions.StorageService;
-
-    using WindowsAzure.HostedService;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
+    using StealFocus.Forecast.WindowsAzure.StorageService;
 
     internal partial class StealFocusForecastConfiguration
     {
@@ -73,6 +73,29 @@
             }
 
             return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
+        }
+
+        internal static TableDeleteForecastWorker[] GetTableDeleteForecastWorkers()
+        {
+            IConfigurationSource configurationSource = GetConfigurationSource();
+            ArrayList list = new ArrayList();
+            foreach (WindowsAzureTableDeleteConfiguration windowsAzureTableDeleteConfiguration in configurationSource.GetWindowsAzureTableDeleteConfigurations())
+            {
+                TableService tableService = new TableService(windowsAzureTableDeleteConfiguration.StorageAccountName, windowsAzureTableDeleteConfiguration.StorageAccountKey);
+                foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in windowsAzureTableDeleteConfiguration.Schedules)
+                {
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
+                    TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
+                        tableService,
+                        windowsAzureTableDeleteConfiguration.StorageAccountName,
+                        windowsAzureTableDeleteConfiguration.TableName, 
+                        scheduleDays,
+                        windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes);
+                    list.Add(tableDeleteForecastWorker);
+                }
+            }
+
+            return (TableDeleteForecastWorker[])list.ToArray(typeof(TableDeleteForecastWorker));
         }
 
         private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleDefinitionConfiguration scheduleConfiguration)

@@ -9,5 +9,7 @@
         WindowsAzureDeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations();
 
         WindowsAzureDeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations();
+
+        WindowsAzureTableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations();
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="Configuration\WindowsAzurePackageConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfigurationElement.partial.cs" />
+    <Compile Include="Configuration\WindowsAzureTableDeleteConfiguration.cs" />
     <Compile Include="ForecastException.cs" />
     <Compile Include="ForecastWorker.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="ScheduleDay.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentCreateForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorker.cs" />
+    <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\FxCopCustomDictionary.xml">

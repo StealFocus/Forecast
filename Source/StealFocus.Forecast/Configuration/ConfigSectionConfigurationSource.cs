@@ -82,6 +82,28 @@
             return (WindowsAzureDeploymentCreateConfiguration[])list.ToArray(typeof(WindowsAzureDeploymentCreateConfiguration));
         }
 
+        public WindowsAzureTableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations()
+        {
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureTableDeletes.Count);
+            foreach (WindowsAzureTableDeleteConfigurationElement windowsAzureTableDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureTableDeletes)
+            {
+                WindowsAzureTableDeleteConfiguration windowsAzureTableDeleteConfiguration = new WindowsAzureTableDeleteConfiguration();
+                windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
+                windowsAzureTableDeleteConfiguration.StorageAccountKey = windowsAzureTableDeleteConfigurationElement.StorageAccountKey;
+                windowsAzureTableDeleteConfiguration.StorageAccountName = windowsAzureTableDeleteConfigurationElement.StorageAccountName;
+                windowsAzureTableDeleteConfiguration.TableName = windowsAzureTableDeleteConfigurationElement.TableName;
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureTableDeleteConfigurationElement.Schedules)
+                {
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
+                    windowsAzureTableDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                }
+
+                list.Add(windowsAzureTableDeleteConfiguration);
+            }
+
+            return (WindowsAzureTableDeleteConfiguration[])list.ToArray(typeof(WindowsAzureTableDeleteConfiguration));
+        }
+
         private static ScheduleDefinitionConfiguration GetScheduleDefinitionConfiguration(string scheduleDefinitionName)
         {
             foreach (ScheduleDefinitionConfigurationElement scheduleDefinitionConfigurationElement in StealFocusForecastConfiguration.Instance.ScheduleDefinitions)
