@@ -20,32 +20,32 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
-        <elementProperty name="WindowsAzureSubscriptions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
+        <elementProperty name="WindowsAzureSubscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzurePackages" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
+        <elementProperty name="WindowsAzurePackages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="ScheduleDefinitions" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="scheduleDefinitions" isReadOnly="false">
+        <elementProperty name="ScheduleDefinitions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="scheduleDefinitions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleDefinitionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
+        <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentCreates" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentCreates" isReadOnly="false">
+        <elementProperty name="WindowsAzureDeploymentCreates" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentCreates" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureTableDeletes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="windowsAzureTableDeletes" isReadOnly="false">
+        <elementProperty name="WindowsAzureTableDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureTableDeletes" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElementCollection" />
           </type>

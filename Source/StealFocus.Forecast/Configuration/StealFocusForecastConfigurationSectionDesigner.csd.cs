@@ -112,7 +112,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureSubscriptions.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection WindowsAzureSubscriptions
         {
             get
@@ -138,7 +138,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzurePackages.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection WindowsAzurePackages
         {
             get
@@ -164,7 +164,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The ScheduleDefinitions.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.ScheduleDefinitionsPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.ScheduleDefinitionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollection ScheduleDefinitions
         {
             get
@@ -190,7 +190,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureDeploymentDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentDeletesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection WindowsAzureDeploymentDeletes
         {
             get
@@ -216,7 +216,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureDeploymentCreates.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection WindowsAzureDeploymentCreates
         {
             get
@@ -242,7 +242,7 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureTableDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureTableDeletesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureTableDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection WindowsAzureTableDeletes
         {
             get
