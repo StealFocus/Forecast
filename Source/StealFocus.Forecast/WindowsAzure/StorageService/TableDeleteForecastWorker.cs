@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Net;
     using System.Reflection;
 
     using log4net;
@@ -56,16 +57,31 @@
                         {
                             string deletingTableMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is sending a delete request for table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
                             Logger.Info(deletingTableMessage);
-                            bool deleteTableSuccess = this.tableService.DeleteTable(tableName);
-                            if (deleteTableSuccess)
+                            try
                             {
-                                string deleteTableSuccessMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' deleted table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
-                                Logger.Info(deleteTableSuccessMessage);
+                                bool deleteTableSuccess = this.tableService.DeleteTable(tableName);
+                                if (deleteTableSuccess)
+                                {
+                                    string deleteTableSuccessMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' deleted table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                    Logger.Info(deleteTableSuccessMessage);
+                                }
+                                else
+                                {
+                                    string deleteTableFailedMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                    Logger.Info(deleteTableFailedMessage);
+                                }
                             }
-                            else
+                            catch (WebException e)
                             {
-                                string deleteTableFailedMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}'. The table probably did not exist.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
-                                Logger.Info(deleteTableFailedMessage);
+                                HttpWebResponse httpWebResponse = (HttpWebResponse)e.Response;
+                                if (e.Status == WebExceptionStatus.ProtocolError && 
+                                    httpWebResponse.StatusCode == HttpStatusCode.NotFound)
+                                {
+                                    string tableDidNotExistMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}' as the table did not exist.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                    Logger.Info(tableDidNotExistMessage);
+                                }
+
+                                throw;
                             }
                         }
                     }
