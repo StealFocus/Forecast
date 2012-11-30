@@ -18,7 +18,7 @@
 
         private readonly string storageAccountName;
 
-        private readonly string tableName;
+        private readonly string[] tableNames;
 
         private readonly ScheduleDay[] scheduleDays;
 
@@ -29,14 +29,14 @@
         public TableDeleteForecastWorker(
             ITableService tableService,
             string storageAccountName,
-            string tableName,
+            string[] tableNames,
             ScheduleDay[] scheduleDays,
             int pollingIntervalInMinutes)
-            : base(GetWorkerId(storageAccountName, tableName))
+            : base(GetWorkerId(storageAccountName))
         {
             this.tableService = tableService;
             this.storageAccountName = storageAccountName;
-            this.tableName = tableName;
+            this.tableNames = tableNames;
             this.scheduleDays = scheduleDays;
             this.pollingIntervalInMinutes = pollingIntervalInMinutes;
         }
@@ -52,18 +52,21 @@
                 {
                     lock (SyncRoot)
                     {
-                        string deletingTableMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is sending a delete request for table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, this.tableName, this.storageAccountName);
-                        Logger.Info(deletingTableMessage);
-                        bool deleteTableSuccess = this.tableService.DeleteTable(this.tableName);
-                        if (deleteTableSuccess)
+                        foreach (string tableName in this.tableNames)
                         {
-                            string deleteTableSuccessMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' deleted table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, this.tableName, this.storageAccountName);
-                            Logger.Info(deleteTableSuccessMessage);
-                        }
-                        else
-                        {
-                            string deleteTableFailedMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}'. The table probably did not exist.", this.GetType().Name, this.Id, this.tableName, this.storageAccountName);
-                            Logger.Info(deleteTableFailedMessage);
+                            string deletingTableMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is sending a delete request for table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                            Logger.Info(deletingTableMessage);
+                            bool deleteTableSuccess = this.tableService.DeleteTable(tableName);
+                            if (deleteTableSuccess)
+                            {
+                                string deleteTableSuccessMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' deleted table name '{2}' under storage account name '{3}'.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                Logger.Info(deleteTableSuccessMessage);
+                            }
+                            else
+                            {
+                                string deleteTableFailedMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}'. The table probably did not exist.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                Logger.Info(deleteTableFailedMessage);
+                            }
                         }
                     }
                 }
@@ -77,9 +80,9 @@
             }
         }
 
-        private static string GetWorkerId(string storageAccountName, string tableName)
+        private static string GetWorkerId(string storageAccountName)
         {
-            return string.Format(CultureInfo.CurrentCulture, "{0}-{1}", storageAccountName, tableName);
+            return string.Format(CultureInfo.CurrentCulture, "{0}", storageAccountName);
         }
     }
 }

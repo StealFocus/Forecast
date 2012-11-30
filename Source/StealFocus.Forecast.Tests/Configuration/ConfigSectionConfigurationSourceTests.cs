@@ -52,6 +52,7 @@
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
             WindowsAzureTableDeleteConfiguration[] windowsAzureTableDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureTableDeleteConfigurations();
             Assert.AreEqual(1, windowsAzureTableDeleteConfigurations.Length);
+            Assert.AreEqual(2, windowsAzureTableDeleteConfigurations[0].TableNames.Count);
             Assert.AreEqual(3, windowsAzureTableDeleteConfigurations[0].Schedules.Count);
             Assert.AreEqual(5, windowsAzureTableDeleteConfigurations[0].Schedules[0].Days.Count);
             Assert.AreEqual(5, windowsAzureTableDeleteConfigurations[0].Schedules[1].Days.Count);

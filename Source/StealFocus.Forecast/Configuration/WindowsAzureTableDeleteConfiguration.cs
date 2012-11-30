@@ -6,6 +6,7 @@
     {
         public WindowsAzureTableDeleteConfiguration()
         {
+            this.TableNames = new Collection<string>();
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();
         }
 
@@ -13,9 +14,9 @@
 
         public string StorageAccountKey { get; set; }
 
-        public string TableName { get; set; }
-
         public int PollingIntervalInMinutes { get; set; }
+
+        public Collection<string> TableNames { get; private set;  }
 
         public Collection<ScheduleDefinitionConfiguration> Schedules { get; private set; }
     }

@@ -91,7 +91,11 @@
                 windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
                 windowsAzureTableDeleteConfiguration.StorageAccountKey = windowsAzureTableDeleteConfigurationElement.StorageAccountKey;
                 windowsAzureTableDeleteConfiguration.StorageAccountName = windowsAzureTableDeleteConfigurationElement.StorageAccountName;
-                windowsAzureTableDeleteConfiguration.TableName = windowsAzureTableDeleteConfigurationElement.TableName;
+                foreach (StorageTableConfigurationElement storageTableConfigurationElement in windowsAzureTableDeleteConfigurationElement.StorageTables)
+                {
+                    windowsAzureTableDeleteConfiguration.TableNames.Add(storageTableConfigurationElement.tableName);
+                }
+
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureTableDeleteConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);

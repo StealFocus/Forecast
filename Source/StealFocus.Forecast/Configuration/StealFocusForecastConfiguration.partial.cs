@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Globalization;
+    using System.Linq;
 
     using StealFocus.AzureExtensions.HostedService;
     using StealFocus.AzureExtensions.StorageService;
@@ -88,7 +89,7 @@
                     TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
                         tableService,
                         windowsAzureTableDeleteConfiguration.StorageAccountName,
-                        windowsAzureTableDeleteConfiguration.TableName, 
+                        windowsAzureTableDeleteConfiguration.TableNames.ToArray(), 
                         scheduleDays,
                         windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes);
                     list.Add(tableDeleteForecastWorker);

@@ -302,11 +302,6 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="TableName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="tableName" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
@@ -314,12 +309,31 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
+        <elementProperty name="StorageTables" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageTables" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/StorageTableConfigurationElementCollection" />
+          </type>
+        </elementProperty>
         <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="StorageTableConfigurationElementCollection" accessModifier="Internal" xmlItemName="storageTable" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/StorageTableConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="StorageTableConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="tableName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="tableName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>

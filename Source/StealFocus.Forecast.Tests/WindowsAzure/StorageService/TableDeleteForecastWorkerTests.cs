@@ -19,7 +19,8 @@
         {
             MockRepository mockRepository = new MockRepository();
             const string StorageAccountName = "storageAccountName";
-            const string TableName = "tableName";
+            const string TableName1 = "tableName1";
+            const string TableName2 = "tableName2";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -31,8 +32,9 @@
             // Arrange
             ITableService mockTableService = mockRepository.StrictMock<ITableService>();
             mockTableService
-                .Expect(ts => ts.DeleteTable(TableName))
-                .Repeat.Once()
+                .Expect(ts => ts.DeleteTable(string.Empty))
+                .IgnoreArguments()
+                .Repeat.Twice()
                 .Return(true);
 
             // Act
@@ -40,7 +42,7 @@
             TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
                 mockTableService,
                 StorageAccountName,
-                TableName,
+                new[] { TableName1, TableName2 },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             tableDeleteForecastWorker.DoWork();
@@ -71,7 +73,7 @@
             TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
                 mockTableService,
                 StorageAccountName,
-                TableName,
+                new[] { TableName },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             tableDeleteForecastWorker.DoWork();
@@ -110,7 +112,7 @@
             TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
                 mockTableService,
                 StorageAccountName,
-                TableName,
+                new[] { TableName },
                 new[] { new ScheduleDay { DayOfWeek = notToday, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             tableDeleteForecastWorker.DoWork();
