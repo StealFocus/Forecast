@@ -99,6 +99,29 @@
             return (TableDeleteForecastWorker[])list.ToArray(typeof(TableDeleteForecastWorker));
         }
 
+        internal static BlobContainerDeleteForecastWorker[] GetBlobContainerDeleteForecastWorkers()
+        {
+            IConfigurationSource configurationSource = GetConfigurationSource();
+            ArrayList list = new ArrayList();
+            foreach (WindowsAzureBlobContainerDeleteConfiguration windowsAzureBlobContainerDeleteConfiguration in configurationSource.GetWindowsAzureBlobContainerDeleteConfigurations())
+            {
+                BlobService blobService = new BlobService(windowsAzureBlobContainerDeleteConfiguration.StorageAccountName, windowsAzureBlobContainerDeleteConfiguration.StorageAccountKey);
+                foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in windowsAzureBlobContainerDeleteConfiguration.Schedules)
+                {
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
+                    BlobContainerDeleteForecastWorker blobContainerDeleteForecastWorker = new BlobContainerDeleteForecastWorker(
+                        blobService,
+                        windowsAzureBlobContainerDeleteConfiguration.StorageAccountName,
+                        windowsAzureBlobContainerDeleteConfiguration.BlobContainerNames.ToArray(),
+                        scheduleDays,
+                        windowsAzureBlobContainerDeleteConfiguration.PollingIntervalInMinutes);
+                    list.Add(blobContainerDeleteForecastWorker);
+                }
+            }
+
+            return (BlobContainerDeleteForecastWorker[])list.ToArray(typeof(BlobContainerDeleteForecastWorker));
+        }
+
         private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleDefinitionConfiguration scheduleConfiguration)
         {
             ScheduleDay[] scheduleDays = new ScheduleDay[scheduleConfiguration.Days.Count];

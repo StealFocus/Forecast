@@ -281,6 +281,32 @@ namespace StealFocus.Forecast.Configuration
             }
         }
         #endregion
+        
+        #region WindowsAzureBlobContainerDeletes Property
+        /// <summary>
+        /// The XML name of the <see cref="WindowsAzureBlobContainerDeletes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureBlobContainerDeletesPropertyName = "windowsAzureBlobContainerDeletes";
+        
+        /// <summary>
+        /// Gets or sets the WindowsAzureBlobContainerDeletes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureBlobContainerDeletes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection WindowsAzureBlobContainerDeletes
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace StealFocus.Forecast.Configuration
@@ -3378,6 +3404,546 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountKeyPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of WindowsAzureBlobContainerDeleteConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection.WindowsAzureBlobContainerDeleteConfigurationElementPropertyName)]
+    internal partial class WindowsAzureBlobContainerDeleteConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureBlobContainerDeleteConfigurationElementPropertyName = "windowsAzureBlobContainerDelete";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection.WindowsAzureBlobContainerDeleteConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection.WindowsAzureBlobContainerDeleteConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement)(element)).Id;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement this[object id]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement)(base.BaseGet(id)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureBlobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDelete)
+        {
+            base.BaseAdd(windowsAzureBlobContainerDelete);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureBlobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDelete)
+        {
+            base.BaseRemove(this.GetElementKey(windowsAzureBlobContainerDelete));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement GetItemByKey(string id)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement)(base.BaseGet(((object)(id)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureBlobContainerDeleteConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureBlobContainerDeleteConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Id Property
+        /// <summary>
+        /// The XML name of the <see cref="Id"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IdPropertyName = "id";
+        
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Id.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.IdPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Id
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.IdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.IdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region StorageAccountName Property
+        /// <summary>
+        /// The XML name of the <see cref="StorageAccountName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StorageAccountNamePropertyName = "storageAccountName";
+        
+        /// <summary>
+        /// Gets or sets the StorageAccountName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StorageAccountName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.StorageAccountNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string StorageAccountName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.StorageAccountNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.StorageAccountNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region PollingIntervalInMinutes Property
+        /// <summary>
+        /// The XML name of the <see cref="PollingIntervalInMinutes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PollingIntervalInMinutesPropertyName = "pollingIntervalInMinutes";
+        
+        /// <summary>
+        /// Gets or sets the PollingIntervalInMinutes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The PollingIntervalInMinutes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int PollingIntervalInMinutes
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region BlobContainers Property
+        /// <summary>
+        /// The XML name of the <see cref="BlobContainers"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string BlobContainersPropertyName = "blobContainers";
+        
+        /// <summary>
+        /// Gets or sets the BlobContainers.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The BlobContainers.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.BlobContainersPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollection BlobContainers
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.BlobContainersPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.BlobContainersPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Schedules Property
+        /// <summary>
+        /// The XML name of the <see cref="Schedules"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SchedulesPropertyName = "schedules";
+        
+        /// <summary>
+        /// Gets or sets the Schedules.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Schedules.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.SchedulesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection Schedules
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.SchedulesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement.SchedulesPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of BlobContainerConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollection.BlobContainerConfigurationElementPropertyName)]
+    internal partial class BlobContainerConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string BlobContainerConfigurationElementPropertyName = "blobContainer";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollection.BlobContainerConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollection.BlobContainerConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement)(element)).blobContainerName;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="blobContainerName">The key of the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement this[object blobContainerName]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement)(base.BaseGet(blobContainerName)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="blobContainer">The <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement blobContainer)
+        {
+            base.BaseAdd(blobContainer);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="blobContainer">The <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement blobContainer)
+        {
+            base.BaseRemove(this.GetElementKey(blobContainer));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="blobContainerName">The key of the <see cref="global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement GetItemByKey(string blobContainerName)
+        {
+            return ((global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement)(base.BaseGet(((object)(blobContainerName)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The BlobContainerConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class BlobContainerConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region blobContainerName Property
+        /// <summary>
+        /// The XML name of the <see cref="blobContainerName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string blobContainerNamePropertyName = "blobContainerName";
+        
+        /// <summary>
+        /// Gets or sets the blobContainerName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The blobContainerName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement.blobContainerNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string blobContainerName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement.blobContainerNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement.blobContainerNamePropertyName] = value;
             }
         }
         #endregion

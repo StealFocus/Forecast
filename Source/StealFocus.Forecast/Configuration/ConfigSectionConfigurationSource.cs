@@ -119,6 +119,33 @@
             return (WindowsAzureTableDeleteConfiguration[])list.ToArray(typeof(WindowsAzureTableDeleteConfiguration));
         }
 
+        public WindowsAzureBlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations()
+        {
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureBlobContainerDeletes.Count);
+            foreach (WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureBlobContainerDeletes)
+            {
+                WindowsAzureBlobContainerDeleteConfiguration windowsAzureBlobContainerDeleteConfiguration = new WindowsAzureBlobContainerDeleteConfiguration();
+                windowsAzureBlobContainerDeleteConfiguration.PollingIntervalInMinutes = windowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutes;
+                windowsAzureBlobContainerDeleteConfiguration.StorageAccountName = windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName;
+                WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName);
+                windowsAzureBlobContainerDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
+                foreach (BlobContainerConfigurationElement blobContainerConfigurationElement in windowsAzureBlobContainerDeleteConfigurationElement.BlobContainers)
+                {
+                    windowsAzureBlobContainerDeleteConfiguration.BlobContainerNames.Add(blobContainerConfigurationElement.blobContainerName);
+                }
+
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureBlobContainerDeleteConfigurationElement.Schedules)
+                {
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
+                    windowsAzureBlobContainerDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                }
+
+                list.Add(windowsAzureBlobContainerDeleteConfiguration);
+            }
+
+            return (WindowsAzureBlobContainerDeleteConfiguration[])list.ToArray(typeof(WindowsAzureBlobContainerDeleteConfiguration));
+        }
+
         private static ScheduleDefinitionConfiguration GetScheduleDefinitionConfiguration(string scheduleDefinitionName)
         {
             foreach (ScheduleDefinitionConfigurationElement scheduleDefinitionConfigurationElement in StealFocusForecastConfiguration.Instance.ScheduleDefinitions)

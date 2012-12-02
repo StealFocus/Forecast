@@ -66,5 +66,18 @@
             Assert.AreEqual(5, windowsAzureTableDeleteConfigurations[0].Schedules[1].Days.Count);
             Assert.AreEqual(2, windowsAzureTableDeleteConfigurations[0].Schedules[2].Days.Count);
         }
+
+        [TestMethod]
+        public void UnitTestGetWindowsAzureBlobContainerDeleteConfigurations()
+        {
+            ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
+            WindowsAzureBlobContainerDeleteConfiguration[] windowsAzureBlobContainerDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureBlobContainerDeleteConfigurations();
+            Assert.AreEqual(1, windowsAzureBlobContainerDeleteConfigurations.Length);
+            Assert.AreEqual(2, windowsAzureBlobContainerDeleteConfigurations[0].BlobContainerNames.Count);
+            Assert.AreEqual(3, windowsAzureBlobContainerDeleteConfigurations[0].Schedules.Count);
+            Assert.AreEqual(5, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[0].Days.Count);
+            Assert.AreEqual(5, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[1].Days.Count);
+            Assert.AreEqual(2, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[2].Days.Count);
+        }
     }
 }

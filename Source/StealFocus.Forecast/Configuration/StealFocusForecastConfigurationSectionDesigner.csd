@@ -55,6 +55,11 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElementCollection" />
           </type>
         </elementProperty>
+        <elementProperty name="WindowsAzureBlobContainerDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureBlobContainerDeletes" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElementCollection" />
+          </type>
+        </elementProperty>
       </elementProperties>
     </configurationSection>
     <configurationElementCollection name="WindowsAzureSubscriptionConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureSubscription" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
@@ -348,6 +353,56 @@
           </type>
         </attributeProperty>
         <attributeProperty name="storageAccountKey" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountKey" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="WindowsAzureBlobContainerDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureBlobContainerDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="WindowsAzureBlobContainerDeleteConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="StorageAccountName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="BlobContainers" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="blobContainers" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/BlobContainerConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="BlobContainerConfigurationElementCollection" accessModifier="Internal" xmlItemName="blobContainer" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/BlobContainerConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="BlobContainerConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="blobContainerName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="blobContainerName" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>

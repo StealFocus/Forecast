@@ -75,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzureBlobContainerDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureDeploymentCreateConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureDeploymentDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzurePackageConfiguration.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="ScheduleDay.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentCreateForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorker.cs" />
+    <Compile Include="WindowsAzure\StorageService\BlobContainerDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorker.cs" />
   </ItemGroup>
   <ItemGroup>

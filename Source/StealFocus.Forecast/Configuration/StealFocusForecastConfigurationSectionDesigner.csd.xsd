@@ -46,6 +46,11 @@
 					<xs:documentation>The WindowsAzureTableDeletes.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="windowsAzureBlobContainerDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureBlobContainerDeletes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="customConfigurationSourceType" use="optional" type="xs:string">
 			<xs:annotation>
@@ -383,6 +388,62 @@
 		<xs:attribute name="storageAccountKey" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The storageAccountKey.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureBlobContainerDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureBlobContainerDeleteConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="1" name="blobContainers" type="tns:StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The BlobContainers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="1" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Schedules.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="storageAccountName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The StorageAccountName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="blobContainer" type="tns:StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The BlobContainerConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.BlobContainerConfigurationElementCT">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="blobContainerName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The blobContainerName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

@@ -35,6 +35,12 @@
             {
                 this.ForecastWorkers.Add(tableDeleteForecastWorker);
             }
+
+            BlobContainerDeleteForecastWorker[] blobContainerDeleteForecastWorkers = StealFocusForecastConfiguration.GetBlobContainerDeleteForecastWorkers();
+            foreach (BlobContainerDeleteForecastWorker blobContainerDeleteForecastWorker in blobContainerDeleteForecastWorkers)
+            {
+                this.ForecastWorkers.Add(blobContainerDeleteForecastWorker);
+            }
         }
 
         private List<ForecastWorker> ForecastWorkers { get; set; }
