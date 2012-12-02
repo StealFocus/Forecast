@@ -78,6 +78,7 @@
     <Compile Include="Configuration\WindowsAzureDeploymentCreateConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureDeploymentDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzurePackageConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzureStorageAccountConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfigurationElement.partial.cs" />
     <Compile Include="Configuration\WindowsAzureTableDeleteConfiguration.cs" />

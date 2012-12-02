@@ -126,6 +126,32 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
+        #region WindowsAzureStorageAccounts Property
+        /// <summary>
+        /// The XML name of the <see cref="WindowsAzureStorageAccounts"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureStorageAccountsPropertyName = "windowsAzureStorageAccounts";
+        
+        /// <summary>
+        /// Gets or sets the WindowsAzureStorageAccounts.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureStorageAccounts.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection WindowsAzureStorageAccounts
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region WindowsAzurePackages Property
         /// <summary>
         /// The XML name of the <see cref="WindowsAzurePackages"/> property.
@@ -2816,32 +2842,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region StorageAccountKey Property
-        /// <summary>
-        /// The XML name of the <see cref="StorageAccountKey"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string StorageAccountKeyPropertyName = "storageAccountKey";
-        
-        /// <summary>
-        /// Gets or sets the StorageAccountKey.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The StorageAccountKey.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement.StorageAccountKeyPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string StorageAccountKey
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement.StorageAccountKeyPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement.StorageAccountKeyPropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region PollingIntervalInMinutes Property
         /// <summary>
         /// The XML name of the <see cref="PollingIntervalInMinutes"/> property.
@@ -3134,6 +3134,250 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.StorageTableConfigurationElement.tableNamePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of WindowsAzureStorageAccountConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection.WindowsAzureStorageAccountConfigurationElementPropertyName)]
+    internal partial class WindowsAzureStorageAccountConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureStorageAccountConfigurationElementPropertyName = "windowsAzureStorageAccount";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection.WindowsAzureStorageAccountConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection.WindowsAzureStorageAccountConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement)(element)).storageAccountName;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="storageAccountName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement this[object storageAccountName]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement)(base.BaseGet(storageAccountName)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureStorageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccount)
+        {
+            base.BaseAdd(windowsAzureStorageAccount);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="windowsAzureStorageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccount)
+        {
+            base.BaseRemove(this.GetElementKey(windowsAzureStorageAccount));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="storageAccountName">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement GetItemByKey(string storageAccountName)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement)(base.BaseGet(((object)(storageAccountName)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureStorageAccountConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureStorageAccountConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region storageAccountName Property
+        /// <summary>
+        /// The XML name of the <see cref="storageAccountName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string storageAccountNamePropertyName = "storageAccountName";
+        
+        /// <summary>
+        /// Gets or sets the storageAccountName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The storageAccountName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string storageAccountName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region storageAccountKey Property
+        /// <summary>
+        /// The XML name of the <see cref="storageAccountKey"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string storageAccountKeyPropertyName = "storageAccountKey";
+        
+        /// <summary>
+        /// Gets or sets the storageAccountKey.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The storageAccountKey.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountKeyPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string storageAccountKey
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountKeyPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement.storageAccountKeyPropertyName] = value;
             }
         }
         #endregion

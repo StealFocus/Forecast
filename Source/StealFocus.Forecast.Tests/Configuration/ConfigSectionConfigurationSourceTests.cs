@@ -16,6 +16,14 @@
         }
 
         [TestMethod]
+        public void UnitTestGetWindowsAzureStorageAccountConfiguration()
+        {
+            ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
+            WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = configSectionConfigurationSource.GetWindowsAzureStorageAccountConfiguration("myStorageAccountName");
+            Assert.IsNotNull(windowsAzureStorageAccountConfiguration);
+        }
+
+        [TestMethod]
         public void UnitTestGetWindowsAzurePackageConfiguration()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();

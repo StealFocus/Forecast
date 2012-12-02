@@ -4,6 +4,8 @@
     {
         WindowsAzureSubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId);
 
+        WindowsAzureStorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName);
+
         WindowsAzurePackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId);
 
         WindowsAzureDeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations();

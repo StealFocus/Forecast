@@ -16,6 +16,11 @@
 					<xs:documentation>The WindowsAzureSubscriptions.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="windowsAzureStorageAccounts" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureStorageAccounts.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element minOccurs="0" name="windowsAzurePackages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzurePackages.</xs:documentation>
@@ -334,11 +339,6 @@
 				<xs:documentation>The StorageAccountName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="storageAccountKey" use="required" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>The StorageAccountKey.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
 		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
 			<xs:annotation>
 				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
@@ -360,6 +360,29 @@
 		<xs:attribute name="tableName" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The tableName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureStorageAccount" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureStorageAccountConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCT">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="storageAccountName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The storageAccountName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="storageAccountKey" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The storageAccountKey.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

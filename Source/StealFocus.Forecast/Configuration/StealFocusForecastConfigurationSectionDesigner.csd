@@ -25,6 +25,11 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
         </elementProperty>
+        <elementProperty name="WindowsAzureStorageAccounts" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureStorageAccounts" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElementCollection" />
+          </type>
+        </elementProperty>
         <elementProperty name="WindowsAzurePackages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
@@ -297,11 +302,6 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="StorageAccountKey" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountKey" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
@@ -329,6 +329,25 @@
     <configurationElement name="StorageTableConfigurationElement" accessModifier="Internal">
       <attributeProperties>
         <attributeProperty name="tableName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="tableName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="WindowsAzureStorageAccountConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureStorageAccount" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="WindowsAzureStorageAccountConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="storageAccountName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="storageAccountName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="storageAccountKey" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="storageAccountKey" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>

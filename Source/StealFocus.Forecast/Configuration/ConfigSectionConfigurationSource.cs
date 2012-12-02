@@ -16,6 +16,16 @@
                 };
         }
 
+        public WindowsAzureStorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName)
+        {
+            WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccountConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzureStorageAccounts[windowsAzureStorageAccountName];
+            return new WindowsAzureStorageAccountConfiguration
+                {
+                    StorageAccountName = windowsAzureStorageAccountConfigurationElement.storageAccountName,
+                    StorageAccountKey = windowsAzureStorageAccountConfigurationElement.storageAccountKey
+                };
+        }
+
         public WindowsAzurePackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId)
         {
             WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzurePackages[windowsAzurePackageConfigurationId];
@@ -89,8 +99,9 @@
             {
                 WindowsAzureTableDeleteConfiguration windowsAzureTableDeleteConfiguration = new WindowsAzureTableDeleteConfiguration();
                 windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
-                windowsAzureTableDeleteConfiguration.StorageAccountKey = windowsAzureTableDeleteConfigurationElement.StorageAccountKey;
                 windowsAzureTableDeleteConfiguration.StorageAccountName = windowsAzureTableDeleteConfigurationElement.StorageAccountName;
+                WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureTableDeleteConfigurationElement.StorageAccountName);
+                windowsAzureTableDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
                 foreach (StorageTableConfigurationElement storageTableConfigurationElement in windowsAzureTableDeleteConfigurationElement.StorageTables)
                 {
                     windowsAzureTableDeleteConfiguration.TableNames.Add(storageTableConfigurationElement.tableName);
