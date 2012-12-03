@@ -424,11 +424,20 @@
 					<xs:documentation>The Subscriptions.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="storageAccounts" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
+			<xs:element minOccurs="0" name="hostedService" type="tns:StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElementCT">
 				<xs:annotation>
-					<xs:documentation>The StorageAccounts.</xs:documentation>
+					<xs:documentation>The HostedService.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="storageService" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The StorageService.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElementCT">
+		<xs:sequence>
 			<xs:element minOccurs="0" name="packages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The Packages.</xs:documentation>
@@ -442,6 +451,15 @@
 			<xs:element minOccurs="0" name="deploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The DeploymentCreates.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="storageAccounts" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The StorageAccounts.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element minOccurs="0" name="tableDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">

@@ -22,7 +22,7 @@
 
         public StorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName)
         {
-            WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccountConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzure.StorageAccounts[windowsAzureStorageAccountName];
+            WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccountConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.StorageAccounts[windowsAzureStorageAccountName];
             return new StorageAccountConfiguration
                 {
                     StorageAccountName = windowsAzureStorageAccountConfigurationElement.storageAccountName,
@@ -32,7 +32,7 @@
 
         public PackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId)
         {
-            WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzure.Packages[windowsAzurePackageConfigurationId];
+            WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.Packages[windowsAzurePackageConfigurationId];
             return new PackageConfiguration
                 {
                     BlobName = windowsAzurePackageConfigurationElement.BlobName,
@@ -44,8 +44,8 @@
 
         public DeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations()
         {
-            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.DeploymentDeletes.Count);
-            foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.DeploymentDeletes)
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.DeploymentDeletes.Count);
+            foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.DeploymentDeletes)
             {
                 DeploymentDeleteConfiguration deploymentDeleteConfiguration = new DeploymentDeleteConfiguration();
                 deploymentDeleteConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes;
@@ -70,8 +70,8 @@
 
         public DeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations()
         {
-            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.DeploymentCreates.Count);
-            foreach (WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreateConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.DeploymentCreates)
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.DeploymentCreates.Count);
+            foreach (WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreateConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.DeploymentCreates)
             {
                 DeploymentCreateConfiguration deploymentCreateConfiguration = new DeploymentCreateConfiguration();
                 deploymentCreateConfiguration.DeploymentLabel = windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel;
@@ -98,8 +98,8 @@
 
         public TableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations()
         {
-            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.TableDeletes.Count);
-            foreach (WindowsAzureTableDeleteConfigurationElement windowsAzureTableDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.TableDeletes)
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.TableDeletes.Count);
+            foreach (WindowsAzureTableDeleteConfigurationElement windowsAzureTableDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.TableDeletes)
             {
                 TableDeleteConfiguration tableDeleteConfiguration = new TableDeleteConfiguration();
                 tableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
@@ -125,8 +125,8 @@
 
         public BlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations()
         {
-            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.BlobContainerDeletes.Count);
-            foreach (WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.BlobContainerDeletes)
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.BlobContainerDeletes.Count);
+            foreach (WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.BlobContainerDeletes)
             {
                 BlobContainerDeleteConfiguration blobContainerDeleteConfiguration = new BlobContainerDeleteConfiguration();
                 blobContainerDeleteConfiguration.PollingIntervalInMinutes = windowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutes;

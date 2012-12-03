@@ -386,11 +386,20 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="StorageAccounts" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="storageAccounts" isReadOnly="false">
+        <elementProperty name="HostedService" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="hostedService" isReadOnly="false">
           <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElementCollection" />
+            <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureHostedServiceConfigurationElement" />
           </type>
         </elementProperty>
+        <elementProperty name="StorageService" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="storageService" isReadOnly="false">
+          <type>
+            <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageServiceConfigurationElement" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElement name="WindowsAzureHostedServiceConfigurationElement" accessModifier="Internal">
+      <elementProperties>
         <elementProperty name="Packages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="packages" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
@@ -404,6 +413,15 @@
         <elementProperty name="DeploymentCreates" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="deploymentCreates" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElement name="WindowsAzureStorageServiceConfigurationElement" accessModifier="Internal">
+      <elementProperties>
+        <elementProperty name="StorageAccounts" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="storageAccounts" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElementCollection" />
           </type>
         </elementProperty>
         <elementProperty name="TableDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="tableDeletes" isReadOnly="false">

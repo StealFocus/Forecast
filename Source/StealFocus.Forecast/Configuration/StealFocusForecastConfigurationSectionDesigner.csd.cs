@@ -3840,29 +3840,77 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region StorageAccounts Property
+        #region HostedService Property
         /// <summary>
-        /// The XML name of the <see cref="StorageAccounts"/> property.
+        /// The XML name of the <see cref="HostedService"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string StorageAccountsPropertyName = "storageAccounts";
+        internal const string HostedServicePropertyName = "hostedService";
         
         /// <summary>
-        /// Gets or sets the StorageAccounts.
+        /// Gets or sets the HostedService.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The StorageAccounts.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection StorageAccounts
+        [global::System.ComponentModel.DescriptionAttribute("The HostedService.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.HostedServicePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement HostedService
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.HostedServicePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.HostedServicePropertyName] = value;
             }
+        }
+        #endregion
+        
+        #region StorageService Property
+        /// <summary>
+        /// The XML name of the <see cref="StorageService"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StorageServicePropertyName = "storageService";
+        
+        /// <summary>
+        /// Gets or sets the StorageService.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StorageService.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageServicePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement StorageService
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageServicePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageServicePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureHostedServiceConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureHostedServiceConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
         }
         #endregion
         
@@ -3878,16 +3926,16 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Packages.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.PackagesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection Packages
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.PackagesPropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.PackagesPropertyName] = value;
             }
         }
         #endregion
@@ -3904,16 +3952,16 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The DeploymentDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection DeploymentDeletes
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentDeletesPropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentDeletesPropertyName] = value;
             }
         }
         #endregion
@@ -3930,16 +3978,64 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The DeploymentCreates.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection DeploymentCreates
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentCreatesPropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.DeploymentCreatesPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureStorageServiceConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureStorageServiceConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region StorageAccounts Property
+        /// <summary>
+        /// The XML name of the <see cref="StorageAccounts"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StorageAccountsPropertyName = "storageAccounts";
+        
+        /// <summary>
+        /// Gets or sets the StorageAccounts.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StorageAccounts.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.StorageAccountsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection StorageAccounts
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.StorageAccountsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.StorageAccountsPropertyName] = value;
             }
         }
         #endregion
@@ -3956,16 +4052,16 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The TableDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.TableDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection TableDeletes
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.TableDeletesPropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.TableDeletesPropertyName] = value;
             }
         }
         #endregion
@@ -3982,16 +4078,16 @@ namespace StealFocus.Forecast.Configuration
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
         [global::System.ComponentModel.DescriptionAttribute("The BlobContainerDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.BlobContainerDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
         public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection BlobContainerDeletes
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.BlobContainerDeletesPropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.BlobContainerDeletesPropertyName] = value;
             }
         }
         #endregion
