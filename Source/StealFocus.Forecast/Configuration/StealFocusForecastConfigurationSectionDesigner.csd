@@ -20,49 +20,19 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
-        <elementProperty name="WindowsAzureSubscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureSubscriptions" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-        <elementProperty name="WindowsAzureStorageAccounts" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureStorageAccounts" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-        <elementProperty name="WindowsAzurePackages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzurePackages" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
-          </type>
-        </elementProperty>
         <elementProperty name="ScheduleDefinitions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="scheduleDefinitions" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleDefinitionConfigurationElementCollection" />
           </type>
         </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentDeletes" isReadOnly="false">
+        <elementProperty name="WindowsAzure" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzure" isReadOnly="false">
           <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-        <elementProperty name="WindowsAzureDeploymentCreates" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureDeploymentCreates" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-        <elementProperty name="WindowsAzureTableDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureTableDeletes" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElementCollection" />
-          </type>
-        </elementProperty>
-        <elementProperty name="WindowsAzureBlobContainerDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="windowsAzureBlobContainerDeletes" isReadOnly="false">
-          <type>
-            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElementCollection" />
+            <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureConfigurationElement" />
           </type>
         </elementProperty>
       </elementProperties>
     </configurationSection>
-    <configurationElementCollection name="WindowsAzureSubscriptionConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureSubscription" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureSubscriptionConfigurationElementCollection" accessModifier="Internal" xmlItemName="subscription" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElement" />
       </itemType>
@@ -86,7 +56,7 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzurePackageConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzurePackage" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzurePackageConfigurationElementCollection" accessModifier="Internal" xmlItemName="package" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElement" />
       </itemType>
@@ -115,7 +85,7 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureDeploymentDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureDeploymentDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureDeploymentDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="deploymentDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElement" />
       </itemType>
@@ -179,7 +149,7 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureDeploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureDeploymentCreateConfigurationElementCollection" accessModifier="Internal" xmlItemName="deploymentCreate" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElement" />
       </itemType>
@@ -290,7 +260,7 @@
         </elementProperty>
       </elementProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureTableDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureTableDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureTableDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="tableDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElement" />
       </itemType>
@@ -340,7 +310,7 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureStorageAccountConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureStorageAccount" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureStorageAccountConfigurationElementCollection" accessModifier="Internal" xmlItemName="storageAccount" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElement" />
       </itemType>
@@ -359,7 +329,7 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
-    <configurationElementCollection name="WindowsAzureBlobContainerDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="windowsAzureBlobContainerDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+    <configurationElementCollection name="WindowsAzureBlobContainerDeleteConfigurationElementCollection" accessModifier="Internal" xmlItemName="blobContainerDelete" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
       <itemType>
         <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElement" />
       </itemType>
@@ -408,6 +378,45 @@
           </type>
         </attributeProperty>
       </attributeProperties>
+    </configurationElement>
+    <configurationElement name="WindowsAzureConfigurationElement" accessModifier="Internal">
+      <elementProperties>
+        <elementProperty name="Subscriptions" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="subscriptions" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureSubscriptionConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="StorageAccounts" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="storageAccounts" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureStorageAccountConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="Packages" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="packages" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="DeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="deploymentDeletes" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="DeploymentCreates" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="deploymentCreates" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="TableDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="tableDeletes" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureTableDeleteConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="BlobContainerDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="blobContainerDeletes" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>

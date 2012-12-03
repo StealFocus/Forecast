@@ -11,44 +11,14 @@
 	<xs:element name="stealFocusForecastConfiguration" type="tns:StealFocus.Forecast.Configuration.StealFocusForecastConfigurationCT" />
 	<xs:complexType name="StealFocus.Forecast.Configuration.StealFocusForecastConfigurationCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" name="windowsAzureSubscriptions" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzureSubscriptions.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureStorageAccounts" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzureStorageAccounts.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzurePackages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzurePackages.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element minOccurs="0" name="scheduleDefinitions" type="tns:StealFocus.Forecast.Configuration.ScheduleDefinitionConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The ScheduleDefinitions.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureDeploymentDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
+			<xs:element minOccurs="0" name="windowsAzure" type="tns:StealFocus.Forecast.Configuration.WindowsAzureConfigurationElementCT">
 				<xs:annotation>
-					<xs:documentation>The WindowsAzureDeploymentDeletes.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureDeploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzureDeploymentCreates.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureTableDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzureTableDeletes.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element minOccurs="0" name="windowsAzureBlobContainerDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollectionCT">
-				<xs:annotation>
-					<xs:documentation>The WindowsAzureBlobContainerDeletes.</xs:documentation>
+					<xs:documentation>The WindowsAzure.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -60,7 +30,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureSubscription" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="subscription" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureSubscriptionConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -88,7 +58,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzurePackage" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="package" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzurePackageConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -121,7 +91,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureDeploymentDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="deploymentDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureDeploymentDeleteConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -195,7 +165,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureDeploymentCreate" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="deploymentCreate" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureDeploymentCreateConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -314,7 +284,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureTableDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="tableDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureTableDeleteConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -370,7 +340,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureStorageAccount" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="storageAccount" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureStorageAccountConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -393,7 +363,7 @@
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollectionCT">
 		<xs:sequence>
-			<xs:element minOccurs="0" maxOccurs="unbounded" name="windowsAzureBlobContainerDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCT">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="blobContainerDelete" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCT">
 				<xs:annotation>
 					<xs:documentation>The WindowsAzureBlobContainerDeleteConfigurationElement Configuration Element.</xs:documentation>
 				</xs:annotation>
@@ -446,5 +416,44 @@
 				<xs:documentation>The blobContainerName.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="subscriptions" type="tns:StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Subscriptions.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="storageAccounts" type="tns:StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The StorageAccounts.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="packages" type="tns:StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Packages.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="deploymentDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The DeploymentDeletes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="deploymentCreates" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The DeploymentCreates.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="tableDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The TableDeletes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="blobContainerDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The BlobContainerDeletes.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

@@ -100,84 +100,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region WindowsAzureSubscriptions Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzureSubscriptions"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureSubscriptionsPropertyName = "windowsAzureSubscriptions";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzureSubscriptions.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureSubscriptions.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection WindowsAzureSubscriptions
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureSubscriptionsPropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region WindowsAzureStorageAccounts Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzureStorageAccounts"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureStorageAccountsPropertyName = "windowsAzureStorageAccounts";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzureStorageAccounts.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureStorageAccounts.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection WindowsAzureStorageAccounts
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureStorageAccountsPropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region WindowsAzurePackages Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzurePackages"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzurePackagesPropertyName = "windowsAzurePackages";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzurePackages.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzurePackages.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection WindowsAzurePackages
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePackagesPropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region ScheduleDefinitions Property
         /// <summary>
         /// The XML name of the <see cref="ScheduleDefinitions"/> property.
@@ -204,106 +126,28 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region WindowsAzureDeploymentDeletes Property
+        #region WindowsAzure Property
         /// <summary>
-        /// The XML name of the <see cref="WindowsAzureDeploymentDeletes"/> property.
+        /// The XML name of the <see cref="WindowsAzure"/> property.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureDeploymentDeletesPropertyName = "windowsAzureDeploymentDeletes";
+        internal const string WindowsAzurePropertyName = "windowsAzure";
         
         /// <summary>
-        /// Gets or sets the WindowsAzureDeploymentDeletes.
+        /// Gets or sets the WindowsAzure.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureDeploymentDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection WindowsAzureDeploymentDeletes
+        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzure.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement WindowsAzure
         {
             get
             {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentDeletesPropertyName]));
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePropertyName]));
             }
             set
             {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentDeletesPropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region WindowsAzureDeploymentCreates Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzureDeploymentCreates"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureDeploymentCreatesPropertyName = "windowsAzureDeploymentCreates";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzureDeploymentCreates.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureDeploymentCreates.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection WindowsAzureDeploymentCreates
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureDeploymentCreatesPropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region WindowsAzureTableDeletes Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzureTableDeletes"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureTableDeletesPropertyName = "windowsAzureTableDeletes";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzureTableDeletes.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureTableDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureTableDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection WindowsAzureTableDeletes
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureTableDeletesPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureTableDeletesPropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region WindowsAzureBlobContainerDeletes Property
-        /// <summary>
-        /// The XML name of the <see cref="WindowsAzureBlobContainerDeletes"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureBlobContainerDeletesPropertyName = "windowsAzureBlobContainerDeletes";
-        
-        /// <summary>
-        /// Gets or sets the WindowsAzureBlobContainerDeletes.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The WindowsAzureBlobContainerDeletes.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
-        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection WindowsAzureBlobContainerDeletes
-        {
-            get
-            {
-                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzureBlobContainerDeletesPropertyName] = value;
+                base[global::StealFocus.Forecast.Configuration.StealFocusForecastConfiguration.WindowsAzurePropertyName] = value;
             }
         }
         #endregion
@@ -325,7 +169,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureSubscriptionConfigurationElementPropertyName = "windowsAzureSubscription";
+        internal const string WindowsAzureSubscriptionConfigurationElementPropertyName = "subscription";
         #endregion
         
         #region Overrides
@@ -425,11 +269,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureSubscription">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> to add.</param>
+        /// <param name="subscription">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement windowsAzureSubscription)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement subscription)
         {
-            base.BaseAdd(windowsAzureSubscription);
+            base.BaseAdd(subscription);
         }
         #endregion
         
@@ -437,11 +281,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureSubscription">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> to remove.</param>
+        /// <param name="subscription">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement windowsAzureSubscription)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElement subscription)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureSubscription));
+            base.BaseRemove(this.GetElementKey(subscription));
         }
         #endregion
         
@@ -595,7 +439,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzurePackageConfigurationElementPropertyName = "windowsAzurePackage";
+        internal const string WindowsAzurePackageConfigurationElementPropertyName = "package";
         #endregion
         
         #region Overrides
@@ -695,11 +539,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzurePackage">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> to add.</param>
+        /// <param name="package">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement windowsAzurePackage)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement package)
         {
-            base.BaseAdd(windowsAzurePackage);
+            base.BaseAdd(package);
         }
         #endregion
         
@@ -707,11 +551,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzurePackage">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> to remove.</param>
+        /// <param name="package">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement windowsAzurePackage)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElement package)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzurePackage));
+            base.BaseRemove(this.GetElementKey(package));
         }
         #endregion
         
@@ -891,7 +735,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureDeploymentDeleteConfigurationElementPropertyName = "windowsAzureDeploymentDelete";
+        internal const string WindowsAzureDeploymentDeleteConfigurationElementPropertyName = "deploymentDelete";
         #endregion
         
         #region Overrides
@@ -991,11 +835,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureDeploymentDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to add.</param>
+        /// <param name="deploymentDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDelete)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement deploymentDelete)
         {
-            base.BaseAdd(windowsAzureDeploymentDelete);
+            base.BaseAdd(deploymentDelete);
         }
         #endregion
         
@@ -1003,11 +847,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureDeploymentDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to remove.</param>
+        /// <param name="deploymentDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDelete)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElement deploymentDelete)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureDeploymentDelete));
+            base.BaseRemove(this.GetElementKey(deploymentDelete));
         }
         #endregion
         
@@ -1649,7 +1493,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureDeploymentCreateConfigurationElementPropertyName = "windowsAzureDeploymentCreate";
+        internal const string WindowsAzureDeploymentCreateConfigurationElementPropertyName = "deploymentCreate";
         #endregion
         
         #region Overrides
@@ -1749,11 +1593,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureDeploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to add.</param>
+        /// <param name="deploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreate)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement deploymentCreate)
         {
-            base.BaseAdd(windowsAzureDeploymentCreate);
+            base.BaseAdd(deploymentCreate);
         }
         #endregion
         
@@ -1761,11 +1605,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureDeploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to remove.</param>
+        /// <param name="deploymentCreate">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreate)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElement deploymentCreate)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureDeploymentCreate));
+            base.BaseRemove(this.GetElementKey(deploymentCreate));
         }
         #endregion
         
@@ -2641,7 +2485,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureTableDeleteConfigurationElementPropertyName = "windowsAzureTableDelete";
+        internal const string WindowsAzureTableDeleteConfigurationElementPropertyName = "tableDelete";
         #endregion
         
         #region Overrides
@@ -2741,11 +2585,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureTableDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> to add.</param>
+        /// <param name="tableDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement windowsAzureTableDelete)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement tableDelete)
         {
-            base.BaseAdd(windowsAzureTableDelete);
+            base.BaseAdd(tableDelete);
         }
         #endregion
         
@@ -2753,11 +2597,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureTableDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> to remove.</param>
+        /// <param name="tableDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement windowsAzureTableDelete)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElement tableDelete)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureTableDelete));
+            base.BaseRemove(this.GetElementKey(tableDelete));
         }
         #endregion
         
@@ -3181,7 +3025,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureStorageAccountConfigurationElementPropertyName = "windowsAzureStorageAccount";
+        internal const string WindowsAzureStorageAccountConfigurationElementPropertyName = "storageAccount";
         #endregion
         
         #region Overrides
@@ -3281,11 +3125,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureStorageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to add.</param>
+        /// <param name="storageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccount)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement storageAccount)
         {
-            base.BaseAdd(windowsAzureStorageAccount);
+            base.BaseAdd(storageAccount);
         }
         #endregion
         
@@ -3293,11 +3137,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureStorageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to remove.</param>
+        /// <param name="storageAccount">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccount)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElement storageAccount)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureStorageAccount));
+            base.BaseRemove(this.GetElementKey(storageAccount));
         }
         #endregion
         
@@ -3425,7 +3269,7 @@ namespace StealFocus.Forecast.Configuration
         /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> instances in this collection.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string WindowsAzureBlobContainerDeleteConfigurationElementPropertyName = "windowsAzureBlobContainerDelete";
+        internal const string WindowsAzureBlobContainerDeleteConfigurationElementPropertyName = "blobContainerDelete";
         #endregion
         
         #region Overrides
@@ -3525,11 +3369,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureBlobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to add.</param>
+        /// <param name="blobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to add.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDelete)
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement blobContainerDelete)
         {
-            base.BaseAdd(windowsAzureBlobContainerDelete);
+            base.BaseAdd(blobContainerDelete);
         }
         #endregion
         
@@ -3537,11 +3381,11 @@ namespace StealFocus.Forecast.Configuration
         /// <summary>
         /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
         /// </summary>
-        /// <param name="windowsAzureBlobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to remove.</param>
+        /// <param name="blobContainerDelete">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement"/> to remove.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDelete)
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElement blobContainerDelete)
         {
-            base.BaseRemove(this.GetElementKey(windowsAzureBlobContainerDelete));
+            base.BaseRemove(this.GetElementKey(blobContainerDelete));
         }
         #endregion
         
@@ -3944,6 +3788,210 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.BlobContainerConfigurationElement.blobContainerNamePropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Subscriptions Property
+        /// <summary>
+        /// The XML name of the <see cref="Subscriptions"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SubscriptionsPropertyName = "subscriptions";
+        
+        /// <summary>
+        /// Gets or sets the Subscriptions.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Subscriptions.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.SubscriptionsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection Subscriptions
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureSubscriptionConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.SubscriptionsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.SubscriptionsPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region StorageAccounts Property
+        /// <summary>
+        /// The XML name of the <see cref="StorageAccounts"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string StorageAccountsPropertyName = "storageAccounts";
+        
+        /// <summary>
+        /// Gets or sets the StorageAccounts.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The StorageAccounts.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection StorageAccounts
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureStorageAccountConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.StorageAccountsPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Packages Property
+        /// <summary>
+        /// The XML name of the <see cref="Packages"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PackagesPropertyName = "packages";
+        
+        /// <summary>
+        /// Gets or sets the Packages.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Packages.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection Packages
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzurePackageConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.PackagesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentDeletes Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentDeletes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentDeletesPropertyName = "deploymentDeletes";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentDeletes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentDeletes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection DeploymentDeletes
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentDeletesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentCreates Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentCreates"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentCreatesPropertyName = "deploymentCreates";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentCreates.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentCreates.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection DeploymentCreates
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureDeploymentCreateConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.DeploymentCreatesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region TableDeletes Property
+        /// <summary>
+        /// The XML name of the <see cref="TableDeletes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string TableDeletesPropertyName = "tableDeletes";
+        
+        /// <summary>
+        /// Gets or sets the TableDeletes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The TableDeletes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection TableDeletes
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureTableDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.TableDeletesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region BlobContainerDeletes Property
+        /// <summary>
+        /// The XML name of the <see cref="BlobContainerDeletes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string BlobContainerDeletesPropertyName = "blobContainerDeletes";
+        
+        /// <summary>
+        /// Gets or sets the BlobContainerDeletes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The BlobContainerDeletes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection BlobContainerDeletes
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureBlobContainerDeleteConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureConfigurationElement.BlobContainerDeletesPropertyName] = value;
             }
         }
         #endregion
