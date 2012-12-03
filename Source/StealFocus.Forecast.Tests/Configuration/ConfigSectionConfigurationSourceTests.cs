@@ -3,6 +3,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using StealFocus.Forecast.Configuration;
+    using StealFocus.Forecast.Configuration.WindowsAzure;
 
     [TestClass]
     public class ConfigSectionConfigurationSourceTests
@@ -11,73 +12,73 @@
         public void UnitTestGetWindowsAzureSubscriptionConfiguration()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureSubscriptionConfiguration windowsAzureSubscriptionConfiguration = configSectionConfigurationSource.GetWindowsAzureSubscriptionConfiguration("myArbitraryAzureSubscriptionName");
-            Assert.IsNotNull(windowsAzureSubscriptionConfiguration);
+            SubscriptionConfiguration subscriptionConfiguration = configSectionConfigurationSource.GetWindowsAzureSubscriptionConfiguration("myArbitraryAzureSubscriptionName");
+            Assert.IsNotNull(subscriptionConfiguration);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzureStorageAccountConfiguration()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = configSectionConfigurationSource.GetWindowsAzureStorageAccountConfiguration("myStorageAccountName");
-            Assert.IsNotNull(windowsAzureStorageAccountConfiguration);
+            StorageAccountConfiguration storageAccountConfiguration = configSectionConfigurationSource.GetWindowsAzureStorageAccountConfiguration("myStorageAccountName");
+            Assert.IsNotNull(storageAccountConfiguration);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzurePackageConfiguration()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzurePackageConfiguration windowsAzurePackageConfiguration = configSectionConfigurationSource.GetWindowsAzurePackageConfiguration("myArbitraryPackageName");
-            Assert.IsNotNull(windowsAzurePackageConfiguration);
+            PackageConfiguration packageConfiguration = configSectionConfigurationSource.GetWindowsAzurePackageConfiguration("myArbitraryPackageName");
+            Assert.IsNotNull(packageConfiguration);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzureDeploymentCreateConfigurations()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureDeploymentCreateConfiguration[] windowsAzureDeploymentCreateConfigurations = configSectionConfigurationSource.GetWindowsAzureDeploymentCreateConfigurations();
-            Assert.AreEqual(1, windowsAzureDeploymentCreateConfigurations.Length);
-            Assert.AreEqual(1, windowsAzureDeploymentCreateConfigurations[0].Schedules.Count);
-            Assert.AreEqual(5, windowsAzureDeploymentCreateConfigurations[0].Schedules[0].Days.Count);
+            DeploymentCreateConfiguration[] deploymentCreateConfigurations = configSectionConfigurationSource.GetWindowsAzureDeploymentCreateConfigurations();
+            Assert.AreEqual(1, deploymentCreateConfigurations.Length);
+            Assert.AreEqual(1, deploymentCreateConfigurations[0].Schedules.Count);
+            Assert.AreEqual(5, deploymentCreateConfigurations[0].Schedules[0].Days.Count);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzureDeploymentDeleteConfigurations()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureDeploymentDeleteConfiguration[] windowsAzureDeploymentDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureDeploymentDeleteConfigurations();
-            Assert.AreEqual(1, windowsAzureDeploymentDeleteConfigurations.Length);
-            Assert.AreEqual(2, windowsAzureDeploymentDeleteConfigurations[0].DeploymentSlots.Count);
-            Assert.AreEqual(3, windowsAzureDeploymentDeleteConfigurations[0].Schedules.Count);
-            Assert.AreEqual(5, windowsAzureDeploymentDeleteConfigurations[0].Schedules[0].Days.Count);
-            Assert.AreEqual(5, windowsAzureDeploymentDeleteConfigurations[0].Schedules[1].Days.Count);
-            Assert.AreEqual(2, windowsAzureDeploymentDeleteConfigurations[0].Schedules[2].Days.Count);
+            DeploymentDeleteConfiguration[] deploymentDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureDeploymentDeleteConfigurations();
+            Assert.AreEqual(1, deploymentDeleteConfigurations.Length);
+            Assert.AreEqual(2, deploymentDeleteConfigurations[0].DeploymentSlots.Count);
+            Assert.AreEqual(3, deploymentDeleteConfigurations[0].Schedules.Count);
+            Assert.AreEqual(5, deploymentDeleteConfigurations[0].Schedules[0].Days.Count);
+            Assert.AreEqual(5, deploymentDeleteConfigurations[0].Schedules[1].Days.Count);
+            Assert.AreEqual(2, deploymentDeleteConfigurations[0].Schedules[2].Days.Count);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzureTableDeleteConfigurations()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureTableDeleteConfiguration[] windowsAzureTableDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureTableDeleteConfigurations();
-            Assert.AreEqual(1, windowsAzureTableDeleteConfigurations.Length);
-            Assert.AreEqual(2, windowsAzureTableDeleteConfigurations[0].TableNames.Count);
-            Assert.AreEqual(3, windowsAzureTableDeleteConfigurations[0].Schedules.Count);
-            Assert.AreEqual(5, windowsAzureTableDeleteConfigurations[0].Schedules[0].Days.Count);
-            Assert.AreEqual(5, windowsAzureTableDeleteConfigurations[0].Schedules[1].Days.Count);
-            Assert.AreEqual(2, windowsAzureTableDeleteConfigurations[0].Schedules[2].Days.Count);
+            TableDeleteConfiguration[] tableDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureTableDeleteConfigurations();
+            Assert.AreEqual(1, tableDeleteConfigurations.Length);
+            Assert.AreEqual(2, tableDeleteConfigurations[0].TableNames.Count);
+            Assert.AreEqual(3, tableDeleteConfigurations[0].Schedules.Count);
+            Assert.AreEqual(5, tableDeleteConfigurations[0].Schedules[0].Days.Count);
+            Assert.AreEqual(5, tableDeleteConfigurations[0].Schedules[1].Days.Count);
+            Assert.AreEqual(2, tableDeleteConfigurations[0].Schedules[2].Days.Count);
         }
 
         [TestMethod]
         public void UnitTestGetWindowsAzureBlobContainerDeleteConfigurations()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
-            WindowsAzureBlobContainerDeleteConfiguration[] windowsAzureBlobContainerDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureBlobContainerDeleteConfigurations();
-            Assert.AreEqual(1, windowsAzureBlobContainerDeleteConfigurations.Length);
-            Assert.AreEqual(2, windowsAzureBlobContainerDeleteConfigurations[0].BlobContainerNames.Count);
-            Assert.AreEqual(3, windowsAzureBlobContainerDeleteConfigurations[0].Schedules.Count);
-            Assert.AreEqual(5, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[0].Days.Count);
-            Assert.AreEqual(5, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[1].Days.Count);
-            Assert.AreEqual(2, windowsAzureBlobContainerDeleteConfigurations[0].Schedules[2].Days.Count);
+            BlobContainerDeleteConfiguration[] blobContainerDeleteConfigurations = configSectionConfigurationSource.GetWindowsAzureBlobContainerDeleteConfigurations();
+            Assert.AreEqual(1, blobContainerDeleteConfigurations.Length);
+            Assert.AreEqual(2, blobContainerDeleteConfigurations[0].BlobContainerNames.Count);
+            Assert.AreEqual(3, blobContainerDeleteConfigurations[0].Schedules.Count);
+            Assert.AreEqual(5, blobContainerDeleteConfigurations[0].Schedules[0].Days.Count);
+            Assert.AreEqual(5, blobContainerDeleteConfigurations[0].Schedules[1].Days.Count);
+            Assert.AreEqual(2, blobContainerDeleteConfigurations[0].Schedules[2].Days.Count);
         }
     }
 }

@@ -1,19 +1,21 @@
 ﻿namespace StealFocus.Forecast.Configuration
 {
+    using StealFocus.Forecast.Configuration.WindowsAzure;
+
     public interface IConfigurationSource
     {
-        WindowsAzureSubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId);
+        SubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId);
 
-        WindowsAzureStorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName);
+        StorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName);
 
-        WindowsAzurePackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId);
+        PackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId);
 
-        WindowsAzureDeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations();
+        DeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations();
 
-        WindowsAzureDeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations();
+        DeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations();
 
-        WindowsAzureTableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations();
+        TableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations();
 
-        WindowsAzureBlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations();
+        BlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations();
     }
 }

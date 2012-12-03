@@ -75,14 +75,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
-    <Compile Include="Configuration\WindowsAzureBlobContainerDeleteConfiguration.cs" />
-    <Compile Include="Configuration\WindowsAzureDeploymentCreateConfiguration.cs" />
-    <Compile Include="Configuration\WindowsAzureDeploymentDeleteConfiguration.cs" />
-    <Compile Include="Configuration\WindowsAzurePackageConfiguration.cs" />
-    <Compile Include="Configuration\WindowsAzureStorageAccountConfiguration.cs" />
-    <Compile Include="Configuration\WindowsAzureSubscriptionConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\BlobContainerDeleteConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\DeploymentCreateConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\DeploymentDeleteConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\PackageConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\StorageAccountConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\SubscriptionConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzureSubscriptionConfigurationElement.partial.cs" />
-    <Compile Include="Configuration\WindowsAzureTableDeleteConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\TableDeleteConfiguration.cs" />
     <Compile Include="ForecastException.cs" />
     <Compile Include="ForecastWorker.cs" />
     <Compile Include="GlobalSuppressions.cs" />

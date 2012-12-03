@@ -1,10 +1,10 @@
-﻿namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
     using System.Collections.ObjectModel;
 
-    public class WindowsAzureDeploymentCreateConfiguration
+    public class DeploymentCreateConfiguration
     {
-        public WindowsAzureDeploymentCreateConfiguration()
+        public DeploymentCreateConfiguration()
         {
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();
         }

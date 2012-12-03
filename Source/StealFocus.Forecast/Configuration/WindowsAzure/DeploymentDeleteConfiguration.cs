@@ -1,10 +1,10 @@
-﻿namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
     using System.Collections.ObjectModel;
 
-    public class WindowsAzureDeploymentDeleteConfiguration
+    public class DeploymentDeleteConfiguration
     {
-        public WindowsAzureDeploymentDeleteConfiguration()
+        public DeploymentDeleteConfiguration()
         {
             this.DeploymentSlots = new Collection<string>();
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();

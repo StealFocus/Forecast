@@ -1,8 +1,8 @@
-﻿namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
     using System;
 
-    public class WindowsAzureSubscriptionConfiguration
+    public class SubscriptionConfiguration
     {
         public Guid SubscriptionId { get; set; }
 

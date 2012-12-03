@@ -1,6 +1,6 @@
-﻿namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
-    public class WindowsAzureStorageAccountConfiguration
+    public class StorageAccountConfiguration
     {
         public string StorageAccountName { get; set; }
 

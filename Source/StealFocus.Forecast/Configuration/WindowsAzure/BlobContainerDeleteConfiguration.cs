@@ -1,16 +1,10 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="WindowsAzureBlobContainerDeleteConfiguration.cs" company="Beazley">
-// TODO: Update copyright text.
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
     using System.Collections.ObjectModel;
 
-    public class WindowsAzureBlobContainerDeleteConfiguration
+    public class BlobContainerDeleteConfiguration
     {
-        public WindowsAzureBlobContainerDeleteConfiguration()
+        public BlobContainerDeleteConfiguration()
         {
             this.BlobContainerNames = new Collection<string>();
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();

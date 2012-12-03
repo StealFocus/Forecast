@@ -3,12 +3,14 @@
     using System.Collections;
     using System.Globalization;
 
+    using StealFocus.Forecast.Configuration.WindowsAzure;
+
     internal class ConfigSectionConfigurationSource : IConfigurationSource
     {
-        public WindowsAzureSubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId)
+        public SubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId)
         {
             WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzureSubscriptions[windowsAzureSubscriptionConfigurationId];
-            return new WindowsAzureSubscriptionConfiguration
+            return new SubscriptionConfiguration
                 {
                     CertificateThumbprint = windowsAzureSubscriptionConfigurationElement.CertificateThumbprint,
                     Id = windowsAzureSubscriptionConfigurationElement.Id,
@@ -16,20 +18,20 @@
                 };
         }
 
-        public WindowsAzureStorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName)
+        public StorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName)
         {
             WindowsAzureStorageAccountConfigurationElement windowsAzureStorageAccountConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzureStorageAccounts[windowsAzureStorageAccountName];
-            return new WindowsAzureStorageAccountConfiguration
+            return new StorageAccountConfiguration
                 {
                     StorageAccountName = windowsAzureStorageAccountConfigurationElement.storageAccountName,
                     StorageAccountKey = windowsAzureStorageAccountConfigurationElement.storageAccountKey
                 };
         }
 
-        public WindowsAzurePackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId)
+        public PackageConfiguration GetWindowsAzurePackageConfiguration(string windowsAzurePackageConfigurationId)
         {
             WindowsAzurePackageConfigurationElement windowsAzurePackageConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzurePackages[windowsAzurePackageConfigurationId];
-            return new WindowsAzurePackageConfiguration
+            return new PackageConfiguration
                 {
                     BlobName = windowsAzurePackageConfigurationElement.BlobName,
                     ContainerName = windowsAzurePackageConfigurationElement.ContainerName,
@@ -38,112 +40,112 @@
                 };
         }
 
-        public WindowsAzureDeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations()
+        public DeploymentDeleteConfiguration[] GetWindowsAzureDeploymentDeleteConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentDeletes.Count);
             foreach (WindowsAzureDeploymentDeleteConfigurationElement windowsAzureDeploymentDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentDeletes)
             {
-                WindowsAzureDeploymentDeleteConfiguration windowsAzureDeploymentDeleteConfiguration = new WindowsAzureDeploymentDeleteConfiguration();
-                windowsAzureDeploymentDeleteConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes;
-                windowsAzureDeploymentDeleteConfiguration.ServiceName = windowsAzureDeploymentDeleteConfigurationElement.ServiceName;
-                windowsAzureDeploymentDeleteConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId;
+                DeploymentDeleteConfiguration deploymentDeleteConfiguration = new DeploymentDeleteConfiguration();
+                deploymentDeleteConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentDeleteConfigurationElement.PollingIntervalInMinutes;
+                deploymentDeleteConfiguration.ServiceName = windowsAzureDeploymentDeleteConfigurationElement.ServiceName;
+                deploymentDeleteConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentDeleteConfigurationElement.SubscriptionConfigurationId;
                 foreach (DeploymentSlotConfigurationElement deploymentSlotConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.DeploymentSlots)
                 {
-                    windowsAzureDeploymentDeleteConfiguration.DeploymentSlots.Add(deploymentSlotConfigurationElement.Name);
+                    deploymentDeleteConfiguration.DeploymentSlots.Add(deploymentSlotConfigurationElement.Name);
                 }
 
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentDeleteConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
-                    windowsAzureDeploymentDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                    deploymentDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
-                list.Add(windowsAzureDeploymentDeleteConfiguration);
+                list.Add(deploymentDeleteConfiguration);
             }
 
-            return (WindowsAzureDeploymentDeleteConfiguration[])list.ToArray(typeof(WindowsAzureDeploymentDeleteConfiguration));
+            return (DeploymentDeleteConfiguration[])list.ToArray(typeof(DeploymentDeleteConfiguration));
         }
 
-        public WindowsAzureDeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations()
+        public DeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentCreates.Count);
             foreach (WindowsAzureDeploymentCreateConfigurationElement windowsAzureDeploymentCreateConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureDeploymentCreates)
             {
-                WindowsAzureDeploymentCreateConfiguration windowsAzureDeploymentCreateConfiguration = new WindowsAzureDeploymentCreateConfiguration();
-                windowsAzureDeploymentCreateConfiguration.DeploymentLabel = windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel;
-                windowsAzureDeploymentCreateConfiguration.DeploymentName = windowsAzureDeploymentCreateConfigurationElement.DeploymentName;
-                windowsAzureDeploymentCreateConfiguration.DeploymentSlot = windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot;
-                windowsAzureDeploymentCreateConfiguration.PackageConfigurationFilePath = windowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePath;
-                windowsAzureDeploymentCreateConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutes;
-                windowsAzureDeploymentCreateConfiguration.ServiceName = windowsAzureDeploymentCreateConfigurationElement.ServiceName;
-                windowsAzureDeploymentCreateConfiguration.StartDeployment = windowsAzureDeploymentCreateConfigurationElement.StartDeployment;
-                windowsAzureDeploymentCreateConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationId;
-                windowsAzureDeploymentCreateConfiguration.TreatWarningsAsError = windowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsError;
-                windowsAzureDeploymentCreateConfiguration.WindowsAzurePackageId = windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId;
+                DeploymentCreateConfiguration deploymentCreateConfiguration = new DeploymentCreateConfiguration();
+                deploymentCreateConfiguration.DeploymentLabel = windowsAzureDeploymentCreateConfigurationElement.DeploymentLabel;
+                deploymentCreateConfiguration.DeploymentName = windowsAzureDeploymentCreateConfigurationElement.DeploymentName;
+                deploymentCreateConfiguration.DeploymentSlot = windowsAzureDeploymentCreateConfigurationElement.DeploymentSlot;
+                deploymentCreateConfiguration.PackageConfigurationFilePath = windowsAzureDeploymentCreateConfigurationElement.PackageConfigurationFilePath;
+                deploymentCreateConfiguration.PollingIntervalInMinutes = windowsAzureDeploymentCreateConfigurationElement.PollingIntervalInMinutes;
+                deploymentCreateConfiguration.ServiceName = windowsAzureDeploymentCreateConfigurationElement.ServiceName;
+                deploymentCreateConfiguration.StartDeployment = windowsAzureDeploymentCreateConfigurationElement.StartDeployment;
+                deploymentCreateConfiguration.SubscriptionConfigurationId = windowsAzureDeploymentCreateConfigurationElement.SubscriptionConfigurationId;
+                deploymentCreateConfiguration.TreatWarningsAsError = windowsAzureDeploymentCreateConfigurationElement.TreatWarningsAsError;
+                deploymentCreateConfiguration.WindowsAzurePackageId = windowsAzureDeploymentCreateConfigurationElement.WindowsAzurePackageId;
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureDeploymentCreateConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
-                    windowsAzureDeploymentCreateConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                    deploymentCreateConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
-                list.Add(windowsAzureDeploymentCreateConfiguration);
+                list.Add(deploymentCreateConfiguration);
             }
 
-            return (WindowsAzureDeploymentCreateConfiguration[])list.ToArray(typeof(WindowsAzureDeploymentCreateConfiguration));
+            return (DeploymentCreateConfiguration[])list.ToArray(typeof(DeploymentCreateConfiguration));
         }
 
-        public WindowsAzureTableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations()
+        public TableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureTableDeletes.Count);
             foreach (WindowsAzureTableDeleteConfigurationElement windowsAzureTableDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureTableDeletes)
             {
-                WindowsAzureTableDeleteConfiguration windowsAzureTableDeleteConfiguration = new WindowsAzureTableDeleteConfiguration();
-                windowsAzureTableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
-                windowsAzureTableDeleteConfiguration.StorageAccountName = windowsAzureTableDeleteConfigurationElement.StorageAccountName;
-                WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureTableDeleteConfigurationElement.StorageAccountName);
-                windowsAzureTableDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
+                TableDeleteConfiguration tableDeleteConfiguration = new TableDeleteConfiguration();
+                tableDeleteConfiguration.PollingIntervalInMinutes = windowsAzureTableDeleteConfigurationElement.PollingIntervalInMinutes;
+                tableDeleteConfiguration.StorageAccountName = windowsAzureTableDeleteConfigurationElement.StorageAccountName;
+                StorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureTableDeleteConfigurationElement.StorageAccountName);
+                tableDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
                 foreach (StorageTableConfigurationElement storageTableConfigurationElement in windowsAzureTableDeleteConfigurationElement.StorageTables)
                 {
-                    windowsAzureTableDeleteConfiguration.TableNames.Add(storageTableConfigurationElement.tableName);
+                    tableDeleteConfiguration.TableNames.Add(storageTableConfigurationElement.tableName);
                 }
 
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureTableDeleteConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
-                    windowsAzureTableDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                    tableDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
-                list.Add(windowsAzureTableDeleteConfiguration);
+                list.Add(tableDeleteConfiguration);
             }
 
-            return (WindowsAzureTableDeleteConfiguration[])list.ToArray(typeof(WindowsAzureTableDeleteConfiguration));
+            return (TableDeleteConfiguration[])list.ToArray(typeof(TableDeleteConfiguration));
         }
 
-        public WindowsAzureBlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations()
+        public BlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzureBlobContainerDeletes.Count);
             foreach (WindowsAzureBlobContainerDeleteConfigurationElement windowsAzureBlobContainerDeleteConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzureBlobContainerDeletes)
             {
-                WindowsAzureBlobContainerDeleteConfiguration windowsAzureBlobContainerDeleteConfiguration = new WindowsAzureBlobContainerDeleteConfiguration();
-                windowsAzureBlobContainerDeleteConfiguration.PollingIntervalInMinutes = windowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutes;
-                windowsAzureBlobContainerDeleteConfiguration.StorageAccountName = windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName;
-                WindowsAzureStorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName);
-                windowsAzureBlobContainerDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
+                BlobContainerDeleteConfiguration blobContainerDeleteConfiguration = new BlobContainerDeleteConfiguration();
+                blobContainerDeleteConfiguration.PollingIntervalInMinutes = windowsAzureBlobContainerDeleteConfigurationElement.PollingIntervalInMinutes;
+                blobContainerDeleteConfiguration.StorageAccountName = windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName;
+                StorageAccountConfiguration windowsAzureStorageAccountConfiguration = this.GetWindowsAzureStorageAccountConfiguration(windowsAzureBlobContainerDeleteConfigurationElement.StorageAccountName);
+                blobContainerDeleteConfiguration.StorageAccountKey = windowsAzureStorageAccountConfiguration.StorageAccountKey;
                 foreach (BlobContainerConfigurationElement blobContainerConfigurationElement in windowsAzureBlobContainerDeleteConfigurationElement.BlobContainers)
                 {
-                    windowsAzureBlobContainerDeleteConfiguration.BlobContainerNames.Add(blobContainerConfigurationElement.blobContainerName);
+                    blobContainerDeleteConfiguration.BlobContainerNames.Add(blobContainerConfigurationElement.blobContainerName);
                 }
 
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureBlobContainerDeleteConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
-                    windowsAzureBlobContainerDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                    blobContainerDeleteConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
                 }
 
-                list.Add(windowsAzureBlobContainerDeleteConfiguration);
+                list.Add(blobContainerDeleteConfiguration);
             }
 
-            return (WindowsAzureBlobContainerDeleteConfiguration[])list.ToArray(typeof(WindowsAzureBlobContainerDeleteConfiguration));
+            return (BlobContainerDeleteConfiguration[])list.ToArray(typeof(BlobContainerDeleteConfiguration));
         }
 
         private static ScheduleDefinitionConfiguration GetScheduleDefinitionConfiguration(string scheduleDefinitionName)

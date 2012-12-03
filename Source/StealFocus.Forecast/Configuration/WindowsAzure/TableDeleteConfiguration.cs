@@ -1,10 +1,10 @@
-﻿namespace StealFocus.Forecast.Configuration
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
 {
     using System.Collections.ObjectModel;
 
-    public class WindowsAzureTableDeleteConfiguration
+    public class TableDeleteConfiguration
     {
-        public WindowsAzureTableDeleteConfiguration()
+        public TableDeleteConfiguration()
         {
             this.TableNames = new Collection<string>();
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();
