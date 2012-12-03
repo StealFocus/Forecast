@@ -1,4 +1,4 @@
-﻿namespace StealFocus.Forecast.Configuration.WindowsAzure
+﻿namespace StealFocus.Forecast.Configuration.WindowsAzure.StorageService
 {
     using System.Collections.ObjectModel;
 

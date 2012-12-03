@@ -8,6 +8,8 @@
     using StealFocus.AzureExtensions.HostedService;
     using StealFocus.AzureExtensions.StorageService;
     using StealFocus.Forecast.Configuration.WindowsAzure;
+    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
+    using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
     using StealFocus.Forecast.WindowsAzure.HostedService;
     using StealFocus.Forecast.WindowsAzure.StorageService;
 

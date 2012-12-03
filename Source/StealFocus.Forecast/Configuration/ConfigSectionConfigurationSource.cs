@@ -4,6 +4,8 @@
     using System.Globalization;
 
     using StealFocus.Forecast.Configuration.WindowsAzure;
+    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
+    using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
 
     internal class ConfigSectionConfigurationSource : IConfigurationSource
     {

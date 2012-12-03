@@ -4,6 +4,8 @@
 
     using StealFocus.Forecast.Configuration;
     using StealFocus.Forecast.Configuration.WindowsAzure;
+    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
+    using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
 
     [TestClass]
     public class ConfigSectionConfigurationSourceTests

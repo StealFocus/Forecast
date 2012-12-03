@@ -1,6 +1,8 @@
 ﻿namespace StealFocus.Forecast.Configuration
 {
     using StealFocus.Forecast.Configuration.WindowsAzure;
+    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
+    using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
 
     public interface IConfigurationSource
     {
