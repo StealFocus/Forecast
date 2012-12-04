@@ -77,7 +77,7 @@
 
         public abstract void DoWork();
 
-        protected static bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, string id, IEnumerable<ScheduleDay> scheduleDays)
+        protected bool DetermineIfNowIsInTheSchedule(ILog logger, string workerTypeName, IEnumerable<ScheduleDay> scheduleDays)
         {
             DateTime now = DateTime.Now;
             foreach (ScheduleDay scheduleDay in scheduleDays)
@@ -88,14 +88,14 @@
                     DateTime endTimeOfScheduleToday = DateTime.Today.Add(scheduleDay.EndTime);
                     if (startTimeOfScheduleToday < now && now < endTimeOfScheduleToday)
                     {
-                        string logNowInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') falls into the schedule of '{3}' with start time of '{4}' and end time of '{5}'.", workerTypeName, id, now, scheduleDay.DayOfWeek, scheduleDay.StartTime, scheduleDay.EndTime);
+                        string logNowInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') falls into the schedule of '{3}' with start time of '{4}' and end time of '{5}'.", workerTypeName, this.Id, now, scheduleDay.DayOfWeek, scheduleDay.StartTime, scheduleDay.EndTime);
                         logger.Debug(logNowInScheduleMessage);
                         return true;
                     }
                 }
             }
 
-            string logNowNotInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') does not fall into any of the schedules.", workerTypeName, id, now);
+            string logNowNotInScheduleMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' has found that now ('{2}') does not fall into any of the schedules.", workerTypeName, this.Id, now);
             logger.Debug(logNowNotInScheduleMessage);
             return false;
         }

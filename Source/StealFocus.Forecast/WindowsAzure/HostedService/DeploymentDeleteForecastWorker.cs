@@ -60,7 +60,7 @@
             {
                 string doingWorkLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is doing work.", this.GetType().Name, this.Id);
                 Logger.Debug(doingWorkLogMessage);
-                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.Id, this.scheduleDays);
+                bool nowIsInTheSchedule = DetermineIfNowIsInTheSchedule(Logger, this.GetType().Name, this.scheduleDays);
                 if (nowIsInTheSchedule)
                 {
                     lock (SyncRoot)
