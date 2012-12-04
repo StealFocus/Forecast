@@ -73,15 +73,19 @@
                             }
                             catch (WebException e)
                             {
-                                HttpWebResponse httpWebResponse = (HttpWebResponse)e.Response;
-                                if (e.Status == WebExceptionStatus.ProtocolError && 
+                                HttpWebResponse httpWebResponse = e.Response as HttpWebResponse;
+                                if (httpWebResponse != null &&
+                                    e.Status == WebExceptionStatus.ProtocolError &&
                                     httpWebResponse.StatusCode == HttpStatusCode.NotFound)
                                 {
                                     string containerDidNotExistMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete container name '{2}' under storage account name '{3}' as the container did not exist.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
-                                    Logger.Info(containerDidNotExistMessage);
+                                    Logger.Error(containerDidNotExistMessage);
                                 }
-
-                                throw;
+                                else
+                                {
+                                    string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error deleting container name '{2}' under storage account name '{3}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
+                                    Logger.Error(errorMessage, e);
+                                }
                             }
                         }
                     }

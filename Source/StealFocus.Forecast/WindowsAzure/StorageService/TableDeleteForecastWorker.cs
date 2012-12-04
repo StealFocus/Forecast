@@ -73,15 +73,19 @@
                             }
                             catch (WebException e)
                             {
-                                HttpWebResponse httpWebResponse = (HttpWebResponse)e.Response;
-                                if (e.Status == WebExceptionStatus.ProtocolError && 
+                                HttpWebResponse httpWebResponse = e.Response as HttpWebResponse;
+                                if (httpWebResponse != null &&
+                                    e.Status == WebExceptionStatus.ProtocolError &&
                                     httpWebResponse.StatusCode == HttpStatusCode.NotFound)
                                 {
                                     string tableDidNotExistMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete table name '{2}' under storage account name '{3}' as the table did not exist.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
-                                    Logger.Info(tableDidNotExistMessage);
+                                    Logger.Error(tableDidNotExistMessage);
                                 }
-
-                                throw;
+                                else
+                                {
+                                    string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error deleting table name '{2}' under storage account name '{3}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, tableName, this.storageAccountName);
+                                    Logger.Error(errorMessage, e);
+                                }
                             }
                         }
                     }

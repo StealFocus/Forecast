@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Net;
     using System.Reflection;
 
     using log4net;
@@ -71,8 +72,16 @@
                         {
                             string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                             Logger.Info(deleteDeploymentLogMessage);
-                            string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                            ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, deleteRequestId);
+                            try
+                            {
+                                string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                                ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, deleteRequestId);
+                            }
+                            catch (WebException e)
+                            {
+                                string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                Logger.Error(errorMessage, e);
+                            }
                         }
                         else
                         {

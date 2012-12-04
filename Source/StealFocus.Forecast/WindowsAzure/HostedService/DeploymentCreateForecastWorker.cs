@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Net;
     using System.Reflection;
 
     using log4net;
@@ -95,8 +96,16 @@
                         {
                             string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                             Logger.Info(createDeploymentLogMessage);
-                            string createRequestId = this.deployment.CreateRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.deploymentName, this.packageUrl, this.label, this.configurationFilePath, this.startDeployment, this.treatWarningsAsError);
-                            ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
+                            try
+                            {
+                                string createRequestId = this.deployment.CreateRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.deploymentName, this.packageUrl, this.label, this.configurationFilePath, this.startDeployment, this.treatWarningsAsError);
+                                ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
+                            }
+                            catch (WebException e)
+                            {
+                                string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error creating deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                Logger.Error(errorMessage, e);
+                            }
                         }
                         else
                         {
