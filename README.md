@@ -32,4 +32,4 @@ You can see build status here: [http://build01.stealfocus.co.uk/ccnet/ViewFarmRe
 
 Help
 ----
-Contact the mailing list: <stealfocus-forecast@googlegroups.com>
+Contact the mailing list: <StealFocus-Forecast@yahoogroups.co.uk>
