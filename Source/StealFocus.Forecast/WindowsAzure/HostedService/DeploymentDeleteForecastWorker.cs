@@ -67,7 +67,19 @@
                     {
                         string checkingDeploymentExistsMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is checking if deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' exists.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                         Logger.Info(checkingDeploymentExistsMessage);
-                        bool deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+
+                        // Assume the deployment does not exist - we don't want to try and delete it until we confirm it exists.
+                        bool deploymentExists = false;
+                        try
+                        {
+                            deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
+                        }
+                        catch (WebException e)
+                        {
+                            string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error checking for deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Error(errorMessage, e);
+                        }
+
                         if (deploymentExists)
                         {
                             string deleteDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
