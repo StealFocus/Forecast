@@ -2,7 +2,7 @@ StealFocus Forecast
 ===================
 "Forecast" is an application that will tear down or create cloud assets on a schedule. For example it can configured to delete a Windows Azure service at certain times on certain days. This is incredibly useful for automatically deleting test environments to minimise your Azure running costs.
 
-It can be run as a console application or installed as a windows 
+It can be run as a console application or installed as a windows service.
 
 Configuration
 -------------
