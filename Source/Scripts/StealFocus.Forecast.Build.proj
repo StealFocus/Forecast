@@ -281,6 +281,7 @@
     <PropertyGroup>
       <ILMergeSourceDirectoryPath>$(BuildDirectoryPath)\$(Configuration)</ILMergeSourceDirectoryPath>
       <ILMergeTargetDirectoryPath>$(BuildDirectoryPath)\$(Configuration)\ILMerged</ILMergeTargetDirectoryPath>
+      <ILMergeOutputPath>$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe</ILMergeOutputPath>
       <ILMergeAssemblyList>$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe $(ILMergeSourceDirectoryPath)\log4net.dll $(ILMergeSourceDirectoryPath)\StealFocus.AzureExtensions.dll $(ILMergeSourceDirectoryPath)\Topshelf.dll</ILMergeAssemblyList>
     </PropertyGroup>
     <MakeDir
@@ -288,10 +289,10 @@
       Directories="$(ILMergeTargetDirectoryPath)" />
     <Exec
       Condition=" '$(IsDesktopBuild)'=='true' "
-      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe /keyfile:$(StrongNamePublicKeyPath) /delaysign $(ILMergeAssemblyList) /targetplatform:v4" />
+      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeOutputPath) /keyfile:$(StrongNamePublicKeyPath) /delaysign $(ILMergeAssemblyList) /targetplatform:v4" />
     <Exec
       Condition=" '$(IsDesktopBuild)'!='true' "
-      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe /keyfile:$(StrongNameKeyPairPath) $(ILMergeAssemblyList) /targetplatform:v4" />
+      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeOutputPath) /keyfile:$(StrongNameKeyPairPath) $(ILMergeAssemblyList) /targetplatform:v4" />
     <Copy
       SourceFiles="$(ILMergeSourceDirectoryPath)\log4net.config;$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe.config" 
       DestinationFolder="$(ILMergeTargetDirectoryPath)" />
