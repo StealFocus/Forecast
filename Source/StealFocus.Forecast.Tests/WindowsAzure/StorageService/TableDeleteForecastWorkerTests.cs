@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Forecast.Tests.WindowsAzure.StorageService
 {
     using System;
+    using System.Net;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -36,6 +37,43 @@
                 .IgnoreArguments()
                 .Repeat.Twice()
                 .Return(true);
+
+            // Act
+            mockRepository.ReplayAll();
+            TableDeleteForecastWorker tableDeleteForecastWorker = new TableDeleteForecastWorker(
+                mockTableService,
+                StorageAccountName,
+                new[] { TableName1, TableName2 },
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                PollingIntervalInMinutes);
+            tableDeleteForecastWorker.DoWork();
+
+            // Assert
+            mockRepository.VerifyAll();
+        }
+
+        [TestMethod]
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Table_Does_Not_Exist()
+        {
+            MockRepository mockRepository = new MockRepository();
+            const string StorageAccountName = "storageAccountName";
+            const string TableName1 = "tableName1";
+            const string TableName2 = "tableName2";
+
+            // Set start time to 1 hour before now.
+            TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
+
+            // Set end time to 1 hour after now.
+            TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
+            const int PollingIntervalInMinutes = 60;
+
+            // Arrange
+            ITableService mockTableService = mockRepository.StrictMock<ITableService>();
+            mockTableService
+                .Expect(ts => ts.DeleteTable(string.Empty))
+                .IgnoreArguments()
+                .Repeat.Twice()
+                .Throw(new WebException("Table does not exist."));
 
             // Act
             mockRepository.ReplayAll();
