@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestSettings name="Local" id="f626f908-290f-4133-820d-39aec656d438" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<TestSettings name="BuildServer" id="64db5f55-2daa-4e35-adba-40b78058bbad" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run.</Description>
-  <Deployment>
-    <DeploymentItem filename="StealFocus.Forecast.Tests\log4net.config" />
-  </Deployment>
   <Execution>
     <TestTypeSpecific>
       <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
@@ -26,7 +23,7 @@
       <DataCollectors>
         <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
           <Configuration>
-            <CodeCoverage xmlns="">
+            <CodeCoverage keyFile="StealFocus.Forecast.StrongNameKeyPair.snk" xmlns="">
               <Regular>
                 <CodeCoverageItem binaryFile="StealFocus.Forecast\bin\Debug\StealFocus.Forecast.exe" pdbFile="StealFocus.Forecast\bin\Debug\StealFocus.Forecast.pdb" />
               </Regular>

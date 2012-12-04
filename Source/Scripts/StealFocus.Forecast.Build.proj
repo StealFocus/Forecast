@@ -22,6 +22,10 @@
     <StrongNamePublicKeyPath>$(SolutionDirectoryPath)\StealFocus.Forecast.StrongNamePublicKey.snk</StrongNamePublicKeyPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(IsDesktopBuild)'!='true' ">
+    <MSTestSettingsFilePath>$(SolutionDirectoryPath)\BuildServer.testsettings</MSTestSettingsFilePath>
+  </PropertyGroup>
+
   <ItemGroup>
     <SolutionToBuild Include="$(SolutionDirectoryPath)\StealFocus.Forecast.sln">
       <!-- 
