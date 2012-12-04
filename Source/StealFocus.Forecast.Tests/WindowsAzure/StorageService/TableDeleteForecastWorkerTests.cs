@@ -84,6 +84,7 @@
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             tableDeleteForecastWorker.DoWork();
+            tableDeleteForecastWorker.DoWork(); // Call DoWork twice to check the polling window works.
 
             // Assert
             mockRepository.VerifyAll();
