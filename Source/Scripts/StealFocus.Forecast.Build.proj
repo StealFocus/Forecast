@@ -286,6 +286,10 @@
       Condition=" !Exists('$(ILMergeTargetDirectoryPath)') "
       Directories="$(ILMergeTargetDirectoryPath)" />
     <Exec
+      Condition=" '$(IsDesktopBuild)'=='true' "
+      Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe /keyfile:$(StrongNamePublicKeyPath) /delaysign $(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe $(ILMergeSourceDirectoryPath)\log4net.dll $(ILMergeSourceDirectoryPath)\StealFocus.AzureExtensions.dll $(ILMergeSourceDirectoryPath)\Topshelf.dll /targetplatform:v4" />
+    <Exec
+      Condition=" '$(IsDesktopBuild)'!='true' "
       Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeTargetDirectoryPath)\StealFocus.Forecast.exe /keyfile:$(StrongNameKeyPairPath) $(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe $(ILMergeSourceDirectoryPath)\log4net.dll $(ILMergeSourceDirectoryPath)\StealFocus.AzureExtensions.dll $(ILMergeSourceDirectoryPath)\Topshelf.dll /targetplatform:v4" />
     <Copy
       SourceFiles="$(ILMergeSourceDirectoryPath)\log4net.config;$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe.config" 
