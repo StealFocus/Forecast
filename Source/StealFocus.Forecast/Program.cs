@@ -21,7 +21,7 @@
                 Logger.Info(string.Empty);
                 Logger.Info("To run as a console application, run with no arguments.");
                 Logger.Info(string.Empty);
-                InstallAsWindowsServiceUsingTopShelf(args);
+                InstallAsWindowsService(args);
             }
             else
             {
@@ -59,7 +59,7 @@
             host.WaitForWorkersToStop();
         }
 
-        private static void InstallAsWindowsServiceUsingTopShelf(string[] args)
+        private static void InstallAsWindowsService(string[] args)
         {
             CheckArguments(args);
             ConfigureWindowsService();

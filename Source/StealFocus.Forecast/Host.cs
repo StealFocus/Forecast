@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Threading;
 
     using log4net;
 
@@ -79,7 +80,7 @@
                     }
                 }
 
-                System.Threading.Thread.Sleep(OneSecondInMilliseconds);
+                Thread.Sleep(OneSecondInMilliseconds);
             }
 
             const string StoppedMessage = "...the workers were stopped.";
