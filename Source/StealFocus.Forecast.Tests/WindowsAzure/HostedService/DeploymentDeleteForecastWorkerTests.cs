@@ -74,6 +74,51 @@
         }
 
         [TestMethod]
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_Delete_Throws_An_Error()
+        {
+            MockRepository mockRepository = new MockRepository();
+            Guid subscriptionId = Guid.NewGuid();
+            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
+            const string ServiceName = "serviceName";
+            const string DeploymentSlot = "Production";
+
+            // Set start time to 1 hour before now.
+            TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
+
+            // Set end time to 1 hour after now.
+            TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
+            const int PollingIntervalInMinutes = 60;
+
+            // Arrange
+            IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
+            IOperation mockOperation = mockRepository.StrictMock<IOperation>();
+            mockDeployment
+                .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Repeat.Once()
+                .Return(true);
+            mockDeployment
+                .Expect(d => d.DeleteRequest(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Repeat.Once()
+                .Throw(new WebException("Error"));
+
+            // Act
+            mockRepository.ReplayAll();
+            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+                mockDeployment,
+                mockOperation,
+                subscriptionId,
+                CertificateThumbprint,
+                ServiceName,
+                DeploymentSlot,
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                PollingIntervalInMinutes);
+            deploymentDeleteForecastWorker.DoWork();
+
+            // Assert
+            mockRepository.VerifyAll();
+        }
+
+        [TestMethod]
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Does_Not_Exist()
         {
             MockRepository mockRepository = new MockRepository();
