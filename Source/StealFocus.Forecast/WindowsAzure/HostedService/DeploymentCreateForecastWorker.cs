@@ -9,7 +9,7 @@
 
     using StealFocus.AzureExtensions.HostedService;
 
-    internal class DeploymentCreateForecastWorker : ForecastWorker
+    internal class DeploymentCreateForecastWorker : HostedServiceForecastWorker
     {
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -111,7 +111,7 @@
                             try
                             {
                                 string createRequestId = this.deployment.CreateRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.deploymentName, this.packageUrl, this.label, this.configurationFilePath, this.startDeployment, this.treatWarningsAsError);
-                                ForecastWorker.WaitForResultOfRequest(Logger, this.GetType().Name, this.Id, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
+                                this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, createRequestId);
                             }
                             catch (WebException e)
                             {

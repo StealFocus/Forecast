@@ -93,6 +93,7 @@
     <Compile Include="ScheduleDay.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentCreateForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorker.cs" />
+    <Compile Include="WindowsAzure\HostedService\HostedServiceForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\BlobContainerDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorker.cs" />
   </ItemGroup>
