@@ -13,17 +13,22 @@
     [TestClass]
     public class DeploymentDeleteForecastWorkerTests
     {
+        private const string CertificateThumbprint = "0000000000000000000000000000000000000000";
+
+        private const string ServiceName = "serviceName";
+
+        private const string DeploymentSlot = "Production";
+
+        private const string DeleteRequestId = "id";
+
+        private readonly Guid subscriptionId = Guid.NewGuid();
+
         private readonly TimeSpan oneHour = new TimeSpan(1, 0, 0);
 
         [TestMethod]
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
-            const string DeleteRequestId = "id";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -44,15 +49,15 @@
             IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
             IOperation mockOperation = mockRepository.StrictMock<IOperation>();
             mockDeployment
-                .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.CheckExists(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.DeleteRequest(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.DeleteRequest(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Return(DeleteRequestId);
             mockOperation
-                .Expect(o => o.StatusCheck(subscriptionId, CertificateThumbprint, DeleteRequestId))
+                .Expect(o => o.StatusCheck(this.subscriptionId, CertificateThumbprint, DeleteRequestId))
                 .Repeat.Once()
                 .Return(operationResult);
 
@@ -60,8 +65,8 @@
             mockRepository.ReplayAll();
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment, 
-                mockOperation, 
-                subscriptionId, 
+                mockOperation,
+                this.subscriptionId, 
                 CertificateThumbprint, 
                 ServiceName,
                 DeploymentSlot,
@@ -78,10 +83,6 @@
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_Delete_Throws_An_Error()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -94,11 +95,11 @@
             IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
             IOperation mockOperation = mockRepository.StrictMock<IOperation>();
             mockDeployment
-                .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.CheckExists(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.DeleteRequest(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.DeleteRequest(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Throw(new WebException("Error"));
 
@@ -107,7 +108,7 @@
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment,
                 mockOperation,
-                subscriptionId,
+                this.subscriptionId,
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
@@ -123,10 +124,6 @@
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Does_Not_Exist()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -139,7 +136,7 @@
             IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
             IOperation mockOperation = mockRepository.StrictMock<IOperation>();
             mockDeployment
-                .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.CheckExists(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Return(false);
 
@@ -148,7 +145,7 @@
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment,
                 mockOperation,
-                subscriptionId,
+                this.subscriptionId,
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
@@ -164,10 +161,6 @@
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Check_Exists_Throws_Error()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -180,7 +173,7 @@
             IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
             IOperation mockOperation = mockRepository.StrictMock<IOperation>();
             mockDeployment
-                .Expect(d => d.CheckExists(subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.CheckExists(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
                 .Throw(new WebException("Error."));
 
@@ -189,7 +182,7 @@
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment,
                 mockOperation,
-                subscriptionId,
+                this.subscriptionId,
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
@@ -205,10 +198,6 @@
         public void UnitTestDoWork_With_Now_Not_In_The_Scheduled_Time()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
@@ -226,7 +215,7 @@
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment,
                 mockOperation,
-                subscriptionId,
+                this.subscriptionId,
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
@@ -242,10 +231,6 @@
         public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_But_Not_On_A_Scheduled_Day()
         {
             MockRepository mockRepository = new MockRepository();
-            Guid subscriptionId = Guid.NewGuid();
-            const string CertificateThumbprint = "0000000000000000000000000000000000000000";
-            const string ServiceName = "serviceName";
-            const string DeploymentSlot = "Production";
 
             // Set start time to 1 hour before now.
             TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
@@ -271,7 +256,7 @@
             DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
                 mockDeployment,
                 mockOperation,
-                subscriptionId,
+                this.subscriptionId,
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
