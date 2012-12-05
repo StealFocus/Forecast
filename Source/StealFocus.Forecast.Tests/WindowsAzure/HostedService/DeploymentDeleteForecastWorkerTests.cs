@@ -2,6 +2,7 @@
 {
     using System;
     using System.Net;
+    using System.Threading;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -26,7 +27,7 @@
         private readonly TimeSpan oneHour = new TimeSpan(1, 0, 0);
 
         [TestMethod]
-        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists()
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_Second_Call_Within_Polling_Interval()
         {
             MockRepository mockRepository = new MockRepository();
 
@@ -73,6 +74,63 @@
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 PollingIntervalInMinutes);
             deploymentDeleteForecastWorker.DoWork();
+            deploymentDeleteForecastWorker.DoWork(); // Call DoWork twice to check the polling window works.
+
+            // Assert
+            mockRepository.VerifyAll();
+        }
+
+        [TestMethod]
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_Second_Call_Not_Within_Polling_Interval()
+        {
+            MockRepository mockRepository = new MockRepository();
+
+            // Set start time to 1 hour before now.
+            TimeSpan dailyStartTime = (DateTime.Now - DateTime.Today).Subtract(this.oneHour);
+
+            // Set end time to 1 hour after now.
+            TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
+
+            // Set polling window to zero so the second call to "DoWork" is not within the first polling window.
+            const int PollingIntervalInMinutes = 0;
+            OperationResult operationResult = new OperationResult
+            {
+                Code = "Test",
+                HttpStatusCode = HttpStatusCode.OK,
+                Id = Guid.NewGuid(),
+                Message = string.Empty,
+                Status = OperationStatus.Succeeded
+            };
+
+            // Arrange
+            IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
+            IOperation mockOperation = mockRepository.StrictMock<IOperation>();
+            mockDeployment
+                .Expect(d => d.CheckExists(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Repeat.Twice()
+                .Return(true);
+            mockDeployment
+                .Expect(d => d.DeleteRequest(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Repeat.Twice()
+                .Return(DeleteRequestId);
+            mockOperation
+                .Expect(o => o.StatusCheck(this.subscriptionId, CertificateThumbprint, DeleteRequestId))
+                .Repeat.Twice()
+                .Return(operationResult);
+
+            // Act
+            mockRepository.ReplayAll();
+            DeploymentDeleteForecastWorker deploymentDeleteForecastWorker = new DeploymentDeleteForecastWorker(
+                mockDeployment,
+                mockOperation,
+                this.subscriptionId,
+                CertificateThumbprint,
+                ServiceName,
+                DeploymentSlot,
+                new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
+                PollingIntervalInMinutes);
+            deploymentDeleteForecastWorker.DoWork();
+            Thread.Sleep(10);
             deploymentDeleteForecastWorker.DoWork(); // Call DoWork twice to check the polling window works.
 
             // Assert
