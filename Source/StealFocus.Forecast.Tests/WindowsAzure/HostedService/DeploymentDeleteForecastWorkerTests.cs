@@ -159,7 +159,7 @@
             mockDeployment
                 .Expect(d => d.DeleteRequest(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
                 .Repeat.Once()
-                .Throw(new WebException("Error"));
+                .Throw(new Exception("Error"));
 
             // Act
             mockRepository.ReplayAll();

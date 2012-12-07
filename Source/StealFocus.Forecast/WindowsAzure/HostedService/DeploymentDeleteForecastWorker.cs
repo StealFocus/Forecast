@@ -2,7 +2,6 @@
 {
     using System;
     using System.Globalization;
-    using System.Net;
     using System.Reflection;
 
     using log4net;
@@ -74,7 +73,7 @@
                         {
                             deploymentExists = this.deployment.CheckExists(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                         }
-                        catch (WebException e)
+                        catch (Exception e)
                         {
                             string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error checking for deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                             Logger.Error(errorMessage, e);
@@ -89,7 +88,7 @@
                                 string deleteRequestId = this.deployment.DeleteRequest(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
                                 this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, deleteRequestId);
                             }
-                            catch (WebException e)
+                            catch (Exception e)
                             {
                                 string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error deleting deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                                 Logger.Error(errorMessage, e);

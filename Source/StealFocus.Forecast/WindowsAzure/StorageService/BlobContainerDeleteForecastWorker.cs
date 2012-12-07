@@ -71,21 +71,24 @@
                                     Logger.Info(deleteContainerFailedMessage);
                                 }
                             }
-                            catch (WebException e)
+                            catch (Exception e)
                             {
-                                HttpWebResponse httpWebResponse = e.Response as HttpWebResponse;
-                                if (httpWebResponse != null &&
-                                    e.Status == WebExceptionStatus.ProtocolError &&
-                                    httpWebResponse.StatusCode == HttpStatusCode.NotFound)
+                                WebException webException = e as WebException;
+                                if (webException != null)
                                 {
-                                    string containerDidNotExistMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete container name '{2}' under storage account name '{3}' as the container did not exist.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
-                                    Logger.Error(containerDidNotExistMessage);
+                                    HttpWebResponse httpWebResponse = webException.Response as HttpWebResponse;
+                                    if (httpWebResponse != null &&
+                                        webException.Status == WebExceptionStatus.ProtocolError &&
+                                        httpWebResponse.StatusCode == HttpStatusCode.NotFound)
+                                    {
+                                        string containerDidNotExistMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete container name '{2}' under storage account name '{3}' as the container did not exist.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
+                                        Logger.Error(containerDidNotExistMessage);
+                                        continue;
+                                    }
                                 }
-                                else
-                                {
-                                    string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error deleting container name '{2}' under storage account name '{3}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
-                                    Logger.Error(errorMessage, e);
-                                }
+                                
+                                string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' failed to delete container name '{2}' under storage account name '{3}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, containerName, this.storageAccountName);
+                                Logger.Error(errorMessage, e);
                             }
                         }
                     }
