@@ -6,7 +6,7 @@ It can be run as a console application or installed as a windows service.
 
 Configuration
 -------------
-An example configuration file is included in the ZIP file. Please see "StealFocus.Forecast.exe.config".
+An example configuration file is included in the ZIP file available for download (see "Downloading" section below). Please see the "StealFocus.Forecast.exe.config" file.
 
 Testing
 -------
