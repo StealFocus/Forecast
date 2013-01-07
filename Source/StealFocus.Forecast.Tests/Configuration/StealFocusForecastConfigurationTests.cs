@@ -29,5 +29,16 @@
                 Assert.IsNotNull(deploymentCreateForecastWorker);
             }
         }
+
+        [TestMethod]
+        public void UnitTestGetScheduledHorizontalScaleForecastWorkers()
+        {
+            ScheduledHorizontalScaleForecastWorker[] scheduledHorizontalScaleForecastWorkers = StealFocusForecastConfiguration.GetScheduledHorizontalScaleForecastWorkers();
+            Assert.AreEqual(4, scheduledHorizontalScaleForecastWorkers.Length);
+            foreach (ScheduledHorizontalScaleForecastWorker scheduledHorizontalScaleForecastWorker in scheduledHorizontalScaleForecastWorkers)
+            {
+                Assert.IsNotNull(scheduledHorizontalScaleForecastWorker);
+            }
+        }
     }
 }

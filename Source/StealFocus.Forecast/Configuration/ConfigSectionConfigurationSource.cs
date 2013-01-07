@@ -96,6 +96,32 @@
             return (DeploymentCreateConfiguration[])list.ToArray(typeof(DeploymentCreateConfiguration));
         }
 
+        public ScheduledHorizontalScaleConfiguration[] GetWindowsAzureScheduledHorizontalScaleConfigurations()
+        {
+            ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.ScheduledHorizontalScales.Count);
+            foreach (WindowsAzureScheduledHorizontalScaleConfigurationElement windowsAzureScheduledHorizontalScaleConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.ScheduledHorizontalScales)
+            {
+                ScheduledHorizontalScaleConfiguration scheduledHorizontalScaleConfiguration = new ScheduledHorizontalScaleConfiguration();
+                scheduledHorizontalScaleConfiguration.DeploymentSlot = windowsAzureScheduledHorizontalScaleConfigurationElement.DeploymentSlot;
+                scheduledHorizontalScaleConfiguration.InstanceCount = windowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCount;
+                scheduledHorizontalScaleConfiguration.Mode = windowsAzureScheduledHorizontalScaleConfigurationElement.Mode;
+                scheduledHorizontalScaleConfiguration.PollingIntervalInMinutes = windowsAzureScheduledHorizontalScaleConfigurationElement.PollingIntervalInMinutes;
+                scheduledHorizontalScaleConfiguration.RoleName = windowsAzureScheduledHorizontalScaleConfigurationElement.RoleName;
+                scheduledHorizontalScaleConfiguration.ServiceName = windowsAzureScheduledHorizontalScaleConfigurationElement.ServiceName;
+                scheduledHorizontalScaleConfiguration.SubscriptionConfigurationId = windowsAzureScheduledHorizontalScaleConfigurationElement.SubscriptionConfigurationId;
+                scheduledHorizontalScaleConfiguration.TreatWarningsAsError = windowsAzureScheduledHorizontalScaleConfigurationElement.TreatWarningsAsError;
+                foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureScheduledHorizontalScaleConfigurationElement.Schedules)
+                {
+                    ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);
+                    scheduledHorizontalScaleConfiguration.Schedules.Add(scheduleDefinitionConfiguration);
+                }
+
+                list.Add(scheduledHorizontalScaleConfiguration);
+            }
+
+            return (ScheduledHorizontalScaleConfiguration[])list.ToArray(typeof(ScheduledHorizontalScaleConfiguration));
+        }
+
         public TableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations()
         {
             ArrayList list = new ArrayList(StealFocusForecastConfiguration.Instance.WindowsAzure.StorageService.TableDeletes.Count);

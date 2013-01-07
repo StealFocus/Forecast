@@ -78,6 +78,36 @@
             return (DeploymentCreateForecastWorker[])list.ToArray(typeof(DeploymentCreateForecastWorker));
         }
 
+        internal static ScheduledHorizontalScaleForecastWorker[] GetScheduledHorizontalScaleForecastWorkers()
+        {
+            IConfigurationSource configurationSource = GetConfigurationSource();
+            ArrayList list = new ArrayList();
+            foreach (ScheduledHorizontalScaleConfiguration scheduledHorizontalScaleConfiguration in configurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations())
+            {
+                SubscriptionConfiguration subscriptionConfiguration = configurationSource.GetWindowsAzureSubscriptionConfiguration(scheduledHorizontalScaleConfiguration.SubscriptionConfigurationId);
+                foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in scheduledHorizontalScaleConfiguration.Schedules)
+                {
+                    ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
+                    ScheduledHorizontalScaleForecastWorker scheduledHorizontalScaleForecastWorker = new ScheduledHorizontalScaleForecastWorker(
+                        new Deployment(),
+                        new Operation(),
+                        subscriptionConfiguration.SubscriptionId,
+                        subscriptionConfiguration.CertificateThumbprint,
+                        scheduledHorizontalScaleConfiguration.ServiceName,
+                        scheduledHorizontalScaleConfiguration.DeploymentSlot,
+                        scheduleDays,
+                        scheduledHorizontalScaleConfiguration.RoleName,
+                        scheduledHorizontalScaleConfiguration.InstanceCount,
+                        scheduledHorizontalScaleConfiguration.TreatWarningsAsError,
+                        scheduledHorizontalScaleConfiguration.Mode,
+                        scheduledHorizontalScaleConfiguration.PollingIntervalInMinutes);
+                    list.Add(scheduledHorizontalScaleForecastWorker);
+                }
+            }
+
+            return (ScheduledHorizontalScaleForecastWorker[])list.ToArray(typeof(ScheduledHorizontalScaleForecastWorker));
+        }
+
         internal static TableDeleteForecastWorker[] GetTableDeleteForecastWorkers()
         {
             IConfigurationSource configurationSource = GetConfigurationSource();

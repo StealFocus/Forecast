@@ -33,7 +33,7 @@
 
         private readonly string roleName;
 
-        private readonly int instanceCount;
+        private readonly int requiredInstanceCount;
 
         private readonly bool treatWarningsAsError;
 
@@ -52,7 +52,7 @@
             string deploymentSlot,
             ScheduleDay[] scheduleDays,
             string roleName,
-            int instanceCount,
+            int requiredInstanceCount,
             bool treatWarningsAsError,
             string mode,
             int pollingIntervalInMinutes)
@@ -66,7 +66,7 @@
             this.deploymentSlot = deploymentSlot;
             this.scheduleDays = scheduleDays;
             this.roleName = roleName;
-            this.instanceCount = instanceCount;
+            this.requiredInstanceCount = requiredInstanceCount;
             this.treatWarningsAsError = treatWarningsAsError;
             this.mode = mode;
             this.pollingIntervalInMinutes = pollingIntervalInMinutes;
@@ -98,14 +98,17 @@
 
                         if (deploymentExists)
                         {
-                            string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is horizontally scaling deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Info(createDeploymentLogMessage);
+                            string checkingScalingLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is checking the scaling for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Info(checkingScalingLogMessage);
                             try
                             {
                                 XDocument configuration = this.deployment.GetConfiguration(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                                XDocument updatedConfiguration = UpdateConfiguration(configuration, this.roleName, this.instanceCount);
-                                string changeConfigurationRequestId = this.deployment.ChangeConfiguration(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, updatedConfiguration, this.treatWarningsAsError, this.mode);
-                                this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, changeConfigurationRequestId);
+                                if (!CheckConfigurationIsCorrect(configuration, this.roleName, this.requiredInstanceCount))
+                                {
+                                    XDocument updatedConfiguration = UpdateConfiguration(configuration, this.roleName, this.requiredInstanceCount);
+                                    string changeConfigurationRequestId = this.deployment.ChangeConfiguration(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, updatedConfiguration, this.treatWarningsAsError, this.mode);
+                                    this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, changeConfigurationRequestId);
+                                }
                             }
                             catch (Exception e)
                             {
@@ -115,8 +118,8 @@
                         }
                         else
                         {
-                            string createDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not horizontally scaling deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
-                            Logger.Warn(createDeploymentLogMessage);
+                            string scaleDeploymentLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' is not horizontally scaling deployment for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was not found to exist.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                            Logger.Warn(scaleDeploymentLogMessage);
                         }
                     }
                 }
@@ -135,7 +138,7 @@
             return string.Format(CultureInfo.CurrentCulture, "{0}-{1}", serviceName, deploymentSlot);
         }
 
-        private static XDocument UpdateConfiguration(XDocument configuration, string roleName, int instanceCount)
+        private static XElement GetInstancesElement(XDocument configuration, string roleName)
         {
             XNamespace ns = XmlNamespace.ServiceHosting200810ServiceConfiguration;
             XElement configurationRootElement = configuration.Root;
@@ -154,7 +157,19 @@
                 throw new ForecastException(exceptionMessage);
             }
 
-            instancesElement.Attribute("count").SetValue(instanceCount);
+            return instancesElement;
+        }
+
+        private static bool CheckConfigurationIsCorrect(XDocument configuration, string roleName, int requiredInstanceCount)
+        {
+            XElement instancesElement = GetInstancesElement(configuration, roleName);
+            return requiredInstanceCount.ToString(CultureInfo.CurrentCulture) == instancesElement.Attribute("count").Value;
+        }
+
+        private static XDocument UpdateConfiguration(XDocument configuration, string roleName, int newInstanceCount)
+        {
+            XElement instancesElement = GetInstancesElement(configuration, roleName);
+            instancesElement.Attribute("count").SetValue(newInstanceCount);
             return configuration;
         }
     }

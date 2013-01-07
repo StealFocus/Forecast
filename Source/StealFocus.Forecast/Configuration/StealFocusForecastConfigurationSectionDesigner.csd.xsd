@@ -453,6 +453,11 @@
 					<xs:documentation>The DeploymentCreates.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="scheduledHorizontalScales" type="tns:StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The ScheduledHorizontalScales.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElementCT">
@@ -473,5 +478,68 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="scheduledHorizontalScale" type="tns:StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The WindowsAzureScheduledHorizontalScaleConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCT">
+		<xs:sequence>
+			<xs:element minOccurs="1" name="schedules" type="tns:StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Schedules.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="serviceName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The ServiceName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="subscriptionConfigurationId" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The SubscriptionConfigurationId.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deploymentSlot" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The DeploymentSlot.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="roleName" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The RoleName.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="instanceCount" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The InstanceCount.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="treatWarningsAsError" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The TreatWarningsAsError.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="mode" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Mode.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 </xs:schema>

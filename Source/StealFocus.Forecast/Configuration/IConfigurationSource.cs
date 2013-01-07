@@ -16,6 +16,8 @@
 
         DeploymentCreateConfiguration[] GetWindowsAzureDeploymentCreateConfigurations();
 
+        ScheduledHorizontalScaleConfiguration[] GetWindowsAzureScheduledHorizontalScaleConfigurations();
+
         TableDeleteConfiguration[] GetWindowsAzureTableDeleteConfigurations();
 
         BlobContainerDeleteConfiguration[] GetWindowsAzureBlobContainerDeleteConfigurations();

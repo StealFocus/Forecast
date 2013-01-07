@@ -3991,6 +3991,32 @@ namespace StealFocus.Forecast.Configuration
             }
         }
         #endregion
+        
+        #region ScheduledHorizontalScales Property
+        /// <summary>
+        /// The XML name of the <see cref="ScheduledHorizontalScales"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ScheduledHorizontalScalesPropertyName = "scheduledHorizontalScales";
+        
+        /// <summary>
+        /// Gets or sets the ScheduledHorizontalScales.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ScheduledHorizontalScales.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.ScheduledHorizontalScalesPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollection ScheduledHorizontalScales
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.ScheduledHorizontalScalesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.ScheduledHorizontalScalesPropertyName] = value;
+            }
+        }
+        #endregion
     }
 }
 namespace StealFocus.Forecast.Configuration
@@ -4088,6 +4114,458 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureStorageServiceConfigurationElement.BlobContainerDeletesPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of WindowsAzureScheduledHorizontalScaleConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollection.WindowsAzureScheduledHorizontalScaleConfigurationElementPropertyName)]
+    internal partial class WindowsAzureScheduledHorizontalScaleConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WindowsAzureScheduledHorizontalScaleConfigurationElementPropertyName = "scheduledHorizontalScale";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollection.WindowsAzureScheduledHorizontalScaleConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElementCollection.WindowsAzureScheduledHorizontalScaleConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement)(element)).Id;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement this[object id]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement)(base.BaseGet(id)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="scheduledHorizontalScale">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement scheduledHorizontalScale)
+        {
+            base.BaseAdd(scheduledHorizontalScale);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="scheduledHorizontalScale">The <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement scheduledHorizontalScale)
+        {
+            base.BaseRemove(this.GetElementKey(scheduledHorizontalScale));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="id">The key of the <see cref="global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement GetItemByKey(string id)
+        {
+            return ((global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement)(base.BaseGet(((object)(id)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The WindowsAzureScheduledHorizontalScaleConfigurationElement Configuration Element.
+    /// </summary>
+    internal partial class WindowsAzureScheduledHorizontalScaleConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Id Property
+        /// <summary>
+        /// The XML name of the <see cref="Id"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IdPropertyName = "id";
+        
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Id.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.IdPropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Id
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.IdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.IdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region ServiceName Property
+        /// <summary>
+        /// The XML name of the <see cref="ServiceName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ServiceNamePropertyName = "serviceName";
+        
+        /// <summary>
+        /// Gets or sets the ServiceName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The ServiceName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ServiceNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string ServiceName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ServiceNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ServiceNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region SubscriptionConfigurationId Property
+        /// <summary>
+        /// The XML name of the <see cref="SubscriptionConfigurationId"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SubscriptionConfigurationIdPropertyName = "subscriptionConfigurationId";
+        
+        /// <summary>
+        /// Gets or sets the SubscriptionConfigurationId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The SubscriptionConfigurationId.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SubscriptionConfigurationIdPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string SubscriptionConfigurationId
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SubscriptionConfigurationIdPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SubscriptionConfigurationIdPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region PollingIntervalInMinutes Property
+        /// <summary>
+        /// The XML name of the <see cref="PollingIntervalInMinutes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PollingIntervalInMinutesPropertyName = "pollingIntervalInMinutes";
+        
+        /// <summary>
+        /// Gets or sets the PollingIntervalInMinutes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The PollingIntervalInMinutes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.PollingIntervalInMinutesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int PollingIntervalInMinutes
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.PollingIntervalInMinutesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.PollingIntervalInMinutesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region DeploymentSlot Property
+        /// <summary>
+        /// The XML name of the <see cref="DeploymentSlot"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string DeploymentSlotPropertyName = "deploymentSlot";
+        
+        /// <summary>
+        /// Gets or sets the DeploymentSlot.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The DeploymentSlot.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.DeploymentSlotPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string DeploymentSlot
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.DeploymentSlotPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.DeploymentSlotPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region RoleName Property
+        /// <summary>
+        /// The XML name of the <see cref="RoleName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string RoleNamePropertyName = "roleName";
+        
+        /// <summary>
+        /// Gets or sets the RoleName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The RoleName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string RoleName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region InstanceCount Property
+        /// <summary>
+        /// The XML name of the <see cref="InstanceCount"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string InstanceCountPropertyName = "instanceCount";
+        
+        /// <summary>
+        /// Gets or sets the InstanceCount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The InstanceCount.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int InstanceCount
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region TreatWarningsAsError Property
+        /// <summary>
+        /// The XML name of the <see cref="TreatWarningsAsError"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string TreatWarningsAsErrorPropertyName = "treatWarningsAsError";
+        
+        /// <summary>
+        /// Gets or sets the TreatWarningsAsError.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The TreatWarningsAsError.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.TreatWarningsAsErrorPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool TreatWarningsAsError
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.TreatWarningsAsErrorPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.TreatWarningsAsErrorPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Mode Property
+        /// <summary>
+        /// The XML name of the <see cref="Mode"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ModePropertyName = "mode";
+        
+        /// <summary>
+        /// Gets or sets the Mode.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Mode.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ModePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public string Mode
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ModePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.ModePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Schedules Property
+        /// <summary>
+        /// The XML name of the <see cref="Schedules"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string SchedulesPropertyName = "schedules";
+        
+        /// <summary>
+        /// Gets or sets the Schedules.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Schedules.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SchedulesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection Schedules
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ScheduleConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SchedulesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SchedulesPropertyName] = value;
             }
         }
         #endregion

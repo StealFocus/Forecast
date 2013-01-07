@@ -58,6 +58,18 @@
         }
 
         [TestMethod]
+        public void UnitTestGetWindowsAzureScheduledHorizontalScaleConfigurations()
+        {
+            ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
+            ScheduledHorizontalScaleConfiguration[] scheduledHorizontalScaleConfigurations = configSectionConfigurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations();
+            Assert.AreEqual(2, scheduledHorizontalScaleConfigurations.Length);
+            Assert.AreEqual(3, scheduledHorizontalScaleConfigurations[1].Schedules.Count);
+            Assert.AreEqual(5, scheduledHorizontalScaleConfigurations[1].Schedules[0].Days.Count);
+            Assert.AreEqual(5, scheduledHorizontalScaleConfigurations[1].Schedules[1].Days.Count);
+            Assert.AreEqual(2, scheduledHorizontalScaleConfigurations[1].Schedules[2].Days.Count);
+        }
+
+        [TestMethod]
         public void UnitTestGetWindowsAzureTableDeleteConfigurations()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();

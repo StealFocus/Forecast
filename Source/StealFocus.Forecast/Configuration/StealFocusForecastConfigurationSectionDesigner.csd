@@ -415,6 +415,11 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentCreateConfigurationElementCollection" />
           </type>
         </elementProperty>
+        <elementProperty name="ScheduledHorizontalScales" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="scheduledHorizontalScales" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureScheduledHorizontalScaleConfigurationElementCollection" />
+          </type>
+        </elementProperty>
       </elementProperties>
     </configurationElement>
     <configurationElement name="WindowsAzureStorageServiceConfigurationElement" accessModifier="Internal">
@@ -432,6 +437,67 @@
         <elementProperty name="BlobContainerDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="blobContainerDeletes" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureBlobContainerDeleteConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="WindowsAzureScheduledHorizontalScaleConfigurationElementCollection" accessModifier="Internal" xmlItemName="scheduledHorizontalScale" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureScheduledHorizontalScaleConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="WindowsAzureScheduledHorizontalScaleConfigurationElement" accessModifier="Internal">
+      <attributeProperties>
+        <attributeProperty name="Id" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="id" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="ServiceName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="serviceName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="SubscriptionConfigurationId" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="subscriptionConfigurationId" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="DeploymentSlot" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="deploymentSlot" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="RoleName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="roleName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="InstanceCount" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="instanceCount" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="TreatWarningsAsError" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="treatWarningsAsError" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Boolean" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="Mode" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="mode" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>

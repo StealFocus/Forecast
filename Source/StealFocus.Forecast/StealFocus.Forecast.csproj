@@ -78,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzure\HostedService\ScheduledHorizontalScaleConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\XmlNamespace.cs" />
     <Compile Include="Configuration\WindowsAzure\StorageService\BlobContainerDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\DeploymentCreateConfiguration.cs" />
