@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>StealFocus.AzureExtensions</id>
-    <version>1.0.21123.0</version>
+    <version>1.0.30107.0</version>
     <authors>Callum Hibbert</authors>
     <owners>Callum Hibbert</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

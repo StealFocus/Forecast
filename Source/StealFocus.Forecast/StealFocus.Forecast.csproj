@@ -52,8 +52,9 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="StealFocus.AzureExtensions">
-      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.21123.0\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
+    <Reference Include="StealFocus.AzureExtensions, Version=1.0.30107.0, Culture=neutral, PublicKeyToken=7ce888c75194ec0e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.30107.0\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
