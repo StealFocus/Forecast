@@ -34,3 +34,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "StealFocus.Forecast.WindowsAzure.HostedService.DeploymentDeleteForecastWorker.#DoWork()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "StealFocus.Forecast.WindowsAzure.HostedService.DeploymentCreateForecastWorker.#DoWork()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "StealFocus.Forecast.WindowsAzure.StorageService.BlobContainerDeleteForecastWorker.#DoWork()")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Scope = "member", Target = "StealFocus.Forecast.WindowsAzure.HostedService.ScheduledHorizontalScaleForecastWorker.#DoWork()")]

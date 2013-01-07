@@ -60,6 +60,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Topshelf">
       <HintPath>..\packages\TopShelf.3.1.0\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
@@ -76,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzure\HostedService\XmlNamespace.cs" />
     <Compile Include="Configuration\WindowsAzure\StorageService\BlobContainerDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\DeploymentCreateConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\DeploymentDeleteConfiguration.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="WindowsAzure\HostedService\DeploymentCreateForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\HostedServiceForecastWorker.cs" />
+    <Compile Include="WindowsAzure\HostedService\ScheduledHorizontalScaleForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\BlobContainerDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorker.cs" />
   </ItemGroup>
