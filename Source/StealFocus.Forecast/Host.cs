@@ -31,6 +31,12 @@
                 this.ForecastWorkers.Add(deploymentCreateForecastWorker);
             }
 
+            ScheduledHorizontalScaleForecastWorker[] scheduledHorizontalScaleForecastWorkers = StealFocusForecastConfiguration.GetScheduledHorizontalScaleForecastWorkers();
+            foreach (ScheduledHorizontalScaleForecastWorker scheduledHorizontalScaleForecastWorker in scheduledHorizontalScaleForecastWorkers)
+            {
+                this.ForecastWorkers.Add(scheduledHorizontalScaleForecastWorker);
+            }
+
             TableDeleteForecastWorker[] tableDeleteForecastWorkers = StealFocusForecastConfiguration.GetTableDeleteForecastWorkers();
             foreach (TableDeleteForecastWorker tableDeleteForecastWorker in tableDeleteForecastWorkers)
             {
