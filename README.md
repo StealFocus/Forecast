@@ -28,8 +28,8 @@ Downloading
 -----------
 You can download the application here: [http://build01.stealfocus.co.uk/Output/StealFocus.Forecast/](http://build01.stealfocus.co.uk/Output/StealFocus.Forecast/)
 
-You can see build status here: [http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx](http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx)
-
 Help
 ----
+You can see build status here: [http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx](http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx)
+
 Contact the mailing list: <StealFocus-Forecast@yahoogroups.co.uk>
