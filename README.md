@@ -30,6 +30,8 @@ You can download the application here: [http://build01.stealfocus.co.uk/Output/S
 
 Help
 ----
-You can see build status here: [http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx](http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx)
+Contact the mailing list:
+- <StealFocus-Forecast@yahoogroups.co.uk>
+- [http://uk.groups.yahoo.com/group/StealFocus-Forecast](http://uk.groups.yahoo.com/group/StealFocus-Forecast)
 
-Contact the mailing list: <StealFocus-Forecast@yahoogroups.co.uk>
+You can see build status here: [http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx](http://build01.stealfocus.co.uk/ccnet/ViewFarmReport.aspx)
