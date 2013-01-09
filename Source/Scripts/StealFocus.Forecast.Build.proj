@@ -294,7 +294,7 @@
       Condition=" '$(IsDesktopBuild)'!='true' "
       Command="..\packages\ilmerge.2.12.0803\ilmerge.exe /out:$(ILMergeOutputPath) /keyfile:$(StrongNameKeyPairPath) $(ILMergeAssemblyList) /targetplatform:v4" />
     <Copy
-      SourceFiles="$(ILMergeSourceDirectoryPath)\log4net.config;$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe.config" 
+      SourceFiles="$(ILMergeSourceDirectoryPath)\StealFocus.Forecast.exe.config" 
       DestinationFolder="$(ILMergeTargetDirectoryPath)" />
   </Target>
   
@@ -309,7 +309,6 @@
 
   <Target Name="CreateApplicationSpecificZips">
     <ItemGroup>
-      <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\log4net.config" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.exe.config" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.exe" />
       <ApplicationFiles Include="$(BuildDirectoryPath)\$(Configuration)\ILMerged\StealFocus.Forecast.pdb" />

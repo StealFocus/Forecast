@@ -92,6 +92,7 @@
     <Compile Include="ForecastWorker.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoCommon.g.cs" />
@@ -128,9 +129,6 @@
     <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.xsd">
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -14,6 +14,7 @@
 
         internal static void Main(string[] args)
         {
+            StealFocus.Forecast.Logger.Configure();
             if (args != null && args.Length > 0)
             {
                 Logger.Info(string.Empty);

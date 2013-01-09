@@ -88,9 +88,6 @@
       <Link>StealFocus.Forecast.StrongNamePublicKey.snk</Link>
     </None>
     <None Include="App.config" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
