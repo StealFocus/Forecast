@@ -17,22 +17,29 @@
 
         private const string EventLogName = "Application";
 
-        private const string LogPattern = "%date [%thread] %-5level %logger %property - %message%newline";
+        private const string LogFileNameWithoutExtension = "StealFocus.Forecast";
+
+        private const string DefaultLogPattern = "%date [%thread] %-5level %logger %property - %message%newline";
+
+        private const string ConsoleLogPattern = "%message%newline";
 
         public static void Configure()
         {
             Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();
             hierarchy.Root.RemoveAllAppenders();
-            PatternLayout patternLayout = new PatternLayout();
-            patternLayout.ConversionPattern = LogPattern;
-            patternLayout.ActivateOptions();
-            RollingFileAppender rollingFileAppender = GetRollingFileAppender(patternLayout);
+            PatternLayout defaultPatternLayout = new PatternLayout();
+            defaultPatternLayout.ConversionPattern = DefaultLogPattern;
+            defaultPatternLayout.ActivateOptions();
+            RollingFileAppender rollingFileAppender = GetRollingFileAppender(defaultPatternLayout);
             hierarchy.Root.AddAppender(rollingFileAppender);
-            EventLogAppender eventLogAppender = GetEventLogAppender(patternLayout);
+            EventLogAppender eventLogAppender = GetEventLogAppender(defaultPatternLayout);
             hierarchy.Root.AddAppender(eventLogAppender);
-            OutputDebugStringAppender outputDebugStringAppender = GetOutputDebugStringAppender(patternLayout);
+            OutputDebugStringAppender outputDebugStringAppender = GetOutputDebugStringAppender(defaultPatternLayout);
             hierarchy.Root.AddAppender(outputDebugStringAppender);
-            ColoredConsoleAppender coloredConsoleAppender = GetColoredConsoleAppender(patternLayout);
+            PatternLayout consolePatternLayout = new PatternLayout();
+            consolePatternLayout.ConversionPattern = ConsoleLogPattern;
+            consolePatternLayout.ActivateOptions();
+            ColoredConsoleAppender coloredConsoleAppender = GetColoredConsoleAppender(consolePatternLayout);
             hierarchy.Root.AddAppender(coloredConsoleAppender);
             hierarchy.Root.Level = Level.All;
             hierarchy.Configured = true;
@@ -55,7 +62,7 @@
 
         private static string GetRollingFileAppenderLogFilePath()
         {
-            string logFileName = string.Format(CultureInfo.CurrentCulture, "{0}.log", ApplicationName);
+            string logFileName = string.Format(CultureInfo.CurrentCulture, "{0}.log", LogFileNameWithoutExtension);
             return Path.Combine(CurrentDirectory, logFileName);
         }
 
