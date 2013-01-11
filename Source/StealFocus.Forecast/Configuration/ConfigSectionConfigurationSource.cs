@@ -103,13 +103,21 @@
             {
                 ScheduledHorizontalScaleConfiguration scheduledHorizontalScaleConfiguration = new ScheduledHorizontalScaleConfiguration();
                 scheduledHorizontalScaleConfiguration.DeploymentSlot = windowsAzureScheduledHorizontalScaleConfigurationElement.DeploymentSlot;
-                scheduledHorizontalScaleConfiguration.InstanceCount = windowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCount;
                 scheduledHorizontalScaleConfiguration.Mode = windowsAzureScheduledHorizontalScaleConfigurationElement.Mode;
                 scheduledHorizontalScaleConfiguration.PollingIntervalInMinutes = windowsAzureScheduledHorizontalScaleConfigurationElement.PollingIntervalInMinutes;
-                scheduledHorizontalScaleConfiguration.RoleName = windowsAzureScheduledHorizontalScaleConfigurationElement.RoleName;
                 scheduledHorizontalScaleConfiguration.ServiceName = windowsAzureScheduledHorizontalScaleConfigurationElement.ServiceName;
                 scheduledHorizontalScaleConfiguration.SubscriptionConfigurationId = windowsAzureScheduledHorizontalScaleConfigurationElement.SubscriptionConfigurationId;
                 scheduledHorizontalScaleConfiguration.TreatWarningsAsError = windowsAzureScheduledHorizontalScaleConfigurationElement.TreatWarningsAsError;
+                foreach (HorizontalScaleConfigurationElement horizontalScaleConfigurationElement in windowsAzureScheduledHorizontalScaleConfigurationElement.HorizontalScales)
+                {
+                    HorizontalScaleConfiguration horizontalScaleConfiguration = new HorizontalScaleConfiguration
+                        {
+                            RoleName = horizontalScaleConfigurationElement.roleName,
+                            InstanceCount = horizontalScaleConfigurationElement.instanceCount
+                        };
+                    scheduledHorizontalScaleConfiguration.HorizontalScales.Add(horizontalScaleConfiguration);
+                }
+                
                 foreach (ScheduleConfigurationElement scheduleConfigurationElement in windowsAzureScheduledHorizontalScaleConfigurationElement.Schedules)
                 {
                     ScheduleDefinitionConfiguration scheduleDefinitionConfiguration = GetScheduleDefinitionConfiguration(scheduleConfigurationElement.ScheduleDefinitionName);

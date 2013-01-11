@@ -4440,58 +4440,6 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
-        #region RoleName Property
-        /// <summary>
-        /// The XML name of the <see cref="RoleName"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string RoleNamePropertyName = "roleName";
-        
-        /// <summary>
-        /// Gets or sets the RoleName.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The RoleName.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public string RoleName
-        {
-            get
-            {
-                return ((string)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.RoleNamePropertyName] = value;
-            }
-        }
-        #endregion
-        
-        #region InstanceCount Property
-        /// <summary>
-        /// The XML name of the <see cref="InstanceCount"/> property.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        internal const string InstanceCountPropertyName = "instanceCount";
-        
-        /// <summary>
-        /// Gets or sets the InstanceCount.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
-        [global::System.ComponentModel.DescriptionAttribute("The InstanceCount.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
-        public int InstanceCount
-        {
-            get
-            {
-                return ((int)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName]));
-            }
-            set
-            {
-                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.InstanceCountPropertyName] = value;
-            }
-        }
-        #endregion
-        
         #region TreatWarningsAsError Property
         /// <summary>
         /// The XML name of the <see cref="TreatWarningsAsError"/> property.
@@ -4544,6 +4492,32 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
+        #region HorizontalScales Property
+        /// <summary>
+        /// The XML name of the <see cref="HorizontalScales"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string HorizontalScalesPropertyName = "horizontalScales";
+        
+        /// <summary>
+        /// Gets or sets the HorizontalScales.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The HorizontalScales.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.HorizontalScalesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElementCollection HorizontalScales
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.HorizontalScalesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.HorizontalScalesPropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region Schedules Property
         /// <summary>
         /// The XML name of the <see cref="Schedules"/> property.
@@ -4566,6 +4540,250 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.WindowsAzureScheduledHorizontalScaleConfigurationElement.SchedulesPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of HorizontalScaleConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElementCollection.HorizontalScaleConfigurationElementPropertyName)]
+    public partial class HorizontalScaleConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string HorizontalScaleConfigurationElementPropertyName = "horizontalScale";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElementCollection.HorizontalScaleConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElementCollection.HorizontalScaleConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement)(element)).roleName;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="roleName">The key of the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement this[object roleName]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement)(base.BaseGet(roleName)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="horizontalScale">The <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement horizontalScale)
+        {
+            base.BaseAdd(horizontalScale);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="horizontalScale">The <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement horizontalScale)
+        {
+            base.BaseRemove(this.GetElementKey(horizontalScale));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="roleName">The key of the <see cref="global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement GetItemByKey(string roleName)
+        {
+            return ((global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement)(base.BaseGet(((object)(roleName)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The HorizontalScaleConfigurationElement Configuration Element.
+    /// </summary>
+    public partial class HorizontalScaleConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region roleName Property
+        /// <summary>
+        /// The XML name of the <see cref="roleName"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string roleNamePropertyName = "roleName";
+        
+        /// <summary>
+        /// Gets or sets the roleName.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The roleName.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.roleNamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string roleName
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.roleNamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.roleNamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region instanceCount Property
+        /// <summary>
+        /// The XML name of the <see cref="instanceCount"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string instanceCountPropertyName = "instanceCount";
+        
+        /// <summary>
+        /// Gets or sets the instanceCount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The instanceCount.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.instanceCountPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int instanceCount
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.instanceCountPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.instanceCountPropertyName] = value;
             }
         }
         #endregion

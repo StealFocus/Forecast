@@ -6,6 +6,7 @@
     {
         public ScheduledHorizontalScaleConfiguration()
         {
+            this.HorizontalScales = new Collection<HorizontalScaleConfiguration>();
             this.Schedules = new Collection<ScheduleDefinitionConfiguration>();
         }
 
@@ -16,11 +17,9 @@
         public int PollingIntervalInMinutes { get; set; }
 
         public string DeploymentSlot { get; set; }
-        
-        public string RoleName { get; set; }
-        
-        public int InstanceCount { get; set; }
-        
+
+        public Collection<HorizontalScaleConfiguration> HorizontalScales { get; private set; }
+
         public bool TreatWarningsAsError { get; set; }
 
         public string Mode { get; set; }

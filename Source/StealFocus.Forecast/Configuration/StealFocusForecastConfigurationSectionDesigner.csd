@@ -473,16 +473,6 @@
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
-        <attributeProperty name="RoleName" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="roleName" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
-          </type>
-        </attributeProperty>
-        <attributeProperty name="InstanceCount" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="instanceCount" isReadOnly="false">
-          <type>
-            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
-          </type>
-        </attributeProperty>
         <attributeProperty name="TreatWarningsAsError" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="treatWarningsAsError" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Boolean" />
@@ -495,12 +485,36 @@
         </attributeProperty>
       </attributeProperties>
       <elementProperties>
+        <elementProperty name="HorizontalScales" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="horizontalScales" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/HorizontalScaleConfigurationElementCollection" />
+          </type>
+        </elementProperty>
         <elementProperty name="Schedules" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="schedules" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ScheduleConfigurationElementCollection" />
           </type>
         </elementProperty>
       </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="HorizontalScaleConfigurationElementCollection" xmlItemName="horizontalScale" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/HorizontalScaleConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="HorizontalScaleConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="roleName" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="roleName" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="instanceCount" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="instanceCount" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>

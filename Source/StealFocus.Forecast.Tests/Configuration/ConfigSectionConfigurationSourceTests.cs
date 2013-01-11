@@ -63,6 +63,7 @@
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
             ScheduledHorizontalScaleConfiguration[] scheduledHorizontalScaleConfigurations = configSectionConfigurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations();
             Assert.AreEqual(2, scheduledHorizontalScaleConfigurations.Length);
+            Assert.AreEqual(1, scheduledHorizontalScaleConfigurations[1].HorizontalScales.Count);
             Assert.AreEqual(3, scheduledHorizontalScaleConfigurations[1].Schedules.Count);
             Assert.AreEqual(5, scheduledHorizontalScaleConfigurations[1].Schedules[0].Days.Count);
             Assert.AreEqual(5, scheduledHorizontalScaleConfigurations[1].Schedules[1].Days.Count);

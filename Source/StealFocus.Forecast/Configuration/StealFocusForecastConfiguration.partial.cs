@@ -87,6 +87,7 @@
                 SubscriptionConfiguration subscriptionConfiguration = configurationSource.GetWindowsAzureSubscriptionConfiguration(scheduledHorizontalScaleConfiguration.SubscriptionConfigurationId);
                 foreach (ScheduleDefinitionConfiguration scheduleDefinitionConfiguration in scheduledHorizontalScaleConfiguration.Schedules)
                 {
+                    HorizontalScale[] horizontalScales = GetHorizontalScalesFromHorizontalScaleConfiguration(scheduledHorizontalScaleConfiguration.HorizontalScales.ToArray());
                     ScheduleDay[] scheduleDays = GetScheduleDaysFromScheduleConfiguration(scheduleDefinitionConfiguration);
                     ScheduledHorizontalScaleForecastWorker scheduledHorizontalScaleForecastWorker = new ScheduledHorizontalScaleForecastWorker(
                         new Deployment(),
@@ -95,9 +96,8 @@
                         subscriptionConfiguration.CertificateThumbprint,
                         scheduledHorizontalScaleConfiguration.ServiceName,
                         scheduledHorizontalScaleConfiguration.DeploymentSlot,
+                        horizontalScales,
                         scheduleDays,
-                        scheduledHorizontalScaleConfiguration.RoleName,
-                        scheduledHorizontalScaleConfiguration.InstanceCount,
                         scheduledHorizontalScaleConfiguration.TreatWarningsAsError,
                         scheduledHorizontalScaleConfiguration.Mode,
                         scheduledHorizontalScaleConfiguration.PollingIntervalInMinutes);
@@ -152,6 +152,21 @@
             }
 
             return (BlobContainerDeleteForecastWorker[])list.ToArray(typeof(BlobContainerDeleteForecastWorker));
+        }
+
+        private static HorizontalScale[] GetHorizontalScalesFromHorizontalScaleConfiguration(HorizontalScaleConfiguration[] horizontalScaleConfigurations)
+        {
+            HorizontalScale[] horizontalScales = new HorizontalScale[horizontalScaleConfigurations.Length];
+            for (int i = 0; i < horizontalScaleConfigurations.Length; i++)
+            {
+                horizontalScales[i] = new HorizontalScale
+                    {
+                        RoleName = horizontalScaleConfigurations[i].RoleName,
+                        InstanceCount = horizontalScaleConfigurations[i].InstanceCount
+                    };
+            }
+
+            return horizontalScales;
         }
 
         private static ScheduleDay[] GetScheduleDaysFromScheduleConfiguration(ScheduleDefinitionConfiguration scheduleConfiguration)

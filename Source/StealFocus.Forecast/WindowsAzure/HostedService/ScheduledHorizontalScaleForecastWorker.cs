@@ -2,14 +2,11 @@
 {
     using System;
     using System.Globalization;
-    using System.Linq;
     using System.Reflection;
-    using System.Xml.Linq;
 
     using log4net;
 
     using StealFocus.AzureExtensions.HostedService;
-    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
 
     internal class ScheduledHorizontalScaleForecastWorker : HostedServiceForecastWorker
     {
@@ -29,11 +26,9 @@
 
         private readonly string deploymentSlot;
 
+        private readonly HorizontalScale[] horizontalScales;
+
         private readonly ScheduleDay[] scheduleDays;
-
-        private readonly string roleName;
-
-        private readonly int requiredInstanceCount;
 
         private readonly bool treatWarningsAsError;
 
@@ -50,9 +45,8 @@
             string certificateThumbprint, 
             string serviceName,
             string deploymentSlot,
+            HorizontalScale[] horizontalScales,
             ScheduleDay[] scheduleDays,
-            string roleName,
-            int requiredInstanceCount,
             bool treatWarningsAsError,
             string mode,
             int pollingIntervalInMinutes)
@@ -64,9 +58,8 @@
             this.certificateThumbprint = certificateThumbprint;
             this.serviceName = serviceName;
             this.deploymentSlot = deploymentSlot;
+            this.horizontalScales = horizontalScales;
             this.scheduleDays = scheduleDays;
-            this.roleName = roleName;
-            this.requiredInstanceCount = requiredInstanceCount;
             this.treatWarningsAsError = treatWarningsAsError;
             this.mode = mode;
             this.pollingIntervalInMinutes = pollingIntervalInMinutes;
@@ -102,12 +95,19 @@
                             Logger.Info(checkingScalingLogMessage);
                             try
                             {
-                                XDocument configuration = this.deployment.GetConfiguration(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot);
-                                if (!CheckConfigurationIsCorrect(configuration, this.roleName, this.requiredInstanceCount))
+                                string horizontallyScaleRequestId = this.deployment.HorizontallyScale(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, this.horizontalScales, this.treatWarningsAsError, this.mode);
+                                if (string.IsNullOrEmpty(horizontallyScaleRequestId))
                                 {
-                                    XDocument updatedConfiguration = UpdateConfiguration(configuration, this.roleName, this.requiredInstanceCount);
-                                    string changeConfigurationRequestId = this.deployment.ChangeConfiguration(this.subscriptionId, this.certificateThumbprint, this.serviceName, this.deploymentSlot, updatedConfiguration, this.treatWarningsAsError, this.mode);
-                                    this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, changeConfigurationRequestId);
+                                    string scalingNotRequiredLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' did not scale for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}' as it was found to already be scaled to the specification.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                    Logger.Info(scalingNotRequiredLogMessage);
+                                }
+                                else
+                                {
+                                    string scalingRequiredLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' scaled for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                    Logger.Info(scalingRequiredLogMessage);
+                                    this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, horizontallyScaleRequestId);
+                                    string scalingSuccessLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' successfully scaled Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                    Logger.Info(scalingSuccessLogMessage);
                                 }
                             }
                             catch (Exception e)
@@ -136,41 +136,6 @@
         private static string GetWorkerId(string serviceName, string deploymentSlot)
         {
             return string.Format(CultureInfo.CurrentCulture, "{0}-{1}", serviceName, deploymentSlot);
-        }
-
-        private static XElement GetInstancesElement(XDocument configuration, string roleName)
-        {
-            XNamespace ns = XmlNamespace.ServiceHosting200810ServiceConfiguration;
-            XElement configurationRootElement = configuration.Root;
-            if (configurationRootElement == null)
-            {
-                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The configuration XML returned from the management API did not contain a root element.");
-                throw new ForecastException(exceptionMessage);
-            }
-
-            XElement instancesElement = (from role in configurationRootElement.Elements(ns + "Role")
-                                         where role.Attribute("name").Value == roleName
-                                         select role).Single().Element(ns + "Instances");
-            if (instancesElement == null)
-            {
-                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The configuration XML returned from the management API did not contain a 'Role' element matching name '{0}'.", roleName);
-                throw new ForecastException(exceptionMessage);
-            }
-
-            return instancesElement;
-        }
-
-        private static bool CheckConfigurationIsCorrect(XDocument configuration, string roleName, int requiredInstanceCount)
-        {
-            XElement instancesElement = GetInstancesElement(configuration, roleName);
-            return requiredInstanceCount.ToString(CultureInfo.CurrentCulture) == instancesElement.Attribute("count").Value;
-        }
-
-        private static XDocument UpdateConfiguration(XDocument configuration, string roleName, int newInstanceCount)
-        {
-            XElement instancesElement = GetInstancesElement(configuration, roleName);
-            instancesElement.Attribute("count").SetValue(newInstanceCount);
-            return configuration;
         }
     }
 }

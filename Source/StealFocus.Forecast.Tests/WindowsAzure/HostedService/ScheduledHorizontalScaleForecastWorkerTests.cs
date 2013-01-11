@@ -3,14 +3,12 @@
     using System;
     using System.Net;
     using System.Threading;
-    using System.Xml.Linq;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Rhino.Mocks;
 
     using StealFocus.AzureExtensions.HostedService;
-    using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
     using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
@@ -45,7 +43,6 @@
             // Set end time to 1 hour after now.
             TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
             const int RequiredInstanceCount = 2;
-            const int ConfiguredInstanceCount = 1;
             const int PollingIntervalInMinutes = 60;
             OperationResult operationResult = new OperationResult
                 {
@@ -64,13 +61,8 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.GetConfiguration(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
                 .Repeat.Once()
-                .Return(GetServiceConfiguration(RoleName, ConfiguredInstanceCount));
-            mockDeployment
-                .Expect(d => d.ChangeConfiguration(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, null, TreatWarningsAsError, Mode))
-                .Repeat.Once()
-                .IgnoreArguments()
                 .Return(RequestId);
             mockOperation
                 .Expect(o => o.StatusCheck(this.subscriptionId, CertificateThumbprint, RequestId))
@@ -86,9 +78,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                RequiredInstanceCount,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -110,7 +101,6 @@
             // Set end time to 1 hour after now.
             TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
             const int RequiredInstanceCount = 2;
-            const int ConfiguredInstanceCount = RequiredInstanceCount;
             const int PollingIntervalInMinutes = 60;
 
             // Arrange
@@ -121,9 +111,9 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.GetConfiguration(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
                 .Repeat.Once()
-                .Return(GetServiceConfiguration(RoleName, ConfiguredInstanceCount));
+                .Return(null);
 
             // Act
             mockRepository.ReplayAll();
@@ -134,9 +124,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                RequiredInstanceCount,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -158,7 +147,6 @@
             // Set end time to 1 hour after now.
             TimeSpan dailyEndTime = (DateTime.Now - DateTime.Today).Add(this.oneHour);
             const int RequiredInstanceCount = 2;
-            const int ConfiguredInstanceCount = RequiredInstanceCount;
 
             // Set polling window to zero so the second call to "DoWork" is not within the first polling window.
             const int PollingIntervalInMinutes = 0;
@@ -171,9 +159,9 @@
                 .Repeat.Twice()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.GetConfiguration(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
                 .Repeat.Twice()
-                .Return(GetServiceConfiguration(RoleName, ConfiguredInstanceCount));
+                .Return(null);
 
             // Act
             mockRepository.ReplayAll();
@@ -184,9 +172,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                RequiredInstanceCount,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -199,7 +186,7 @@
         }
 
         [TestMethod]
-        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_GetConfiguration_Throws_An_Error()
+        public void UnitTestDoWork_With_Now_In_The_Scheduled_Time_And_Deployment_Exists_And_HorizontallyScale_Throws_An_Error()
         {
             MockRepository mockRepository = new MockRepository();
 
@@ -219,7 +206,7 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.GetConfiguration(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
                 .Repeat.Once()
                 .Throw(new WebException("Error."));
 
@@ -232,9 +219,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                RequiredInstanceCount,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -273,9 +259,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                1,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -314,9 +299,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                1,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -351,9 +335,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                1,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -396,9 +379,8 @@
                 CertificateThumbprint,
                 ServiceName,
                 DeploymentSlot,
+                new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = notToday, EndTime = dailyEndTime, StartTime = dailyStartTime } },
-                RoleName,
-                1,
                 TreatWarningsAsError,
                 Mode,
                 PollingIntervalInMinutes);
@@ -406,37 +388,6 @@
 
             // Assert
             mockRepository.VerifyAll();
-        }
-
-        private static XDocument GetServiceConfiguration(string roleName, int instanceCount)
-        {
-            /*
-            <ServiceConfiguration
-             serviceName=""
-             osFamily="1"
-             osVersion="*"
-             xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
-              <Role name="Beazley.Marketing.Profiles.Endpoint">
-                <ConfigurationSettings>
-                  <Setting ... />
-                </ConfigurationSettings>
-                <Instances count="1" />
-                <Certificates />
-              </Role>
-            </ServiceConfiguration>
-            */
-            XNamespace serviceConfigurationNamespace = XmlNamespace.ServiceHosting200810ServiceConfiguration;
-            XDocument serviceConfigurationXml = new XDocument(
-                new XDeclaration("1.0", "UTF-8", "no"),
-                new XElement(
-                    serviceConfigurationNamespace + "ServiceConfiguration",
-                    new XElement(
-                        serviceConfigurationNamespace + "Role", 
-                        new XAttribute("name", roleName),
-                        new XElement(
-                            serviceConfigurationNamespace + "Instances",
-                            new XAttribute("count", instanceCount)))));
-            return serviceConfigurationXml;
         }
     }
 }
