@@ -103,10 +103,10 @@
                                 }
                                 else
                                 {
-                                    string scalingRequiredLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' scaled for Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                    string scalingRequiredLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' submitted a request to horizontally scale on Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                                     Logger.Info(scalingRequiredLogMessage);
                                     this.WaitForResultOfRequest(Logger, this.GetType().Name, this.operation, this.subscriptionId, this.certificateThumbprint, horizontallyScaleRequestId);
-                                    string scalingSuccessLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' successfully scaled Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
+                                    string scalingSuccessLogMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' successfully horizontally scaled on Subscription ID '{2}', Service Name '{3}' and Deployment Slot '{4}'.", this.GetType().Name, this.Id, this.subscriptionId, this.serviceName, this.deploymentSlot);
                                     Logger.Info(scalingSuccessLogMessage);
                                 }
                             }
