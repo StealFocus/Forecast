@@ -443,6 +443,11 @@
 					<xs:documentation>The Packages.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="whiteList" type="tns:StealFocus.Forecast.Configuration.ServiceConfigurationElementCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The WhiteList.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element minOccurs="0" name="deploymentDeletes" type="tns:StealFocus.Forecast.Configuration.WindowsAzureDeploymentDeleteConfigurationElementCollectionCT">
 				<xs:annotation>
 					<xs:documentation>The DeploymentDeletes.</xs:documentation>
@@ -557,6 +562,44 @@
 		<xs:attribute name="instanceCount" use="required" type="xs:int">
 			<xs:annotation>
 				<xs:documentation>The instanceCount.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.ServiceConfigurationElementCollectionCT">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="service" type="tns:StealFocus.Forecast.Configuration.ServiceConfigurationElementCT">
+				<xs:annotation>
+					<xs:documentation>The ServiceConfigurationElement Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="pollingIntervalInMinutes" use="required" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The PollingIntervalInMinutes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="includeDeploymentDeleteServices" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The IncludeDeploymentDeleteServices.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="includeDeploymentCreateServices" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The IncludeDeploymentCreateServices.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="includeHorizontalScaleServices" use="required" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The IncludeHorizontalScaleServices.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StealFocus.Forecast.Configuration.ServiceConfigurationElementCT">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="name" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

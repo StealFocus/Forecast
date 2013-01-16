@@ -11,6 +11,26 @@
     public class ConfigSectionConfigurationSourceTests
     {
         [TestMethod]
+        public void UnitTestGetAllSubscriptionConfigurations()
+        {
+            ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
+            SubscriptionConfiguration[] allSubscriptionConfigurations = configSectionConfigurationSource.GetAllWindowsAzureSubscriptionConfigurations();
+            Assert.AreEqual(1, allSubscriptionConfigurations.Length);
+        }
+
+        [TestMethod]
+        public void UnitTestGetWhiteListConfiguration()
+        {
+            ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();
+            WhiteListConfiguration whiteListConfiguration = configSectionConfigurationSource.GetWindowsAzureHostedServiceWhiteListConfiguration();
+            Assert.AreEqual(true, whiteListConfiguration.IncludeDeploymentCreateServices);
+            Assert.AreEqual(true, whiteListConfiguration.IncludeDeploymentDeleteServices);
+            Assert.AreEqual(true, whiteListConfiguration.IncludeHorizontalScaleServices);
+            Assert.AreEqual(60, whiteListConfiguration.PollingIntervalInMinutes);
+            Assert.AreEqual(2, whiteListConfiguration.ServiceNames.Count);
+        }
+
+        [TestMethod]
         public void UnitTestGetWindowsAzureSubscriptionConfiguration()
         {
             ConfigSectionConfigurationSource configSectionConfigurationSource = new ConfigSectionConfigurationSource();

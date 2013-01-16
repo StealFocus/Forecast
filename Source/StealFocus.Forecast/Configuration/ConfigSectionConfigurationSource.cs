@@ -9,6 +9,32 @@
 
     internal class ConfigSectionConfigurationSource : IConfigurationSource
     {
+        public SubscriptionConfiguration[] GetAllWindowsAzureSubscriptionConfigurations()
+        {
+            SubscriptionConfiguration[] subscriptionConfigurations = new SubscriptionConfiguration[StealFocusForecastConfiguration.Instance.WindowsAzure.Subscriptions.Count];
+            for (int i = 0; i < StealFocusForecastConfiguration.Instance.WindowsAzure.Subscriptions.Count; i++)
+            {
+                subscriptionConfigurations[i] = this.GetWindowsAzureSubscriptionConfiguration(StealFocusForecastConfiguration.Instance.WindowsAzure.Subscriptions[i].Id);
+            }
+
+            return subscriptionConfigurations;
+        }
+
+        public WhiteListConfiguration GetWindowsAzureHostedServiceWhiteListConfiguration()
+        {
+            WhiteListConfiguration whiteListConfiguration = new WhiteListConfiguration();
+            whiteListConfiguration.IncludeDeploymentCreateServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentCreateServices;
+            whiteListConfiguration.IncludeDeploymentDeleteServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentDeleteServices;
+            whiteListConfiguration.IncludeHorizontalScaleServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeHorizontalScaleServices;
+            whiteListConfiguration.PollingIntervalInMinutes = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.PollingIntervalInMinutes;
+            foreach (ServiceConfigurationElement serviceConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList)
+            {
+                whiteListConfiguration.ServiceNames.Add(serviceConfigurationElement.Name);
+            }
+
+            return whiteListConfiguration;
+        }
+
         public SubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId)
         {
             WindowsAzureSubscriptionConfigurationElement windowsAzureSubscriptionConfigurationElement = StealFocusForecastConfiguration.Instance.WindowsAzure.Subscriptions[windowsAzureSubscriptionConfigurationId];

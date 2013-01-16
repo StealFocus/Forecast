@@ -3940,6 +3940,32 @@ namespace StealFocus.Forecast.Configuration
         }
         #endregion
         
+        #region WhiteList Property
+        /// <summary>
+        /// The XML name of the <see cref="WhiteList"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string WhiteListPropertyName = "whiteList";
+        
+        /// <summary>
+        /// Gets or sets the WhiteList.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The WhiteList.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.WhiteListPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection WhiteList
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection)(base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.WhiteListPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.WindowsAzureHostedServiceConfigurationElement.WhiteListPropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region DeploymentDeletes Property
         /// <summary>
         /// The XML name of the <see cref="DeploymentDeletes"/> property.
@@ -4784,6 +4810,328 @@ namespace StealFocus.Forecast.Configuration
             set
             {
                 base[global::StealFocus.Forecast.Configuration.HorizontalScaleConfigurationElement.instanceCountPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// A collection of ServiceConfigurationElement instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::StealFocus.Forecast.Configuration.ServiceConfigurationElement), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.ServiceConfigurationElementPropertyName)]
+    public partial class ServiceConfigurationElementCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string ServiceConfigurationElementPropertyName = "service";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.ServiceConfigurationElementPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.ServiceConfigurationElementPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElement)(element)).Name;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::StealFocus.Forecast.Configuration.ServiceConfigurationElement();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ServiceConfigurationElement this[int index]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElement)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ServiceConfigurationElement this[object name]
+        {
+            get
+            {
+                return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElement)(base.BaseGet(name)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="service">The <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Add(global::StealFocus.Forecast.Configuration.ServiceConfigurationElement service)
+        {
+            base.BaseAdd(service);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="service">The <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public void Remove(global::StealFocus.Forecast.Configuration.ServiceConfigurationElement service)
+        {
+            base.BaseRemove(this.GetElementKey(service));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ServiceConfigurationElement GetItemAt(int index)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElement)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::StealFocus.Forecast.Configuration.ServiceConfigurationElement"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public global::StealFocus.Forecast.Configuration.ServiceConfigurationElement GetItemByKey(string name)
+        {
+            return ((global::StealFocus.Forecast.Configuration.ServiceConfigurationElement)(base.BaseGet(((object)(name)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region PollingIntervalInMinutes Property
+        /// <summary>
+        /// The XML name of the <see cref="PollingIntervalInMinutes"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string PollingIntervalInMinutesPropertyName = "pollingIntervalInMinutes";
+        
+        /// <summary>
+        /// Gets or sets the PollingIntervalInMinutes.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The PollingIntervalInMinutes.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.PollingIntervalInMinutesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public int PollingIntervalInMinutes
+        {
+            get
+            {
+                return ((int)(base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.PollingIntervalInMinutesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.PollingIntervalInMinutesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region IncludeDeploymentDeleteServices Property
+        /// <summary>
+        /// The XML name of the <see cref="IncludeDeploymentDeleteServices"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IncludeDeploymentDeleteServicesPropertyName = "includeDeploymentDeleteServices";
+        
+        /// <summary>
+        /// Gets or sets the IncludeDeploymentDeleteServices.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The IncludeDeploymentDeleteServices.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentDeleteServicesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool IncludeDeploymentDeleteServices
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentDeleteServicesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentDeleteServicesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region IncludeDeploymentCreateServices Property
+        /// <summary>
+        /// The XML name of the <see cref="IncludeDeploymentCreateServices"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IncludeDeploymentCreateServicesPropertyName = "includeDeploymentCreateServices";
+        
+        /// <summary>
+        /// Gets or sets the IncludeDeploymentCreateServices.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The IncludeDeploymentCreateServices.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentCreateServicesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool IncludeDeploymentCreateServices
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentCreateServicesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeDeploymentCreateServicesPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region IncludeHorizontalScaleServices Property
+        /// <summary>
+        /// The XML name of the <see cref="IncludeHorizontalScaleServices"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string IncludeHorizontalScaleServicesPropertyName = "includeHorizontalScaleServices";
+        
+        /// <summary>
+        /// Gets or sets the IncludeHorizontalScaleServices.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The IncludeHorizontalScaleServices.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeHorizontalScaleServicesPropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
+        public bool IncludeHorizontalScaleServices
+        {
+            get
+            {
+                return ((bool)(base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeHorizontalScaleServicesPropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElementCollection.IncludeHorizontalScaleServicesPropertyName] = value;
+            }
+        }
+        #endregion
+    }
+}
+namespace StealFocus.Forecast.Configuration
+{
+    
+    
+    /// <summary>
+    /// The ServiceConfigurationElement Configuration Element.
+    /// </summary>
+    public partial class ServiceConfigurationElement : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.0.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::StealFocus.Forecast.Configuration.ServiceConfigurationElement.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public string Name
+        {
+            get
+            {
+                return ((string)(base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElement.NamePropertyName]));
+            }
+            set
+            {
+                base[global::StealFocus.Forecast.Configuration.ServiceConfigurationElement.NamePropertyName] = value;
             }
         }
         #endregion

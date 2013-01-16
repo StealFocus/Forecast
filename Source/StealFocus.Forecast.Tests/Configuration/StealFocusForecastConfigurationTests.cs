@@ -9,6 +9,13 @@
     public class StealFocusForecastConfigurationTests
     {
         [TestMethod]
+        public void UnitTestGetWhiteListForecastWorker()
+        {
+            WhiteListForecastWorker whiteListForecastWorker = StealFocusForecastConfiguration.GetWhiteListForecastWorker();
+            Assert.IsNotNull(whiteListForecastWorker);
+        }
+
+        [TestMethod]
         public void UnitTestGetDeploymentDeleteForecastWorkers()
         {
             DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.GetDeploymentDeleteForecastWorkers();

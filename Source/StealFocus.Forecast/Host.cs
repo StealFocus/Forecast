@@ -19,6 +19,7 @@
         public Host()
         {
             this.ForecastWorkers = new List<ForecastWorker>();
+            this.ForecastWorkers.Add(StealFocusForecastConfiguration.GetWhiteListForecastWorker());
             DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.GetDeploymentDeleteForecastWorkers();
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {

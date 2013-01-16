@@ -405,6 +405,11 @@
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzurePackageConfigurationElementCollection" />
           </type>
         </elementProperty>
+        <elementProperty name="WhiteList" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="whiteList" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ServiceConfigurationElementCollection" />
+          </type>
+        </elementProperty>
         <elementProperty name="DeploymentDeletes" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="deploymentDeletes" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/WindowsAzureDeploymentDeleteConfigurationElementCollection" />
@@ -512,6 +517,42 @@
         <attributeProperty name="instanceCount" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="instanceCount" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
+    <configurationElementCollection name="ServiceConfigurationElementCollection" xmlItemName="service" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <attributeProperties>
+        <attributeProperty name="PollingIntervalInMinutes" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="pollingIntervalInMinutes" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="IncludeDeploymentDeleteServices" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="includeDeploymentDeleteServices" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Boolean" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="IncludeDeploymentCreateServices" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="includeDeploymentCreateServices" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Boolean" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="IncludeHorizontalScaleServices" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="includeHorizontalScaleServices" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Boolean" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/ServiceConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="ServiceConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
           </type>
         </attributeProperty>
       </attributeProperties>

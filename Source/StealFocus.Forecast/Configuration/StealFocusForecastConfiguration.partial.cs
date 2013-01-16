@@ -5,6 +5,7 @@
     using System.Globalization;
     using System.Linq;
 
+    using StealFocus.AzureExtensions;
     using StealFocus.AzureExtensions.HostedService;
     using StealFocus.AzureExtensions.StorageService;
     using StealFocus.Forecast.Configuration.WindowsAzure;
@@ -15,6 +16,50 @@
 
     internal partial class StealFocusForecastConfiguration
     {
+        internal static WhiteListForecastWorker GetWhiteListForecastWorker()
+        {
+            IConfigurationSource configurationSource = GetConfigurationSource();
+            SubscriptionConfiguration[] subscriptionConfigurations = configurationSource.GetAllWindowsAzureSubscriptionConfigurations();
+            ISubscription[] subscriptions = new ISubscription[subscriptionConfigurations.Length];
+            for (int i = 0; i < subscriptionConfigurations.Length; i++)
+            {
+                subscriptions[i] = subscriptionConfigurations[i].Convert();
+            }
+
+            WhiteListConfiguration whiteListConfiguration = configurationSource.GetWindowsAzureHostedServiceWhiteListConfiguration();
+            if (whiteListConfiguration.IncludeDeploymentCreateServices)
+            {
+                foreach (DeploymentCreateConfiguration deploymentCreateConfiguration in configurationSource.GetWindowsAzureDeploymentCreateConfigurations())
+                {
+                    whiteListConfiguration.ServiceNames.Add(deploymentCreateConfiguration.ServiceName);
+                }
+            }
+
+            if (whiteListConfiguration.IncludeDeploymentDeleteServices)
+            {
+                foreach (DeploymentDeleteConfiguration deploymentDeleteConfiguration in configurationSource.GetWindowsAzureDeploymentDeleteConfigurations())
+                {
+                    whiteListConfiguration.ServiceNames.Add(deploymentDeleteConfiguration.ServiceName);
+                }
+            }
+
+            if (whiteListConfiguration.IncludeHorizontalScaleServices)
+            {
+                foreach (ScheduledHorizontalScaleConfiguration windowsAzureScheduledHorizontalScaleConfiguration in configurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations())
+                {
+                    whiteListConfiguration.ServiceNames.Add(windowsAzureScheduledHorizontalScaleConfiguration.ServiceName);
+                }
+            }
+
+            WhiteListForecastWorker whiteListForecastWorker = new WhiteListForecastWorker(
+                subscriptions, 
+                new Deployment(), 
+                new Operation(), 
+                whiteListConfiguration.ServiceNames.ToArray(), 
+                whiteListConfiguration.PollingIntervalInMinutes);
+            return whiteListForecastWorker;
+        }
+
         internal static DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()
         {
             IConfigurationSource configurationSource = GetConfigurationSource();

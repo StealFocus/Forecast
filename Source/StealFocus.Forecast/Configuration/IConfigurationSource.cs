@@ -6,6 +6,10 @@
 
     public interface IConfigurationSource
     {
+        SubscriptionConfiguration[] GetAllWindowsAzureSubscriptionConfigurations();
+
+        WhiteListConfiguration GetWindowsAzureHostedServiceWhiteListConfiguration();
+
         SubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId);
 
         StorageAccountConfiguration GetWindowsAzureStorageAccountConfiguration(string windowsAzureStorageAccountName);

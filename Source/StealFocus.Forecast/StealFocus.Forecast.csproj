@@ -52,9 +52,9 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="StealFocus.AzureExtensions, Version=1.0.30111.1, Culture=neutral, PublicKeyToken=7ce888c75194ec0e, processorArchitecture=MSIL">
+    <Reference Include="StealFocus.AzureExtensions, Version=1.0.30114.0, Culture=neutral, PublicKeyToken=7ce888c75194ec0e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.30111.1\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
+      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.30114.0\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -78,8 +78,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\WindowsAzure\DeploymentSlot.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\HorizontalScaleConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\ScheduledHorizontalScaleConfiguration.cs" />
+    <Compile Include="Configuration\WindowsAzure\HostedService\WhiteListConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\XmlNamespace.cs" />
     <Compile Include="Configuration\WindowsAzure\StorageService\BlobContainerDeleteConfiguration.cs" />
     <Compile Include="Configuration\WindowsAzure\HostedService\DeploymentCreateConfiguration.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\HostedServiceForecastWorker.cs" />
     <Compile Include="WindowsAzure\HostedService\ScheduledHorizontalScaleForecastWorker.cs" />
+    <Compile Include="WindowsAzure\HostedService\WhiteListForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\BlobContainerDeleteForecastWorker.cs" />
     <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorker.cs" />
   </ItemGroup>
@@ -123,9 +126,11 @@
     </None>
     <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.config">
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.diagram">
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Configuration\StealFocusForecastConfigurationSectionDesigner.csd.xsd">
       <DependentUpon>StealFocusForecastConfigurationSectionDesigner.csd</DependentUpon>
