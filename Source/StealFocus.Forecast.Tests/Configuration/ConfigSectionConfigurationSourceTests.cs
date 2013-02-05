@@ -6,6 +6,7 @@
     using StealFocus.Forecast.Configuration.WindowsAzure;
     using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
     using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
     public class ConfigSectionConfigurationSourceTests
@@ -27,7 +28,21 @@
             Assert.AreEqual(true, whiteListConfiguration.IncludeDeploymentDeleteServices);
             Assert.AreEqual(true, whiteListConfiguration.IncludeHorizontalScaleServices);
             Assert.AreEqual(60, whiteListConfiguration.PollingIntervalInMinutes);
-            Assert.AreEqual(2, whiteListConfiguration.ServiceNames.Count);
+            Assert.AreEqual(2, whiteListConfiguration.Services.Count);
+
+            // Test 1st service
+            Assert.AreEqual("myAzureServiceName1", whiteListConfiguration.Services[0].Name);
+            Assert.AreEqual(2, whiteListConfiguration.Services[0].Roles.Count);
+            Assert.AreEqual(1, whiteListConfiguration.Services[0].Roles[0].MaxInstanceCount);
+            Assert.AreEqual(InstanceSize.Medium, whiteListConfiguration.Services[0].Roles[0].MaxInstanceSize);
+            Assert.AreEqual(2, whiteListConfiguration.Services[0].Roles[1].MaxInstanceCount);
+            Assert.AreEqual(InstanceSize.ExtraSmall, whiteListConfiguration.Services[0].Roles[1].MaxInstanceSize);
+
+            // Test 2nd service
+            Assert.AreEqual("myAzureServiceName2", whiteListConfiguration.Services[1].Name);
+            Assert.AreEqual(1, whiteListConfiguration.Services[1].Roles.Count);
+            Assert.IsNull(whiteListConfiguration.Services[1].Roles[0].MaxInstanceCount);
+            Assert.IsNull(whiteListConfiguration.Services[1].Roles[0].MaxInstanceSize);
         }
 
         [TestMethod]

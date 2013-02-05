@@ -556,6 +556,37 @@
           </type>
         </attributeProperty>
       </attributeProperties>
+      <elementProperties>
+        <elementProperty name="Roles" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="roles" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/74734de7-e148-488f-944a-a85707079ec6/RoleConfigurationElementCollection" />
+          </type>
+        </elementProperty>
+      </elementProperties>
+    </configurationElement>
+    <configurationElementCollection name="RoleConfigurationElementCollection" xmlItemName="role" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/74734de7-e148-488f-944a-a85707079ec6/RoleConfigurationElement" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="RoleConfigurationElement">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="MaxInstanceSize" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="maxInstanceSize" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="MaxInstanceCount" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="maxInstanceCount" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/74734de7-e148-488f-944a-a85707079ec6/Int32" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
     </configurationElement>
   </configurationElements>
   <propertyValidators>

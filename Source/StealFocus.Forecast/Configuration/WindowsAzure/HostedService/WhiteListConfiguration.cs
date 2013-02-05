@@ -6,7 +6,7 @@
     {
         public WhiteListConfiguration()
         {
-            this.ServiceNames = new Collection<string>();
+            this.Services = new Collection<WhiteListService>();
         }
 
         public int PollingIntervalInMinutes { get; set; }
@@ -17,6 +17,6 @@
 
         public bool IncludeHorizontalScaleServices { get; set; }
 
-        public Collection<string> ServiceNames { get; private set; }
+        public Collection<WhiteListService> Services { get; private set; }
     }
 }

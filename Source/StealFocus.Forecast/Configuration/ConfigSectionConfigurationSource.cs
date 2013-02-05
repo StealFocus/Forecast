@@ -6,6 +6,7 @@
     using StealFocus.Forecast.Configuration.WindowsAzure;
     using StealFocus.Forecast.Configuration.WindowsAzure.HostedService;
     using StealFocus.Forecast.Configuration.WindowsAzure.StorageService;
+    using StealFocus.Forecast.WindowsAzure.HostedService;
 
     internal class ConfigSectionConfigurationSource : IConfigurationSource
     {
@@ -22,17 +23,47 @@
 
         public WhiteListConfiguration GetWindowsAzureHostedServiceWhiteListConfiguration()
         {
-            WhiteListConfiguration whiteListConfiguration = new WhiteListConfiguration();
-            whiteListConfiguration.IncludeDeploymentCreateServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentCreateServices;
-            whiteListConfiguration.IncludeDeploymentDeleteServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentDeleteServices;
-            whiteListConfiguration.IncludeHorizontalScaleServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeHorizontalScaleServices;
-            whiteListConfiguration.PollingIntervalInMinutes = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.PollingIntervalInMinutes;
-            foreach (ServiceConfigurationElement serviceConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList)
+            if (StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList != null)
             {
-                whiteListConfiguration.ServiceNames.Add(serviceConfigurationElement.Name);
+                WhiteListConfiguration whiteListConfiguration = new WhiteListConfiguration();
+                whiteListConfiguration.IncludeDeploymentCreateServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentCreateServices;
+                whiteListConfiguration.IncludeDeploymentDeleteServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentDeleteServices;
+                whiteListConfiguration.IncludeHorizontalScaleServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeHorizontalScaleServices;
+                whiteListConfiguration.PollingIntervalInMinutes = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.PollingIntervalInMinutes;
+                foreach (ServiceConfigurationElement serviceConfigurationElement in StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList)
+                {
+                    WhiteListService whiteListService = new WhiteListService { Name = serviceConfigurationElement.Name };
+                    foreach (RoleConfigurationElement roleConfigurationElement in serviceConfigurationElement.Roles)
+                    {
+                        WhiteListRole whiteListRole = new WhiteListRole { Name = roleConfigurationElement.Name };
+                        if (!string.IsNullOrEmpty(roleConfigurationElement.MaxInstanceSize))
+                        {
+                            InstanceSize instanceSize;
+                            bool parsed = System.Enum.TryParse(roleConfigurationElement.MaxInstanceSize, true, out instanceSize);
+                            if (!parsed)
+                            {
+                                string exceptionMessage = string.Format(CultureInfo.CurrentCulture, "The configured instance size of '{0}' could not be parsed as a valid Azure instance size. Valid values are '{1}', '{2}', '{3}', '{4}' or '{5}'.", roleConfigurationElement.MaxInstanceSize, InstanceSize.ExtraSmall, InstanceSize.Small, InstanceSize.Medium, InstanceSize.Large, InstanceSize.ExtraLarge);
+                                throw new ForecastException(exceptionMessage);
+                            }
+
+                            whiteListRole.MaxInstanceSize = instanceSize;
+                        }
+
+                        if (roleConfigurationElement.MaxInstanceCount > 0)
+                        {
+                            whiteListRole.MaxInstanceCount = roleConfigurationElement.MaxInstanceCount;
+                        }
+
+                        whiteListService.Roles.Add(whiteListRole);
+                    }
+
+                    whiteListConfiguration.Services.Add(whiteListService);
+                }
+
+                return whiteListConfiguration;
             }
 
-            return whiteListConfiguration;
+            return null;
         }
 
         public SubscriptionConfiguration GetWindowsAzureSubscriptionConfiguration(string windowsAzureSubscriptionConfigurationId)

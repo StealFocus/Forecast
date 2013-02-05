@@ -9,6 +9,7 @@
     using Rhino.Mocks;
 
     using StealFocus.AzureExtensions.HostedService;
+    using StealFocus.Forecast.Configuration;
     using StealFocus.Forecast.WindowsAzure.HostedService;
 
     [TestClass]
@@ -25,8 +26,6 @@
         private const string RoleName = "myRoleName";
 
         private const bool TreatWarningsAsError = true;
-
-        private const string Mode = "Auto";
 
         private readonly Guid subscriptionId = Guid.NewGuid();
 
@@ -61,7 +60,7 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode.Auto))
                 .Repeat.Once()
                 .Return(RequestId);
             mockOperation
@@ -81,7 +80,7 @@
                 new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
             deploymentCreateForecastWorker.DoWork(); // Call DoWork twice to check the polling window works.
@@ -111,7 +110,7 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode.Auto))
                 .Repeat.Once()
                 .Return(null);
 
@@ -127,7 +126,7 @@
                 new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
             deploymentCreateForecastWorker.DoWork(); // Call DoWork twice to check the polling window works.
@@ -159,7 +158,7 @@
                 .Repeat.Twice()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode.Auto))
                 .Repeat.Twice()
                 .Return(null);
 
@@ -175,7 +174,7 @@
                 new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
             Thread.Sleep(10);
@@ -206,7 +205,7 @@
                 .Repeat.Once()
                 .Return(true);
             mockDeployment
-                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode))
+                .Expect(d => d.HorizontallyScale(this.subscriptionId, CertificateThumbprint, ServiceName, DeploymentSlot, new[] { new HorizontalScale { RoleName = RoleName, InstanceCount = RequiredInstanceCount } }, TreatWarningsAsError, Mode.Auto))
                 .Repeat.Once()
                 .Throw(new WebException("Error."));
 
@@ -222,7 +221,7 @@
                 new[] { new HorizontalScale { InstanceCount = RequiredInstanceCount, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
 
@@ -262,7 +261,7 @@
                 new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
 
@@ -302,7 +301,7 @@
                 new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
 
@@ -338,7 +337,7 @@
                 new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = DateTime.Now.DayOfWeek, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
 
@@ -382,7 +381,7 @@
                 new[] { new HorizontalScale { InstanceCount = 1, RoleName = RoleName } },
                 new[] { new ScheduleDay { DayOfWeek = notToday, EndTime = dailyEndTime, StartTime = dailyStartTime } },
                 TreatWarningsAsError,
-                Mode,
+                Mode.Auto,
                 PollingIntervalInMinutes);
             deploymentCreateForecastWorker.DoWork();
 

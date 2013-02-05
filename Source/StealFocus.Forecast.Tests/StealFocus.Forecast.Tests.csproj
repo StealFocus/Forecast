@@ -54,9 +54,9 @@
     <Reference Include="Rhino.Mocks">
       <HintPath>..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="StealFocus.AzureExtensions, Version=1.0.30114.0, Culture=neutral, PublicKeyToken=7ce888c75194ec0e, processorArchitecture=MSIL">
+    <Reference Include="StealFocus.AzureExtensions, Version=1.0.30131.0, Culture=neutral, PublicKeyToken=7ce888c75194ec0e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.30114.0\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
+      <HintPath>..\packages\StealFocus.AzureExtensions.1.0.30131.0\lib\net40-Full\StealFocus.AzureExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -79,7 +79,9 @@
     <Compile Include="WindowsAzure\HostedService\DeploymentDeleteForecastWorkerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfoCommon.g.cs" />
+    <Compile Include="WindowsAzure\HostedService\InstanceSizeTests.cs" />
     <Compile Include="WindowsAzure\HostedService\ScheduledHorizontalScaleForecastWorkerTests.cs" />
+    <Compile Include="WindowsAzure\HostedService\WhiteListForecastWorkerTests.cs" />
     <Compile Include="WindowsAzure\StorageService\BlobContainerDeleteForecastWorkerTests.cs" />
     <Compile Include="WindowsAzure\StorageService\TableDeleteForecastWorkerTests.cs" />
   </ItemGroup>
@@ -87,7 +89,9 @@
     <None Include="..\StealFocus.Forecast.StrongNamePublicKey.snk">
       <Link>StealFocus.Forecast.StrongNamePublicKey.snk</Link>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

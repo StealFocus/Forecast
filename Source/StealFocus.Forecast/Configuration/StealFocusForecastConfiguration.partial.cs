@@ -19,45 +19,53 @@
         internal static WhiteListForecastWorker GetWhiteListForecastWorker()
         {
             IConfigurationSource configurationSource = GetConfigurationSource();
-            SubscriptionConfiguration[] subscriptionConfigurations = configurationSource.GetAllWindowsAzureSubscriptionConfigurations();
-            ISubscription[] subscriptions = new ISubscription[subscriptionConfigurations.Length];
-            for (int i = 0; i < subscriptionConfigurations.Length; i++)
-            {
-                subscriptions[i] = subscriptionConfigurations[i].Convert();
-            }
-
             WhiteListConfiguration whiteListConfiguration = configurationSource.GetWindowsAzureHostedServiceWhiteListConfiguration();
-            if (whiteListConfiguration.IncludeDeploymentCreateServices)
+            if (whiteListConfiguration != null)
             {
-                foreach (DeploymentCreateConfiguration deploymentCreateConfiguration in configurationSource.GetWindowsAzureDeploymentCreateConfigurations())
+                SubscriptionConfiguration[] subscriptionConfigurations = configurationSource.GetAllWindowsAzureSubscriptionConfigurations();
+                ISubscription[] subscriptions = new ISubscription[subscriptionConfigurations.Length];
+                for (int i = 0; i < subscriptionConfigurations.Length; i++)
                 {
-                    whiteListConfiguration.ServiceNames.Add(deploymentCreateConfiguration.ServiceName);
+                    subscriptions[i] = subscriptionConfigurations[i].Convert();
                 }
+
+                if (whiteListConfiguration.IncludeDeploymentCreateServices)
+                {
+                    foreach (DeploymentCreateConfiguration deploymentCreateConfiguration in configurationSource.GetWindowsAzureDeploymentCreateConfigurations())
+                    {
+                        WhiteListService whiteListService = new WhiteListService { Name = deploymentCreateConfiguration.ServiceName };
+                        whiteListConfiguration.Services.Add(whiteListService);
+                    }
+                }
+
+                if (whiteListConfiguration.IncludeDeploymentDeleteServices)
+                {
+                    foreach (DeploymentDeleteConfiguration deploymentDeleteConfiguration in configurationSource.GetWindowsAzureDeploymentDeleteConfigurations())
+                    {
+                        WhiteListService whiteListService = new WhiteListService { Name = deploymentDeleteConfiguration.ServiceName };
+                        whiteListConfiguration.Services.Add(whiteListService);
+                    }
+                }
+
+                if (whiteListConfiguration.IncludeHorizontalScaleServices)
+                {
+                    foreach (ScheduledHorizontalScaleConfiguration windowsAzureScheduledHorizontalScaleConfiguration in configurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations())
+                    {
+                        WhiteListService whiteListService = new WhiteListService { Name = windowsAzureScheduledHorizontalScaleConfiguration.ServiceName };
+                        whiteListConfiguration.Services.Add(whiteListService);
+                    }
+                }
+
+                WhiteListForecastWorker whiteListForecastWorker = new WhiteListForecastWorker(
+                    subscriptions,
+                    new Deployment(),
+                    new Operation(),
+                    whiteListConfiguration.Services.ToArray(),
+                    whiteListConfiguration.PollingIntervalInMinutes);
+                return whiteListForecastWorker;
             }
 
-            if (whiteListConfiguration.IncludeDeploymentDeleteServices)
-            {
-                foreach (DeploymentDeleteConfiguration deploymentDeleteConfiguration in configurationSource.GetWindowsAzureDeploymentDeleteConfigurations())
-                {
-                    whiteListConfiguration.ServiceNames.Add(deploymentDeleteConfiguration.ServiceName);
-                }
-            }
-
-            if (whiteListConfiguration.IncludeHorizontalScaleServices)
-            {
-                foreach (ScheduledHorizontalScaleConfiguration windowsAzureScheduledHorizontalScaleConfiguration in configurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations())
-                {
-                    whiteListConfiguration.ServiceNames.Add(windowsAzureScheduledHorizontalScaleConfiguration.ServiceName);
-                }
-            }
-
-            WhiteListForecastWorker whiteListForecastWorker = new WhiteListForecastWorker(
-                subscriptions, 
-                new Deployment(), 
-                new Operation(), 
-                whiteListConfiguration.ServiceNames.ToArray(), 
-                whiteListConfiguration.PollingIntervalInMinutes);
-            return whiteListForecastWorker;
+            return null;
         }
 
         internal static DeploymentDeleteForecastWorker[] GetDeploymentDeleteForecastWorkers()

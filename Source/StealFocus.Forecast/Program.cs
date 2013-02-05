@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Forecast
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Reflection;
 
@@ -8,6 +9,7 @@
 
     using Topshelf;
 
+    [ExcludeFromCodeCoverage]
     internal class Program
     {
         private static readonly ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

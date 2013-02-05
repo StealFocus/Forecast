@@ -1,6 +1,7 @@
 ﻿namespace StealFocus.Forecast
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Threading;
 
@@ -10,6 +11,7 @@
     using StealFocus.Forecast.WindowsAzure.HostedService;
     using StealFocus.Forecast.WindowsAzure.StorageService;
 
+    [ExcludeFromCodeCoverage]
     internal class Host
     {
         private const int OneSecondInMilliseconds = 1000;
@@ -19,7 +21,12 @@
         public Host()
         {
             this.ForecastWorkers = new List<ForecastWorker>();
-            this.ForecastWorkers.Add(StealFocusForecastConfiguration.GetWhiteListForecastWorker());
+            WhiteListForecastWorker whiteListForecastWorker = StealFocusForecastConfiguration.GetWhiteListForecastWorker();
+            if (whiteListForecastWorker != null)
+            {
+                this.ForecastWorkers.Add(whiteListForecastWorker);   
+            }
+
             DeploymentDeleteForecastWorker[] deploymentDeleteForecastWorkers = StealFocusForecastConfiguration.GetDeploymentDeleteForecastWorkers();
             foreach (DeploymentDeleteForecastWorker deploymentDeleteForecastWorker in deploymentDeleteForecastWorkers)
             {

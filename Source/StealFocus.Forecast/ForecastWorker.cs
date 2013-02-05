@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Reflection;
     using System.Threading;
@@ -46,6 +47,7 @@
         /// <summary>
         /// Starts the process.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Start()
         {
             string logMessage = string.Format(CultureInfo.CurrentCulture, "Starting worker of type '{0}'.", this.GetType().FullName);
@@ -68,6 +70,7 @@
         /// <summary>
         /// Stops the process.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void Stop()
         {
             string logMessage = string.Format(CultureInfo.CurrentCulture, "Stopping worker of type '{0}'.", this.GetType().FullName);
@@ -103,6 +106,7 @@
         /// <summary>
         /// Run the task.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         private void Run()
         {
             try

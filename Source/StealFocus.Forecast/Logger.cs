@@ -1,5 +1,6 @@
 ﻿namespace StealFocus.Forecast
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
 
@@ -9,6 +10,7 @@
     using log4net.Layout;
     using log4net.Repository.Hierarchy;
 
+    [ExcludeFromCodeCoverage]
     internal static class Logger
     {
         private const string ApplicationName = "StealFocus Forecast";
