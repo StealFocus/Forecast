@@ -1,6 +1,14 @@
 StealFocus Forecast
 ===================
-"Forecast" is an application that will tear down or create cloud assets on a schedule. For example it can configured to delete a Windows Azure service at certain times on certain days. This is incredibly useful for automatically deleting test environments to minimise your Azure running costs.
+"Forecast" is an application that will tear down or create cloud assets on a schedule. For example it can configured to delete a Windows Azure service at certain times on certain days. The principal purpose is reducing running costs, by proactively managing your deployed assets you can control the charges against your subscription(s).
+
+Functionality includes:
+
+- Delete Azure Hosted Services on a schedule. useful for deleting test environments when no longer needed e.g. outside of business hours.
+- Create Azure Hosted Services on a schedule, useful for creating test environments as required e.g. ready for business hours.
+- Delete Azure Hosted Services not on a "whitelist", useful for prevent organic grow or unplanned instance sprawl.
+- Horizontally scale Azure Hosted Services in or out on a schedule, useful for ramping up capacity in time for predicted spikes in demand or winding down capacity to reduce running costs during known periods of low demand.
+- Deleting Azure Storage artefacts (Blobs, Queues, Tables) on a schedule, useful for cleaning up Azure Storage accounts used for testing and the like.
 
 It can be run as a console application or installed as a windows service.
 
@@ -14,15 +22,15 @@ To test the application it is easiest to run in console mode first. From a comma
 
 Installation
 ------------
-To install the application as a windows service, run the following from a command prompt:
+To install and run the application as a windows service, run the following from a command prompt:
 
-- StealFocus.Forecast.exe install -username:domain\user -password:myPassword
-- StealFocus.Forecast.exe start
+    StealFocus.Forecast.exe install -username:domain\user -password:myPassword
+    StealFocus.Forecast.exe start
 
 To uninstall the windows service run the following:
 
-- StealFocus.Forecast.exe stop
-- StealFocus.Forecast.exe uninstall
+    StealFocus.Forecast.exe stop
+    StealFocus.Forecast.exe uninstall
 
 Downloading
 -----------
