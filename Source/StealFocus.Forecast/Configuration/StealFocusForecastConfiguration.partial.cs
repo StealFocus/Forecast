@@ -33,8 +33,20 @@
                 {
                     foreach (DeploymentCreateConfiguration deploymentCreateConfiguration in configurationSource.GetWindowsAzureDeploymentCreateConfigurations())
                     {
-                        WhiteListService whiteListService = new WhiteListService { Name = deploymentCreateConfiguration.ServiceName };
-                        whiteListConfiguration.Services.Add(whiteListService);
+                        bool alreadyIncluded = false;
+                        foreach (WhiteListService configuredWhiteListService in whiteListConfiguration.Services)
+                        {
+                            if (configuredWhiteListService.Name == deploymentCreateConfiguration.ServiceName)
+                            {
+                                alreadyIncluded = true;
+                            }
+                        }
+
+                        if (!alreadyIncluded)
+                        {
+                            WhiteListService whiteListService = new WhiteListService { Name = deploymentCreateConfiguration.ServiceName };
+                            whiteListConfiguration.Services.Add(whiteListService);
+                        }
                     }
                 }
 
@@ -42,8 +54,20 @@
                 {
                     foreach (DeploymentDeleteConfiguration deploymentDeleteConfiguration in configurationSource.GetWindowsAzureDeploymentDeleteConfigurations())
                     {
-                        WhiteListService whiteListService = new WhiteListService { Name = deploymentDeleteConfiguration.ServiceName };
-                        whiteListConfiguration.Services.Add(whiteListService);
+                        bool alreadyIncluded = false;
+                        foreach (WhiteListService configuredWhiteListService in whiteListConfiguration.Services)
+                        {
+                            if (configuredWhiteListService.Name == deploymentDeleteConfiguration.ServiceName)
+                            {
+                                alreadyIncluded = true;
+                            }
+                        }
+
+                        if (!alreadyIncluded)
+                        {
+                            WhiteListService whiteListService = new WhiteListService { Name = deploymentDeleteConfiguration.ServiceName };
+                            whiteListConfiguration.Services.Add(whiteListService);
+                        }
                     }
                 }
 
@@ -51,8 +75,20 @@
                 {
                     foreach (ScheduledHorizontalScaleConfiguration windowsAzureScheduledHorizontalScaleConfiguration in configurationSource.GetWindowsAzureScheduledHorizontalScaleConfigurations())
                     {
-                        WhiteListService whiteListService = new WhiteListService { Name = windowsAzureScheduledHorizontalScaleConfiguration.ServiceName };
-                        whiteListConfiguration.Services.Add(whiteListService);
+                        bool alreadyIncluded = false;
+                        foreach (WhiteListService configuredWhiteListService in whiteListConfiguration.Services)
+                        {
+                            if (configuredWhiteListService.Name == windowsAzureScheduledHorizontalScaleConfiguration.ServiceName)
+                            {
+                                alreadyIncluded = true;
+                            }
+                        }
+
+                        if (!alreadyIncluded)
+                        {
+                            WhiteListService whiteListService = new WhiteListService { Name = windowsAzureScheduledHorizontalScaleConfiguration.ServiceName };
+                            whiteListConfiguration.Services.Add(whiteListService);
+                        }
                     }
                 }
 
