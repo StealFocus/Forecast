@@ -23,7 +23,10 @@
 
         public WhiteListConfiguration GetWindowsAzureHostedServiceWhiteListConfiguration()
         {
-            if (StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList != null)
+            // The "StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList" property is 
+            // never null because it's a "Configuration Element Collection". So the best way to test if the White 
+            // List has been explicitly configured is if the "PollingIntervalInMinutes" is set (i.e. not "0").
+            if (StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.PollingIntervalInMinutes > 0)
             {
                 WhiteListConfiguration whiteListConfiguration = new WhiteListConfiguration();
                 whiteListConfiguration.IncludeDeploymentCreateServices = StealFocusForecastConfiguration.Instance.WindowsAzure.HostedService.WhiteList.IncludeDeploymentCreateServices;

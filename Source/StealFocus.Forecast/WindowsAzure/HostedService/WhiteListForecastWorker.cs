@@ -58,7 +58,17 @@
                 {
                     foreach (ISubscription subscription in this.subscriptions)
                     {
-                        string[] hostedServiceNames = subscription.ListHostedServices();
+                        string[] hostedServiceNames = new string[0];
+                        try
+                        {
+                            hostedServiceNames = subscription.ListHostedServices();
+                        }
+                        catch (Exception e)
+                        {
+                            string errorMessage = string.Format(CultureInfo.CurrentCulture, "{0} '{1}' experienced an error getting the hosted services for Subscription ID '{2}'. The operation will be retried after the next polling interval.", this.GetType().Name, this.Id, subscription.SubscriptionId);
+                            Logger.Error(errorMessage, e);
+                        }
+                        
                         foreach (string hostedServiceName in hostedServiceNames)
                         {
                             bool allowed = this.allowedServices.Any(allowedService => allowedService.Name == hostedServiceName);
@@ -109,6 +119,12 @@
 
         private bool FindIfDeployedInstanceSizesExceedWhiteListConfiguration(ISubscription subscription, string hostedServiceName, WhiteListService whiteListService, string deploymentSlot)
         {
+            if (whiteListService.Roles.Count == 0)
+            {
+                // No explicit roles configured, so just allow whatever is there.
+                return false;
+            }
+
             foreach (WhiteListRole whiteListRole in whiteListService.Roles)
             {
                 if (whiteListRole.MaxInstanceSize.HasValue)

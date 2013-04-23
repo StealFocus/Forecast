@@ -21,7 +21,7 @@
         private static readonly Guid SubscriptionId = Guid.NewGuid();
 
         [TestMethod]
-        public void UnitTest()
+        public void UnitTestDoWork_With_One_Role_Having_Instance_Count_Too_High_And_Second_Role_Having_Instance_Size_Too_Large()
         {
             MockRepository mockRepository = new MockRepository();
             WhiteListService whiteListService = new WhiteListService { Name = "wls1" };
@@ -72,6 +72,43 @@
             SetupDeleteRequestWithStatusCheck(mockDeployment, mockOperation, "wls1", DeploymentSlot.Production, "deleteRequest3");
 
             // Act
+            mockRepository.ReplayAll();
+            WhiteListForecastWorker whiteListForecastWorker = new WhiteListForecastWorker(subscriptions, mockDeployment, mockOperation, whiteListServices, 1);
+            whiteListForecastWorker.DoWork();
+            whiteListForecastWorker.DoWork(); // Call twice to test the polling interval (nothing should be invoked the second time).
+
+            // Assert
+            mockRepository.VerifyAll();
+        }
+
+        [TestMethod]
+        public void UnitTestDoWork_With_No_Explicit_Roles_Configured_For_White_List_Service()
+        {
+            MockRepository mockRepository = new MockRepository();
+            WhiteListService whiteListService = new WhiteListService { Name = "wls1" };
+            WhiteListService[] whiteListServices = new[] { whiteListService };
+
+            // Arrange
+            ISubscription mockSubscription = mockRepository.StrictMock<ISubscription>();
+            mockSubscription
+                .Expect(s => s.ListHostedServices())
+                .Repeat.Once()
+                .Return(new[] { "wls1" });
+            mockSubscription
+                .Expect(s => s.SubscriptionId)
+                .Repeat.Any()
+                .Return(SubscriptionId);
+            mockSubscription
+                .Expect(s => s.CertificateThumbprint)
+                .Repeat.Any()
+                .Return(CertificateThumbprint);
+            ISubscription[] subscriptions = new[] { mockSubscription };
+            IDeployment mockDeployment = mockRepository.StrictMock<IDeployment>();
+            IOperation mockOperation = mockRepository.StrictMock<IOperation>();
+
+            // Act
+            // There are no roles configured for the white list service, therefore there should be no checks made against 
+            // the service, we just accept however it is deployed for instance count or instance size.
             mockRepository.ReplayAll();
             WhiteListForecastWorker whiteListForecastWorker = new WhiteListForecastWorker(subscriptions, mockDeployment, mockOperation, whiteListServices, 1);
             whiteListForecastWorker.DoWork();
